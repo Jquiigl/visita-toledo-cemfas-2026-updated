@@ -1,0 +1,14 @@
+{
+  "name": "Toledo · Visita cultural e institucional",
+  "short_name": "Toledo",
+  "description": "Guía móvil de apoyo para la visita cultural e institucional a Toledo.",
+  "lang": "es",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fff9ef",
+  "theme_color": "#05243c",
+  "icons": [
+    { "src": "./images/app-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./images/app-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

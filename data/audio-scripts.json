@@ -1,0 +1,204 @@
+{
+  "version": 1,
+  "updated": "2026-08-27",
+  "languages": {
+    "es": {
+      "label": "Español",
+      "locale": "es-ES",
+      "voice": "Mónica",
+      "rate": 165,
+      "disclaimer": "Esta información, elaborada a partir de recursos públicos disponibles, tiene carácter divulgativo. Ante cualquier discrepancia, prevalece siempre la información oficial más reciente."
+    },
+    "en": {
+      "label": "English",
+      "locale": "en-GB",
+      "voice": "Daniel",
+      "rate": 165,
+      "disclaimer": "This information has been prepared from publicly available resources for educational purposes. In case of any discrepancy, the most recent official information always takes precedence."
+    },
+    "fr": {
+      "label": "Français",
+      "locale": "fr-FR",
+      "voice": "Jacques",
+      "rate": 160,
+      "disclaimer": "Ces informations, élaborées à partir de ressources publiques disponibles, ont un caractère informatif et culturel. En cas de divergence, les informations officielles les plus récentes prévalent toujours."
+    },
+    "it": {
+      "label": "Italiano",
+      "locale": "it-IT",
+      "voice": "Alice",
+      "rate": 160,
+      "disclaimer": "Queste informazioni, elaborate a partire da risorse pubbliche disponibili, hanno carattere divulgativo. In caso di discrepanza, prevalgono sempre le informazioni ufficiali più recenti."
+    },
+    "de": {
+      "label": "Deutsch",
+      "locale": "de-DE",
+      "voice": "Anna",
+      "rate": 155,
+      "disclaimer": "Diese Informationen wurden auf der Grundlage öffentlich zugänglicher Quellen zu Informationszwecken erstellt. Bei Abweichungen haben stets die neuesten offiziellen Informationen Vorrang."
+    },
+    "ar": {
+      "label": "العربية",
+      "locale": "ar",
+      "voice": "Majed",
+      "rate": 150,
+      "disclaimer": "أُعدت هذه المعلومات لأغراض تعريفية اعتمادًا على موارد عامة متاحة. وفي حال وجود أي اختلاف، تكون الأولوية دائمًا لأحدث المعلومات الرسمية."
+    },
+    "ko": {
+      "label": "한국어",
+      "locale": "ko-KR",
+      "voice": "Yuna",
+      "rate": 150,
+      "disclaimer": "이 안내는 공개된 자료를 바탕으로 작성된 참고용 정보입니다. 내용이 서로 다를 경우에는 가장 최근의 공식 안내가 우선합니다."
+    }
+  },
+  "cards": [
+    {
+      "id": "toledo",
+      "titles": {
+        "es": "Toledo, ficha general de la ciudad",
+        "en": "Toledo, an introduction to the city",
+        "fr": "Tolède, présentation générale de la ville",
+        "it": "Toledo, presentazione generale della città",
+        "de": "Toledo, eine Einführung in die Stadt",
+        "ar": "طليطلة، نبذة عامة عن المدينة",
+        "ko": "톨레도 도시 개요"
+      },
+      "texts": {
+        "es": "Toledo se alza sobre un promontorio rodeado en gran parte por el río Tajo. Tiene aproximadamente ochenta y ocho mil habitantes y es capital de Castilla-La Mancha. Su historia reúne etapas romanas, visigodas, andalusíes, judías y cristianas. Fue capital del reino visigodo, una ciudad destacada de al-Ándalus y, desde mil ochenta y cinco, una de las grandes ciudades de la Corona de Castilla. Su casco histórico es Patrimonio Mundial desde mil novecientos ochenta y seis. Zocodover es su principal punto de encuentro; desde allí, sus calles conducen hacia la Catedral, la judería, Santo Tomé y el Alcázar.",
+        "en": "Toledo stands on a promontory largely surrounded by the River Tagus. It has approximately eighty-eight thousand inhabitants and is the capital of Castilla-La Mancha. Its history includes Roman, Visigothic, Andalusi, Jewish and Christian periods. It was the capital of the Visigothic kingdom, an important city of al-Andalus and, from ten eighty-five, one of the great cities of the Crown of Castile. Its historic centre has been a World Heritage Site since nineteen eighty-six. Zocodover is its main meeting point, from where the streets lead towards the Cathedral, the Jewish quarter, Santo Tomé and the Alcázar.",
+        "fr": "Tolède s'élève sur un promontoire en grande partie entouré par le Tage. Elle compte environ quatre-vingt-huit mille habitants et constitue la capitale de la Castille-La Manche. Son histoire comprend des périodes romaine, wisigothique, andalouse, juive et chrétienne. Elle fut la capitale du royaume wisigoth, une ville importante d'al-Andalus puis, à partir de mille quatre-vingt-cinq, l'une des grandes villes de la Couronne de Castille. Son centre historique est inscrit au Patrimoine mondial depuis mille neuf cent quatre-vingt-six. Zocodover est son principal lieu de rencontre; de là, les rues conduisent vers la Cathédrale, le quartier juif, Santo Tomé et l'Alcázar.",
+        "it": "Toledo sorge su un promontorio circondato in gran parte dal fiume Tago. Ha circa ottantottomila abitanti ed è il capoluogo della Castiglia-La Mancia. La sua storia comprende periodi romani, visigoti, andalusi, ebraici e cristiani. Fu capitale del regno visigoto, un'importante città di al-Andalus e, dal milleottantacinque, una delle grandi città della Corona di Castiglia. Il centro storico è Patrimonio mondiale dal millenovecentottantasei. Zocodover è il principale punto d'incontro; da qui le strade conducono verso la Cattedrale, il quartiere ebraico, Santo Tomé e l'Alcázar.",
+        "de": "Toledo liegt auf einer Anhöhe, die zu einem großen Teil vom Fluss Tajo umgeben ist. Die Stadt hat ungefähr achtundachtzigtausend Einwohner und ist die Hauptstadt von Kastilien-La Mancha. Ihre Geschichte umfasst römische, westgotische, andalusische, jüdische und christliche Epochen. Toledo war Hauptstadt des Westgotenreiches, eine bedeutende Stadt von al-Andalus und seit dem Jahr eintausendfünfundachtzig eine der großen Städte der Krone Kastiliens. Die Altstadt gehört seit neunzehnhundertsechsundachtzig zum Welterbe. Der Zocodover ist der wichtigste Treffpunkt; von dort führen die Straßen zur Kathedrale, zum jüdischen Viertel, nach Santo Tomé und zum Alcázar.",
+        "ar": "تقع طليطلة على مرتفع يحيط به نهر تاجة من معظم الجهات. ويبلغ عدد سكانها نحو ثمانية وثمانين ألف نسمة، وهي عاصمة إقليم قشتالة لا مانتشا. تجمع المدينة طبقات من التاريخ الروماني والقوطي الغربي والأندلسي واليهودي والمسيحي. كانت عاصمة لمملكة القوط الغربيين، ومدينة مهمة في الأندلس، ثم أصبحت منذ عام ألف وخمسة وثمانين من أبرز مدن تاج قشتالة. أُدرج مركزها التاريخي ضمن التراث العالمي سنة ألف وتسعمئة وستة وثمانين. وتُعد ساحة ثوكودوفير نقطة اللقاء الرئيسية، ومنها تؤدي الشوارع إلى الكاتدرائية والحي اليهودي وسانتو تومي والقصر الحصين.",
+        "ko": "톨레도는 타호강이 크게 휘감아 흐르는 언덕 위에 자리한 도시입니다. 인구는 약 팔만 팔천 명이며 카스티야라만차 자치주의 수도입니다. 이곳의 역사에는 로마, 서고트, 알안달루스, 유대교, 그리스도교 시대의 흔적이 겹겹이 남아 있습니다. 톨레도는 서고트 왕국의 수도였고 알안달루스의 주요 도시였으며, 천팔십오 년 이후에는 카스티야 왕국의 중심 도시 가운데 하나가 되었습니다. 구시가지는 천구백팔십육 년 유네스코 세계유산에 등재되었습니다. 소코도베르 광장은 주요 만남의 장소이며, 여기에서 대성당, 유대인 지구, 산토 토메, 알카사르로 이어지는 길이 시작됩니다."
+      }
+    },
+    {
+      "id": "orgaz",
+      "titles": {
+        "es": "El entierro del conde de Orgaz",
+        "en": "The Burial of the Count of Orgaz",
+        "fr": "L'Enterrement du comte d'Orgaz",
+        "it": "La sepoltura del conte di Orgaz",
+        "de": "Das Begräbnis des Grafen von Orgaz",
+        "ar": "دفن كونت أورغاز",
+        "ko": "오르가스 백작의 매장"
+      },
+      "texts": {
+        "es": "El Greco pintó esta obra entre mil quinientos ochenta y seis y mil quinientos ochenta y ocho para la iglesia de Santo Tomé. El título formal es El entierro del Señor de Orgaz, aunque se conoce popularmente como El entierro del conde de Orgaz. Gonzalo Ruiz de Toledo fue, en realidad, señor de la villa de Orgaz y benefactor del templo. La pintura representa la tradición según la cual san Esteban y san Agustín descendieron para darle sepultura. La composición une dos ámbitos: abajo, una ceremonia funeraria con personajes de la sociedad toledana; arriba, una visión celestial llena de movimiento, luz y color. La obra continúa expuesta en el lugar para el que fue creada.",
+        "en": "El Greco painted this work between fifteen eighty-six and fifteen eighty-eight for the church of Santo Tomé. Its formal title is The Burial of the Lord of Orgaz, although it is popularly known as The Burial of the Count of Orgaz. Gonzalo Ruiz de Toledo was, in fact, lord of the town of Orgaz and a benefactor of the church. The painting represents the tradition according to which Saint Stephen and Saint Augustine descended to bury him. The composition brings together two realms: below, a funeral ceremony attended by members of Toledo society; above, a heavenly vision filled with movement, light and colour. The work remains on display in the place for which it was created.",
+        "fr": "Le Greco peignit cette œuvre entre mille cinq cent quatre-vingt-six et mille cinq cent quatre-vingt-huit pour l'église de Santo Tomé. Son titre officiel est L'Enterrement du Seigneur d'Orgaz, bien qu'elle soit couramment appelée L'Enterrement du comte d'Orgaz. Gonzalo Ruiz de Toledo était en réalité seigneur de la ville d'Orgaz et bienfaiteur de l'église. Le tableau représente la tradition selon laquelle saint Étienne et saint Augustin descendirent pour l'ensevelir. La composition réunit deux domaines: en bas, une cérémonie funéraire avec des membres de la société tolédane; en haut, une vision céleste pleine de mouvement, de lumière et de couleur. L'œuvre est toujours exposée dans le lieu pour lequel elle fut créée.",
+        "it": "El Greco dipinse quest'opera tra il millecinquecentottantasei e il millecinquecentottantotto per la chiesa di Santo Tomé. Il titolo formale è La sepoltura del Signore di Orgaz, anche se è comunemente conosciuta come La sepoltura del conte di Orgaz. Gonzalo Ruiz de Toledo era in realtà signore della città di Orgaz e benefattore della chiesa. Il dipinto rappresenta la tradizione secondo la quale santo Stefano e sant'Agostino scesero per seppellirlo. La composizione unisce due ambiti: in basso, una cerimonia funebre con personaggi della società toledana; in alto, una visione celeste piena di movimento, luce e colore. L'opera è ancora esposta nel luogo per il quale fu creata.",
+        "de": "El Greco malte dieses Werk zwischen fünfzehnhundertsechsundachtzig und fünfzehnhundertachtundachtzig für die Kirche Santo Tomé. Der offizielle Titel lautet Das Begräbnis des Herrn von Orgaz, bekannt ist es jedoch als Das Begräbnis des Grafen von Orgaz. Gonzalo Ruiz de Toledo war tatsächlich Herr der Stadt Orgaz und ein Wohltäter der Kirche. Das Gemälde zeigt die Überlieferung, nach der der heilige Stephanus und der heilige Augustinus herabstiegen, um ihn zu bestatten. Die Komposition verbindet zwei Bereiche: unten eine Trauerfeier mit Persönlichkeiten der Gesellschaft Toledos, oben eine himmlische Vision voller Bewegung, Licht und Farbe. Das Werk ist weiterhin an dem Ort ausgestellt, für den es geschaffen wurde.",
+        "ar": "رسم إل غريكو هذه اللوحة بين عامي ألف وخمسمئة وستة وثمانين وألف وخمسمئة وثمانية وثمانين لكنيسة سانتو تومي. عنوانها الرسمي هو دفن سيد أورغاز، لكنها تُعرف شعبيًا باسم دفن كونت أورغاز. كان غونثالو رويث دي توليدو في الحقيقة سيد بلدة أورغاز وأحد المحسنين إلى الكنيسة. تصور اللوحة الرواية التي تقول إن القديس إسطفانوس والقديس أوغسطينوس نزلا لدفنه. تجمع اللوحة بين عالمين: في الأسفل مراسم جنازة يحضرها رجال من مجتمع طليطلة، وفي الأعلى مشهد سماوي حافل بالحركة والضوء واللون. وما زالت اللوحة معروضة في المكان الذي رُسمت من أجله.",
+        "ko": "엘 그레코는 천오백팔십육 년부터 천오백팔십팔 년 사이에 산토 토메 성당을 위해 이 작품을 그렸습니다. 공식 명칭은 오르가스 영주의 매장이지만, 일반적으로는 오르가스 백작의 매장으로 알려져 있습니다. 곤살로 루이스 데 톨레도는 실제로 오르가스의 영주이자 성당의 후원자였습니다. 그림은 성 스테파노와 성 아우구스티노가 내려와 그를 매장했다는 전승을 표현합니다. 화면 아래에는 톨레도 사회의 인물들이 참석한 장례식이, 위에는 움직임과 빛과 색채로 가득한 천상의 장면이 펼쳐집니다. 작품은 지금도 처음 제작된 장소에 전시되어 있습니다."
+      }
+    },
+    {
+      "id": "santa-maria-la-blanca",
+      "titles": {
+        "es": "Sinagoga de Santa María la Blanca",
+        "en": "The Synagogue of Santa María la Blanca",
+        "fr": "La synagogue de Santa María la Blanca",
+        "it": "La sinagoga di Santa María la Blanca",
+        "de": "Die Synagoge Santa María la Blanca",
+        "ar": "كنيس سانتا ماريا لا بلانكا",
+        "ko": "산타 마리아 라 블랑카 시나고그"
+      },
+      "texts": {
+        "es": "Santa María la Blanca fue construida como sinagoga y es uno de los testimonios más expresivos del Toledo medieval. Una inscripción conservada ha llevado a situar su origen en torno a mil ciento ochenta, aunque el edificio fue reformado posteriormente. Sus cinco naves están separadas por arcos de herradura apoyados en pilares octogonales. Los capiteles y frisos muestran motivos geométricos y vegetales sobre un interior de gran blancura. Su arquitectura emplea formas de tradición islámica en una sinagoga levantada dentro de un reino cristiano. Convertida en iglesia a comienzos del siglo quince, tuvo después distintos usos religiosos, asistenciales y militares. Hoy está abierta como monumento y espacio cultural.",
+        "en": "Santa María la Blanca was built as a synagogue and is one of the most expressive monuments of medieval Toledo. A surviving inscription has led scholars to date its origins to around eleven eighty, although the building was later altered. Its five aisles are separated by horseshoe arches resting on octagonal pillars. The capitals and friezes display geometric and plant motifs against a remarkably white interior. Its architecture uses forms from the Islamic tradition in a synagogue built within a Christian kingdom. Converted into a church at the beginning of the fifteenth century, it later had several religious, charitable and military uses. Today it is open as a monument and cultural space.",
+        "fr": "Santa María la Blanca fut construite comme synagogue et constitue l'un des témoignages les plus expressifs de la Tolède médiévale. Une inscription conservée permet de situer ses origines vers mille cent quatre-vingts, bien que le bâtiment ait ensuite été transformé. Ses cinq nefs sont séparées par des arcs en fer à cheval reposant sur des piliers octogonaux. Les chapiteaux et les frises présentent des motifs géométriques et végétaux dans un intérieur d'une grande blancheur. Son architecture emploie des formes de tradition islamique dans une synagogue bâtie au sein d'un royaume chrétien. Transformée en église au début du quinzième siècle, elle connut ensuite différents usages religieux, caritatifs et militaires. Elle est aujourd'hui ouverte comme monument et espace culturel.",
+        "it": "Santa María la Blanca fu costruita come sinagoga ed è una delle testimonianze più significative della Toledo medievale. Un'iscrizione conservata ha permesso di collocarne l'origine intorno al millecentottanta, anche se l'edificio fu successivamente modificato. Le cinque navate sono separate da archi a ferro di cavallo sostenuti da pilastri ottagonali. Capitelli e fregi presentano motivi geometrici e vegetali in un interno di grande luminosità. L'architettura utilizza forme della tradizione islamica in una sinagoga costruita all'interno di un regno cristiano. Trasformata in chiesa all'inizio del quindicesimo secolo, ebbe poi diversi usi religiosi, assistenziali e militari. Oggi è aperta come monumento e spazio culturale.",
+        "de": "Santa María la Blanca wurde als Synagoge errichtet und ist eines der anschaulichsten Zeugnisse des mittelalterlichen Toledo. Eine erhaltene Inschrift deutet auf eine Entstehung um das Jahr elfhundertachtzig hin, obwohl das Gebäude später verändert wurde. Die fünf Schiffe werden durch Hufeisenbögen auf achteckigen Pfeilern voneinander getrennt. Kapitelle und Friese zeigen geometrische und pflanzliche Motive in einem außergewöhnlich weißen Innenraum. Die Architektur verwendet Formen islamischer Tradition in einer Synagoge, die in einem christlichen Königreich erbaut wurde. Zu Beginn des fünfzehnten Jahrhunderts wurde sie in eine Kirche umgewandelt und später religiös, karitativ und militärisch genutzt. Heute ist sie als Denkmal und Kulturraum geöffnet.",
+        "ar": "بُنيت سانتا ماريا لا بلانكا في الأصل كنيسًا، وهي من أبرز شواهد طليطلة في العصور الوسطى. وتشير كتابة محفوظة إلى أن أصل المبنى يعود إلى نحو عام ألف ومئة وثمانين، مع أنه خضع لتعديلات لاحقة. يتكون الداخل من خمس بلاطات تفصل بينها أقواس حدوة حصان ترتكز على أعمدة مثمنة. وتظهر على التيجان والأفاريز زخارف هندسية ونباتية وسط فضاء شديد البياض. يستخدم المبنى أشكالًا من التقاليد المعمارية الإسلامية في كنيس أُقيم داخل مملكة مسيحية. حُول إلى كنيسة في أوائل القرن الخامس عشر، ثم استُخدم لأغراض دينية وخيرية وعسكرية مختلفة. وهو مفتوح اليوم بوصفه معلمًا ومركزًا ثقافيًا.",
+        "ko": "산타 마리아 라 블랑카는 원래 시나고그로 건립되었으며 중세 톨레도를 잘 보여 주는 대표적인 유산입니다. 남아 있는 명문을 근거로 기원은 대략 천백팔십 년경으로 추정되지만, 이후 여러 차례 개축되었습니다. 내부의 다섯 개 회랑은 팔각 기둥 위에 놓인 말발굽 모양의 아치로 구분됩니다. 흰색 공간을 배경으로 기둥머리와 프리즈에는 기하학적 무늬와 식물 무늬가 장식되어 있습니다. 그리스도교 왕국 안에 세워진 유대교 회당에 이슬람 건축 전통이 사용된 사례입니다. 십오 세기 초 교회로 바뀐 뒤 종교, 구호, 군사 시설 등으로 사용되었으며, 오늘날에는 문화유산 공간으로 공개되어 있습니다."
+      }
+    },
+    {
+      "id": "catedral",
+      "titles": {
+        "es": "Catedral Primada de Toledo",
+        "en": "The Primate Cathedral of Toledo",
+        "fr": "La cathédrale primatiale de Tolède",
+        "it": "La cattedrale primaziale di Toledo",
+        "de": "Die Primatialkathedrale von Toledo",
+        "ar": "كاتدرائية طليطلة الرئيسية",
+        "ko": "톨레도 수석 대성당"
+      },
+      "texts": {
+        "es": "La construcción de la Catedral de Santa María de Toledo comenzó en mil doscientos veintiséis, bajo Fernando tercero y el arzobispo Rodrigo Jiménez de Rada. Las principales obras góticas culminaron a finales del siglo quince, aunque el templo siguió incorporando elementos renacentistas y barrocos. Su planta de cinco naves, la girola y las numerosas capillas muestran la adaptación castellana de los modelos góticos europeos. Entre sus espacios y obras destacan la Capilla Mayor, el Coro, la Sala Capitular, el Transparente, la Custodia de Arfe y El Expolio de El Greco. También conserva la Capilla Mozárabe. La Catedral continúa siendo un templo vivo, por lo que la visita debe respetar el culto y las instrucciones vigentes.",
+        "en": "Construction of the Cathedral of Saint Mary of Toledo began in twelve twenty-six, under King Ferdinand the Third and Archbishop Rodrigo Jiménez de Rada. The main Gothic work was completed at the end of the fifteenth century, although Renaissance and Baroque elements were added later. Its five aisles, ambulatory and many chapels show the Castilian adaptation of European Gothic models. Highlights include the Main Chapel, the Choir, the Chapter House, the Transparente, the Monstrance of Arfe and El Greco's Disrobing of Christ. It also preserves the Mozarabic Chapel. The Cathedral remains an active place of worship, so visitors must respect religious services and current instructions.",
+        "fr": "La construction de la cathédrale Sainte-Marie de Tolède commença en mille deux cent vingt-six, sous Ferdinand trois et l'archevêque Rodrigo Jiménez de Rada. Les principaux travaux gothiques s'achevèrent à la fin du quinzième siècle, même si des éléments Renaissance et baroques furent ajoutés par la suite. Ses cinq nefs, son déambulatoire et ses nombreuses chapelles montrent l'adaptation castillane des modèles gothiques européens. Parmi les espaces et les œuvres remarquables figurent la Chapelle majeure, le Chœur, la Salle capitulaire, le Transparente, l'Ostensoir d'Arfe et Le Partage de la tunique du Greco. Elle conserve également la Chapelle mozarabe. La cathédrale reste un lieu de culte vivant; la visite doit donc respecter les célébrations et les instructions en vigueur.",
+        "it": "La costruzione della Cattedrale di Santa Maria di Toledo iniziò nel milleduecentoventisei, sotto Ferdinando terzo e l'arcivescovo Rodrigo Jiménez de Rada. I principali lavori gotici terminarono alla fine del quindicesimo secolo, anche se in seguito furono aggiunti elementi rinascimentali e barocchi. Le cinque navate, il deambulatorio e le numerose cappelle mostrano l'adattamento castigliano dei modelli gotici europei. Tra gli spazi e le opere più importanti figurano la Cappella Maggiore, il Coro, la Sala Capitolare, il Transparente, l'Ostensorio di Arfe e La Spoliazione di Cristo di El Greco. Conserva anche la Cappella Mozarabica. La Cattedrale è tuttora un luogo di culto attivo; la visita deve quindi rispettare le celebrazioni e le istruzioni vigenti.",
+        "de": "Der Bau der Kathedrale Santa María von Toledo begann im Jahr zwölfhundertsechsundzwanzig unter König Ferdinand dem Dritten und Erzbischof Rodrigo Jiménez de Rada. Die wichtigsten gotischen Arbeiten wurden am Ende des fünfzehnten Jahrhunderts abgeschlossen; später kamen Elemente der Renaissance und des Barock hinzu. Die fünf Schiffe, der Chorumgang und die zahlreichen Kapellen zeigen die kastilische Anpassung europäischer Gotik. Zu den Höhepunkten gehören die Hauptkapelle, der Chor, der Kapitelsaal, der Transparente, die Monstranz von Arfe und El Grecos Entkleidung Christi. Auch die mozarabische Kapelle ist erhalten. Die Kathedrale ist weiterhin ein lebendiger Ort des Gottesdienstes; Besuche müssen daher religiöse Feiern und aktuelle Anweisungen respektieren.",
+        "ar": "بدأ بناء كاتدرائية سانتا ماريا في طليطلة سنة ألف ومئتين وستة وعشرين، في عهد الملك فرناندو الثالث ورئيس الأساقفة رودريغو خيمينيث دي رادا. اكتملت الأعمال القوطية الرئيسية في أواخر القرن الخامس عشر، ثم أضيفت عناصر من عصر النهضة والباروك. تعكس البلاطات الخمس والممر المحيط بالهيكل والمصليات الكثيرة الصياغة القشتالية للطراز القوطي الأوروبي. ومن أبرز معالمها المصلى الرئيسي والجوقة وقاعة المجلس والزخرفة المعروفة باسم ترانسبارانتي ومذخر أرفي ولوحة تجريد المسيح من ثيابه لإل غريكو. كما تضم المصلى المستعربي. ولا تزال الكاتدرائية مكانًا حيًا للعبادة، ولذلك يجب احترام الشعائر والتعليمات السارية أثناء الزيارة.",
+        "ko": "톨레도 산타 마리아 대성당의 건축은 페르난도 삼세와 로드리고 히메네스 데 라다 대주교 시기인 천이백이십육 년에 시작되었습니다. 주요 고딕 공사는 십오 세기 말에 완성되었지만 이후 르네상스와 바로크 요소가 더해졌습니다. 다섯 개의 회랑과 제단 주위의 회랑, 수많은 경당은 유럽 고딕 양식이 카스티야에서 어떻게 변형되었는지를 보여 줍니다. 중앙 경당, 성가대석, 참사회실, 트란스파렌테, 아르페의 성체 현시대, 엘 그레코의 그리스도의 옷을 벗김이 특히 유명합니다. 모사라베 경당도 남아 있습니다. 현재도 예배가 이루어지는 성당이므로 방문자는 종교행사와 현장 안내를 존중해야 합니다."
+      }
+    },
+    {
+      "id": "alcazar",
+      "titles": {
+        "es": "Alcázar de Toledo y Museo del Ejército",
+        "en": "The Alcázar of Toledo and the Army Museum",
+        "fr": "L'Alcázar de Tolède et le Musée de l'Armée",
+        "it": "L'Alcázar di Toledo e il Museo dell'Esercito",
+        "de": "Der Alcázar von Toledo und das Armeemuseum",
+        "ar": "قصر طليطلة الحصين ومتحف الجيش",
+        "ko": "톨레도 알카사르와 육군 박물관"
+      },
+      "texts": {
+        "es": "El Alcázar ocupa uno de los puntos más altos de Toledo. Su emplazamiento estuvo vinculado al poder político y militar desde las épocas romana y visigoda, y fue transformado durante los periodos islámico y cristiano. En el siglo dieciséis, Carlos primero impulsó su conversión en un gran palacio renacentista. El edificio sufrió incendios, reconstrucciones y graves daños durante el asedio de mil novecientos treinta y seis. También fue sede histórica de la Academia de Infantería y de la primera etapa de la Academia General Militar. Desde dos mil diez alberga el Museo del Ejército, que presenta la historia militar española mediante colecciones, recorridos temáticos y restos integrados en el propio edificio.",
+        "en": "The Alcázar stands at one of the highest points in Toledo. Its site was associated with political and military power from Roman and Visigothic times and was transformed during the Islamic and Christian periods. In the sixteenth century, Charles the First promoted its conversion into a major Renaissance palace. The building suffered fires, rebuilding and severe damage during the siege of nineteen thirty-six. It was also the historic home of the Infantry Academy and of the first period of the General Military Academy. Since twenty ten it has housed the Army Museum, which presents Spanish military history through collections, thematic routes and archaeological remains integrated into the building itself.",
+        "fr": "L'Alcázar occupe l'un des points les plus élevés de Tolède. Son emplacement fut associé au pouvoir politique et militaire dès les époques romaine et wisigothique, puis transformé pendant les périodes islamique et chrétienne. Au seizième siècle, Charles premier encouragea sa conversion en un grand palais de la Renaissance. Le bâtiment connut des incendies, des reconstructions et de graves dommages pendant le siège de mille neuf cent trente-six. Il fut également le siège historique de l'Académie d'Infanterie et de la première période de l'Académie Générale Militaire. Depuis deux mille dix, il abrite le Musée de l'Armée, qui présente l'histoire militaire espagnole au moyen de collections, de parcours thématiques et de vestiges intégrés au bâtiment.",
+        "it": "L'Alcázar occupa uno dei punti più elevati di Toledo. Il luogo fu legato al potere politico e militare fin dall'epoca romana e visigota e venne trasformato durante i periodi islamico e cristiano. Nel sedicesimo secolo Carlo primo ne promosse la conversione in un grande palazzo rinascimentale. L'edificio subì incendi, ricostruzioni e gravi danni durante l'assedio del millenovecentotrentasei. Fu anche sede storica dell'Accademia di Fanteria e della prima fase dell'Accademia Generale Militare. Dal duemiladieci ospita il Museo dell'Esercito, che presenta la storia militare spagnola attraverso collezioni, percorsi tematici e resti archeologici integrati nell'edificio.",
+        "de": "Der Alcázar liegt an einem der höchsten Punkte Toledos. Sein Standort war seit der römischen und westgotischen Zeit mit politischer und militärischer Macht verbunden und wurde in islamischer und christlicher Zeit weiterentwickelt. Im sechzehnten Jahrhundert ließ Karl der Erste die Anlage zu einem großen Renaissancepalast umbauen. Das Gebäude erlitt Brände, Wiederaufbauten und schwere Schäden während der Belagerung von neunzehnhundertsechsunddreißig. Es war auch historischer Sitz der Infanterieakademie und der ersten Phase der Allgemeinen Militärakademie. Seit zweitausendzehn beherbergt es das Armeemuseum, das die spanische Militärgeschichte anhand von Sammlungen, Themenrundgängen und in das Gebäude integrierten Überresten vermittelt.",
+        "ar": "يقع قصر طليطلة الحصين في أحد أعلى مواضع المدينة. ارتبط موقعه بالسلطة السياسية والعسكرية منذ العصرين الروماني والقوطي الغربي، ثم تغير خلال الفترتين الإسلامية والمسيحية. وفي القرن السادس عشر دفع الملك كارلوس الأول إلى تحويله إلى قصر كبير من طراز عصر النهضة. تعرض المبنى لحرائق وعمليات إعادة بناء ولأضرار جسيمة أثناء حصار عام ألف وتسعمئة وستة وثلاثين. كما كان مقرًا تاريخيًا لأكاديمية المشاة وللمرحلة الأولى من الأكاديمية العسكرية العامة. ومنذ عام ألفين وعشرة يضم متحف الجيش، الذي يعرض التاريخ العسكري الإسباني من خلال المجموعات والمسارات الموضوعية والبقايا المدمجة في المبنى نفسه.",
+        "ko": "알카사르는 톨레도에서 가장 높은 지점 가운데 하나에 자리합니다. 이곳은 로마와 서고트 시대부터 정치와 군사 권력의 중심지였으며 이슬람과 그리스도교 시대를 거치며 변형되었습니다. 십육 세기에는 카를로스 일세가 대규모 르네상스 궁전으로 개축하도록 했습니다. 건물은 여러 차례 화재와 재건을 겪었고 천구백삼십육 년 포위전에서 크게 파괴되었습니다. 과거에는 보병사관학교와 초기 일반군사학교의 본부이기도 했습니다. 이천십 년부터는 육군 박물관이 자리하며, 수집품과 주제별 전시, 건물에 보존된 유적을 통해 스페인의 군사사를 소개합니다."
+      }
+    },
+    {
+      "id": "academia-infanteria",
+      "titles": {
+        "es": "Academia de Infantería",
+        "en": "The Infantry Academy",
+        "fr": "L'Académie d'Infanterie",
+        "it": "L'Accademia di Fanteria",
+        "de": "Die Infanterieakademie",
+        "ar": "أكاديمية المشاة",
+        "ko": "보병사관학교"
+      },
+      "texts": {
+        "es": "El primer Colegio de Infantería se creó en Toledo en mil ochocientos cincuenta. Tras diferentes etapas y sedes, la Academia regresó a la ciudad en mil ochocientos setenta y cinco y se instaló en el Alcázar. En mil novecientos cuarenta y ocho comenzó a utilizar su actual emplazamiento, frente al Alcázar y al otro lado del Tajo. Su misión actual es completar la formación integral y en valores de los futuros oficiales y suboficiales del Arma de Infantería. La visita prevista permitirá relacionar esa misión con la historia y las tradiciones conservadas en el Edificio Noble y en las salas dedicadas a recompensas y figuras destacadas. Las normas de identificación, fotografía y circulación serán exclusivamente las comunicadas por la Academia.",
+        "en": "The first Infantry College was established in Toledo in eighteen fifty. After several periods and locations, the Academy returned to the city in eighteen seventy-five and was installed in the Alcázar. In nineteen forty-eight it began using its present site, facing the Alcázar on the other side of the Tagus. Its current mission is to complete the comprehensive and values-based education of future infantry officers and non-commissioned officers. The planned visit will connect that mission with the history and traditions preserved in the Noble Building and in rooms dedicated to decorations and distinguished infantry figures. Identification, photography and movement rules will be solely those communicated by the Academy.",
+        "fr": "Le premier Collège d'Infanterie fut créé à Tolède en mille huit cent cinquante. Après plusieurs étapes et implantations, l'Académie revint dans la ville en mille huit cent soixante-quinze et s'installa dans l'Alcázar. En mille neuf cent quarante-huit, elle commença à utiliser son site actuel, face à l'Alcázar, de l'autre côté du Tage. Sa mission actuelle consiste à compléter la formation intégrale et morale des futurs officiers et sous-officiers de l'Infanterie. La visite prévue permettra de relier cette mission à l'histoire et aux traditions conservées dans le Bâtiment Noble et dans les salles consacrées aux décorations et aux figures remarquables. Les règles d'identification, de photographie et de circulation seront uniquement celles communiquées par l'Académie.",
+        "it": "Il primo Collegio di Fanteria fu creato a Toledo nel milleottocentocinquanta. Dopo diverse fasi e sedi, l'Accademia tornò in città nel milleottocentosettantacinque e si stabilì nell'Alcázar. Nel millenovecentoquarantotto iniziò a utilizzare la sede attuale, di fronte all'Alcázar e dall'altra parte del Tago. La sua missione è completare la formazione integrale e valoriale dei futuri ufficiali e sottufficiali di Fanteria. La visita prevista collegherà questa missione alla storia e alle tradizioni conservate nell'Edificio Nobile e nelle sale dedicate alle decorazioni e alle figure illustri. Le norme di identificazione, fotografia e movimento saranno esclusivamente quelle comunicate dall'Accademia.",
+        "de": "Das erste Infanteriekolleg wurde im Jahr achtzehnhundertfünfzig in Toledo gegründet. Nach mehreren Phasen und Standorten kehrte die Akademie achtzehnhundertfünfundsiebzig in die Stadt zurück und bezog den Alcázar. Seit neunzehnhundertachtundvierzig nutzt sie ihren heutigen Standort gegenüber dem Alcázar auf der anderen Seite des Tajo. Ihre heutige Aufgabe ist die umfassende und werteorientierte Ausbildung künftiger Offiziere und Unteroffiziere der Infanterie. Der geplante Besuch verbindet diese Aufgabe mit der Geschichte und den Traditionen, die im repräsentativen Hauptgebäude und in den Räumen zu Auszeichnungen und bedeutenden Persönlichkeiten bewahrt werden. Für Identifikation, Fotografie und Bewegung gelten ausschließlich die Anweisungen der Akademie.",
+        "ar": "أُنشئت أول كلية للمشاة في طليطلة سنة ألف وثمانمئة وخمسين. وبعد مراحل ومقار مختلفة، عادت الأكاديمية إلى المدينة سنة ألف وثمانمئة وخمسة وسبعين واتخذت من القصر الحصين مقرًا لها. وفي سنة ألف وتسعمئة وثمانية وأربعين بدأت استخدام موقعها الحالي المقابل للقصر على الضفة الأخرى من نهر تاجة. تتمثل مهمتها اليوم في استكمال الإعداد الشامل والقيمي لضباط وضباط صف المشاة في المستقبل. وتربط الزيارة المقررة هذه المهمة بتاريخ الأكاديمية وتقاليدها المحفوظة في المبنى الرئيسي وقاعات التكريم والأوسمة والشخصيات البارزة. وتكون تعليمات الهوية والتصوير والتنقل هي فقط التعليمات التي تصدرها الأكاديمية.",
+        "ko": "최초의 보병학교는 천팔백오십 년 톨레도에 설립되었습니다. 여러 시기와 장소를 거친 뒤 천팔백칠십오 년 톨레도로 돌아와 알카사르에 자리했습니다. 천구백사십팔 년부터는 타호강 건너편에서 알카사르를 마주 보는 현재의 부지를 사용하고 있습니다. 오늘날의 임무는 미래의 보병 장교와 부사관에게 전인적 교육과 가치 중심의 교육을 제공하는 것입니다. 예정된 방문에서는 이 임무를 본관과 훈장 및 주요 인물을 다루는 전시 공간에 보존된 역사와 전통에 연결해 살펴봅니다. 신원 확인, 사진 촬영, 이동에 관한 규칙은 반드시 보병사관학교가 안내한 내용만을 따라야 합니다."
+      }
+    },
+    {
+      "id": "gastronomia-recuerdos",
+      "titles": {
+        "es": "Gastronomía y recuerdos de Toledo",
+        "en": "Food and souvenirs from Toledo",
+        "fr": "Gastronomie et souvenirs de Tolède",
+        "it": "Gastronomia e ricordi di Toledo",
+        "de": "Gastronomie und Andenken aus Toledo",
+        "ar": "مأكولات طليطلة وتذكاراتها",
+        "ko": "톨레도의 음식과 기념품"
+      },
+      "texts": {
+        "es": "La gastronomía toledana combina productos castellanos, cocina de caza y una importante tradición de dulcería. El mazapán de Toledo, elaborado principalmente con almendra y azúcar, es uno de sus productos más conocidos. También son características las carcamusas, un guiso de carne de cerdo con tomate y verduras, y la perdiz a la toledana. Los quesos, aceites y vinos permiten ampliar la mirada hacia el conjunto de la región. Entre los recuerdos tradicionales destaca el damasquinado, una técnica decorativa de incrustación de metales, además de la cerámica, los dulces y otras piezas artesanas. Conviene distinguir la artesanía realizada localmente de los productos industriales vendidos como recuerdo.",
+        "en": "Toledo's food combines Castilian produce, game dishes and a strong tradition of confectionery. Toledo marzipan, made mainly from almonds and sugar, is one of its best-known products. Other characteristic dishes include carcamusas, a pork stew with tomato and vegetables, and Toledo-style partridge. Cheeses, olive oils and wines offer a broader view of the region. Traditional souvenirs include damascening, a decorative technique based on inlaying metals, as well as ceramics, sweets and other handcrafted objects. It is advisable to distinguish locally made crafts from industrial products sold as souvenirs.",
+        "fr": "La gastronomie tolédane associe les produits castillans, la cuisine du gibier et une importante tradition de confiserie. Le massepain de Tolède, principalement composé d'amandes et de sucre, est l'un de ses produits les plus connus. Les carcamusas, un ragoût de porc à la tomate et aux légumes, ainsi que la perdrix à la tolédane, sont également caractéristiques. Les fromages, les huiles d'olive et les vins permettent de découvrir l'ensemble de la région. Parmi les souvenirs traditionnels figure le damasquinage, une technique décorative d'incrustation de métaux, ainsi que la céramique, les pâtisseries et d'autres objets artisanaux. Il convient de distinguer l'artisanat local des produits industriels vendus comme souvenirs.",
+        "it": "La gastronomia toledana combina prodotti castigliani, cucina di selvaggina e un'importante tradizione dolciaria. Il marzapane di Toledo, preparato soprattutto con mandorle e zucchero, è uno dei prodotti più conosciuti. Sono caratteristiche anche le carcamusas, uno stufato di maiale con pomodoro e verdure, e la pernice alla toledana. Formaggi, oli d'oliva e vini permettono di conoscere meglio l'intera regione. Tra i ricordi tradizionali spicca il damaschinato, una tecnica decorativa basata sull'intarsio dei metalli, insieme alla ceramica, ai dolci e ad altri prodotti artigianali. È consigliabile distinguere l'artigianato locale dai prodotti industriali venduti come souvenir.",
+        "de": "Die Küche Toledos verbindet kastilische Erzeugnisse, Wildgerichte und eine bedeutende Süßwarentradition. Das hauptsächlich aus Mandeln und Zucker hergestellte Marzipan von Toledo gehört zu den bekanntesten Produkten. Typisch sind auch Carcamusas, ein Schweinefleischeintopf mit Tomaten und Gemüse, sowie Rebhuhn nach Toledaner Art. Käse, Olivenöle und Weine vermitteln einen umfassenderen Eindruck der Region. Zu den traditionellen Andenken gehört die Damaszierung, eine Verzierungstechnik mit Metalleinlagen, ebenso wie Keramik, Süßwaren und andere handwerkliche Erzeugnisse. Es empfiehlt sich, örtlich hergestelltes Kunsthandwerk von industriellen Souvenirprodukten zu unterscheiden.",
+        "ar": "تجمع مأكولات طليطلة بين منتجات قشتالة وأطباق الصيد وتقاليد عريقة في صناعة الحلويات. ويُعد مرصبان طليطلة، المصنوع أساسًا من اللوز والسكر، من أشهر منتجات المدينة. ومن الأطباق المميزة أيضًا كاركاموساس، وهو يخنة من لحم الخنزير مع الطماطم والخضروات، والحجل على طريقة طليطلة. كما تتيح الأجبان وزيوت الزيتون والنبيذ التعرف إلى منتجات الإقليم الأوسع. ومن التذكارات التقليدية فن التكفيت المعدني، القائم على تطعيم معدن بآخر، إلى جانب الخزف والحلويات وغيرها من المنتجات الحرفية. ومن الأفضل التمييز بين الحرف المصنوعة محليًا والمنتجات الصناعية التي تُباع كتذكارات.",
+        "ko": "톨레도의 음식 문화는 카스티야 지역의 식재료와 수렵 요리, 오랜 과자 전통이 결합되어 있습니다. 아몬드와 설탕을 주재료로 만드는 톨레도 마지팬은 가장 유명한 특산품 가운데 하나입니다. 돼지고기와 토마토, 채소를 넣어 끓인 카르카무사스와 톨레도식 자고새 요리도 대표적입니다. 치즈와 올리브유, 포도주는 더 넓은 지역의 식문화를 보여 줍니다. 전통 기념품으로는 금속 표면에 다른 금속을 상감하는 다마스키나도 공예가 유명하며, 도자기와 과자, 여러 수공예품도 있습니다. 현지에서 만든 공예품과 기념품으로 판매되는 공산품을 구분해 선택하는 것이 좋습니다."
+      }
+    }
+  ]
+}

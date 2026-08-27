@@ -1,0 +1,397 @@
+{
+  "version": 1,
+  "updated": "2026-08-27",
+  "format": "audio/wav",
+  "encoding": "PCM 16-bit mono",
+  "sampleRate": 22050,
+  "generatedWith": "macOS system voices using the local say command",
+  "languages": {
+    "es": {
+      "label": "Español",
+      "locale": "es-ES",
+      "voice": "Mónica",
+      "rate": 165
+    },
+    "en": {
+      "label": "English",
+      "locale": "en-GB",
+      "voice": "Daniel",
+      "rate": 165
+    },
+    "fr": {
+      "label": "Français",
+      "locale": "fr-FR",
+      "voice": "Jacques",
+      "rate": 160
+    },
+    "it": {
+      "label": "Italiano",
+      "locale": "it-IT",
+      "voice": "Alice",
+      "rate": 160
+    },
+    "de": {
+      "label": "Deutsch",
+      "locale": "de-DE",
+      "voice": "Anna",
+      "rate": 155
+    },
+    "ar": {
+      "label": "العربية",
+      "locale": "ar",
+      "voice": "Majed",
+      "rate": 150
+    },
+    "ko": {
+      "label": "한국어",
+      "locale": "ko-KR",
+      "voice": "Yuna",
+      "rate": 150
+    }
+  },
+  "cards": [
+    {
+      "id": "toledo",
+      "titles": {
+        "es": "Toledo, ficha general de la ciudad",
+        "en": "Toledo, an introduction to the city",
+        "fr": "Tolède, présentation générale de la ville",
+        "it": "Toledo, presentazione generale della città",
+        "de": "Toledo, eine Einführung in die Stadt",
+        "ar": "طليطلة، نبذة عامة عن المدينة",
+        "ko": "톨레도 도시 개요"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/toledo.wav",
+          "bytes": 2025044,
+          "durationSeconds": 45.83
+        },
+        "en": {
+          "path": "assets/audio/generated/en/toledo.wav",
+          "bytes": 2290298,
+          "durationSeconds": 51.84
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/toledo.wav",
+          "bytes": 2407758,
+          "durationSeconds": 54.5
+        },
+        "it": {
+          "path": "assets/audio/generated/it/toledo.wav",
+          "bytes": 2141368,
+          "durationSeconds": 48.46
+        },
+        "de": {
+          "path": "assets/audio/generated/de/toledo.wav",
+          "bytes": 2485392,
+          "durationSeconds": 56.27
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/toledo.wav",
+          "bytes": 3996228,
+          "durationSeconds": 90.52
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/toledo.wav",
+          "bytes": 2417770,
+          "durationSeconds": 54.73
+        }
+      }
+    },
+    {
+      "id": "orgaz",
+      "titles": {
+        "es": "El entierro del conde de Orgaz",
+        "en": "The Burial of the Count of Orgaz",
+        "fr": "L'Enterrement du comte d'Orgaz",
+        "it": "La sepoltura del conte di Orgaz",
+        "de": "Das Begräbnis des Grafen von Orgaz",
+        "ar": "دفن كونت أورغاز",
+        "ko": "오르가스 백작의 매장"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/orgaz.wav",
+          "bytes": 2058072,
+          "durationSeconds": 46.58
+        },
+        "en": {
+          "path": "assets/audio/generated/en/orgaz.wav",
+          "bytes": 2370454,
+          "durationSeconds": 53.66
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/orgaz.wav",
+          "bytes": 2402360,
+          "durationSeconds": 54.38
+        },
+        "it": {
+          "path": "assets/audio/generated/it/orgaz.wav",
+          "bytes": 2274680,
+          "durationSeconds": 51.49
+        },
+        "de": {
+          "path": "assets/audio/generated/de/orgaz.wav",
+          "bytes": 2600316,
+          "durationSeconds": 58.87
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/orgaz.wav",
+          "bytes": 3859254,
+          "durationSeconds": 87.42
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/orgaz.wav",
+          "bytes": 2329608,
+          "durationSeconds": 52.73
+        }
+      }
+    },
+    {
+      "id": "santa-maria-la-blanca",
+      "titles": {
+        "es": "Sinagoga de Santa María la Blanca",
+        "en": "The Synagogue of Santa María la Blanca",
+        "fr": "La synagogue de Santa María la Blanca",
+        "it": "La sinagoga di Santa María la Blanca",
+        "de": "Die Synagoge Santa María la Blanca",
+        "ar": "كنيس سانتا ماريا لا بلانكا",
+        "ko": "산타 마리아 라 블랑카 시나고그"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/santa-maria-la-blanca.wav",
+          "bytes": 2152578,
+          "durationSeconds": 48.72
+        },
+        "en": {
+          "path": "assets/audio/generated/en/santa-maria-la-blanca.wav",
+          "bytes": 2408854,
+          "durationSeconds": 54.53
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/santa-maria-la-blanca.wav",
+          "bytes": 2602750,
+          "durationSeconds": 58.93
+        },
+        "it": {
+          "path": "assets/audio/generated/it/santa-maria-la-blanca.wav",
+          "bytes": 2408312,
+          "durationSeconds": 54.52
+        },
+        "de": {
+          "path": "assets/audio/generated/de/santa-maria-la-blanca.wav",
+          "bytes": 2684820,
+          "durationSeconds": 60.79
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/santa-maria-la-blanca.wav",
+          "bytes": 4115758,
+          "durationSeconds": 93.23
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/santa-maria-la-blanca.wav",
+          "bytes": 2533670,
+          "durationSeconds": 57.36
+        }
+      }
+    },
+    {
+      "id": "catedral",
+      "titles": {
+        "es": "Catedral Primada de Toledo",
+        "en": "The Primate Cathedral of Toledo",
+        "fr": "La cathédrale primatiale de Tolède",
+        "it": "La cattedrale primaziale di Toledo",
+        "de": "Die Primatialkathedrale von Toledo",
+        "ar": "كاتدرائية طليطلة الرئيسية",
+        "ko": "톨레도 수석 대성당"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/catedral.wav",
+          "bytes": 2209460,
+          "durationSeconds": 50.01
+        },
+        "en": {
+          "path": "assets/audio/generated/en/catedral.wav",
+          "bytes": 2424728,
+          "durationSeconds": 54.89
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/catedral.wav",
+          "bytes": 2642264,
+          "durationSeconds": 59.82
+        },
+        "it": {
+          "path": "assets/audio/generated/it/catedral.wav",
+          "bytes": 2497912,
+          "durationSeconds": 56.55
+        },
+        "de": {
+          "path": "assets/audio/generated/de/catedral.wav",
+          "bytes": 2747796,
+          "durationSeconds": 62.22
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/catedral.wav",
+          "bytes": 4213556,
+          "durationSeconds": 95.45
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/catedral.wav",
+          "bytes": 2565182,
+          "durationSeconds": 58.07
+        }
+      }
+    },
+    {
+      "id": "alcazar",
+      "titles": {
+        "es": "Alcázar de Toledo y Museo del Ejército",
+        "en": "The Alcázar of Toledo and the Army Museum",
+        "fr": "L'Alcázar de Tolède et le Musée de l'Armée",
+        "it": "L'Alcázar di Toledo e il Museo dell'Esercito",
+        "de": "Der Alcázar von Toledo und das Armeemuseum",
+        "ar": "قصر طليطلة الحصين ومتحف الجيش",
+        "ko": "톨레도 알카사르와 육군 박물관"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/alcazar.wav",
+          "bytes": 2177398,
+          "durationSeconds": 49.28
+        },
+        "en": {
+          "path": "assets/audio/generated/en/alcazar.wav",
+          "bytes": 2442660,
+          "durationSeconds": 55.3
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/alcazar.wav",
+          "bytes": 2518784,
+          "durationSeconds": 57.02
+        },
+        "it": {
+          "path": "assets/audio/generated/it/alcazar.wav",
+          "bytes": 2263416,
+          "durationSeconds": 51.23
+        },
+        "de": {
+          "path": "assets/audio/generated/de/alcazar.wav",
+          "bytes": 2641278,
+          "durationSeconds": 59.8
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/alcazar.wav",
+          "bytes": 4235456,
+          "durationSeconds": 95.95
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/alcazar.wav",
+          "bytes": 2495038,
+          "durationSeconds": 56.48
+        }
+      }
+    },
+    {
+      "id": "academia-infanteria",
+      "titles": {
+        "es": "Academia de Infantería",
+        "en": "The Infantry Academy",
+        "fr": "L'Académie d'Infanterie",
+        "it": "L'Accademia di Fanteria",
+        "de": "Die Infanterieakademie",
+        "ar": "أكاديمية المشاة",
+        "ko": "보병사관학교"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/academia-infanteria.wav",
+          "bytes": 2200950,
+          "durationSeconds": 49.82
+        },
+        "en": {
+          "path": "assets/audio/generated/en/academia-infanteria.wav",
+          "bytes": 2404770,
+          "durationSeconds": 54.44
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/academia-infanteria.wav",
+          "bytes": 2549830,
+          "durationSeconds": 57.73
+        },
+        "it": {
+          "path": "assets/audio/generated/it/academia-infanteria.wav",
+          "bytes": 2251128,
+          "durationSeconds": 50.95
+        },
+        "de": {
+          "path": "assets/audio/generated/de/academia-infanteria.wav",
+          "bytes": 2686334,
+          "durationSeconds": 60.82
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/academia-infanteria.wav",
+          "bytes": 4214054,
+          "durationSeconds": 95.46
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/academia-infanteria.wav",
+          "bytes": 2498338,
+          "durationSeconds": 56.56
+        }
+      }
+    },
+    {
+      "id": "gastronomia-recuerdos",
+      "titles": {
+        "es": "Gastronomía y recuerdos de Toledo",
+        "en": "Food and souvenirs from Toledo",
+        "fr": "Gastronomie et souvenirs de Tolède",
+        "it": "Gastronomia e ricordi di Toledo",
+        "de": "Gastronomie und Andenken aus Toledo",
+        "ar": "مأكولات طليطلة وتذكاراتها",
+        "ko": "톨레도의 음식과 기념품"
+      },
+      "files": {
+        "es": {
+          "path": "assets/audio/generated/es/gastronomia-recuerdos.wav",
+          "bytes": 2216842,
+          "durationSeconds": 50.18
+        },
+        "en": {
+          "path": "assets/audio/generated/en/gastronomia-recuerdos.wav",
+          "bytes": 2309526,
+          "durationSeconds": 52.28
+        },
+        "fr": {
+          "path": "assets/audio/generated/fr/gastronomia-recuerdos.wav",
+          "bytes": 2511004,
+          "durationSeconds": 56.85
+        },
+        "it": {
+          "path": "assets/audio/generated/it/gastronomia-recuerdos.wav",
+          "bytes": 2306444,
+          "durationSeconds": 52.21
+        },
+        "de": {
+          "path": "assets/audio/generated/de/gastronomia-recuerdos.wav",
+          "bytes": 2546698,
+          "durationSeconds": 57.66
+        },
+        "ar": {
+          "path": "assets/audio/generated/ar/gastronomia-recuerdos.wav",
+          "bytes": 4024616,
+          "durationSeconds": 91.17
+        },
+        "ko": {
+          "path": "assets/audio/generated/ko/gastronomia-recuerdos.wav",
+          "bytes": 2467390,
+          "durationSeconds": 55.86
+        }
+      }
+    }
+  ]
+}
