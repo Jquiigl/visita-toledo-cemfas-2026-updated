@@ -113,10 +113,6 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
 
     {screen==='home'&&<section className="screen home-screen">
       <div className="v2-ribbon" lang="es" dir="ltr"><span>V2 · Prototipo</span><Link href="/admin">Organización →</Link></div>
-      <section className="evaluation-callout" aria-label={evaluationCopy[language].button}>
-        <a className="primary-action link-button" href={evaluationFormUrl} target="_blank" rel="noreferrer" aria-describedby="evaluation-notice">{evaluationCopy[language].button} <External/></a>
-        <p id="evaluation-notice">{evaluationCopy[language].notice}<strong>{evaluationCopy[language].deadline}</strong></p>
-      </section>
       <div className="compact-hero"><img src={imageUrl('images/hero-wide-1600.png')} alt="Vista panorámica de Toledo al atardecer"/></div>
       <div className="home-copy"><p className="eyebrow">{copy.date}</p><h1>{copy.title}</h1><p>{copy.lead}</p></div>
       <div className="next-card"><span>24</span><div><small lang="es" dir="ltr">OCT · 2026</small><strong dir="ltr">08:45 · CESEDEN</strong><p>{copy.schedule[0][1]} · {copy.provisional}</p></div></div>
@@ -129,6 +125,10 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
       </div>
       <button className="provisional-menu-tab" onClick={()=>navigate('menu')}><span>♨</span><div><small>{copy.provisional}</small><strong>{menu.title}</strong><p>{menu.reference}</p></div><i aria-hidden="true">{forwardChevron(language)}</i></button>
       <button className="primary-action" onClick={()=>navigate('registration')}>{text.registration} <span aria-hidden="true">{forwardArrow(language)}</span></button>
+      <section className="evaluation-callout" aria-label={evaluationCopy[language].button}>
+        <a className="primary-action link-button" href={evaluationFormUrl} target="_blank" rel="noreferrer" aria-describedby="evaluation-notice">{evaluationCopy[language].button} <External/></a>
+        <p id="evaluation-notice">{evaluationCopy[language].notice}<strong>{evaluationCopy[language].deadline}</strong></p>
+      </section>
     </section>}
 
     {screen==='program'&&<section className="screen">

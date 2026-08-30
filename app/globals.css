@@ -74,9 +74,12 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #e5a
 [dir='rtl'] .meal-cards ol{padding:4px 52px 4px 18px}
 @media(min-width:700px){.compact-hero{margin-top:0;border-radius:14px}.home-screen{padding-top:30px}.menu-grid{grid-template-columns:repeat(4,1fr)}.menu-grid button{min-height:145px}.guide-list{grid-template-columns:1fr 1fr}.guide-card{grid-template-columns:140px 1fr}.map-frame>img{aspect-ratio:1.5/1}.info-list{grid-template-columns:1fr 1fr}.parking-card{grid-row:span 2}.meal-cards{grid-template-columns:1.45fr 1fr}.transfer-card{display:grid;grid-template-columns:45% 1fr}.transfer-card>img{height:100%;min-height:220px}.detail-actions{grid-template-columns:repeat(3,1fr)}.detail-actions button{grid-column:auto}}
 @media(max-width:380px){.app-header select{width:100px;font-size:11px}.menu-grid button{min-height:106px;padding:13px}.guide-card{grid-template-columns:100px 1fr}.guide-card>div{padding:12px}.guide-card h2{font-size:16px}}
-.evaluation-callout{margin:14px 0 22px;padding:14px;background:rgba(201,150,62,.10);border:1px solid rgba(201,150,62,.5);border-radius:14px}
-.evaluation-callout .primary-action{margin:0}
-.evaluation-callout p{margin:12px 0 0;font-size:13px;line-height:1.6;color:var(--text)}
+.v2-ribbon + .compact-hero{margin-top:14px}
+.evaluation-callout{margin:10px 0 0}
+.evaluation-callout .primary-action{margin:0;color:var(--deep);background:var(--gold-light);border-color:var(--gold)}
+.evaluation-callout .primary-action:hover{background:var(--gold)}
+.evaluation-callout .primary-action:focus-visible{outline-color:var(--deep)}
+.evaluation-callout p{margin:10px 0 0;padding:12px;font-size:13px;line-height:1.6;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:9px}
 .evaluation-callout p strong{display:block;margin-top:3px}
 .ai-draft-label{display:grid;gap:8px;margin:18px 0}
 .ai-draft-label textarea{width:100%;padding:12px;border:1px solid #64748b;border-radius:8px;font:inherit;resize:vertical}
