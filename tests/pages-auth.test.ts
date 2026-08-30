@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {handle} from '../server/pages/handler.ts';
-import {configuration,supabase,AccessError} from '../server/pages/supabase.ts';
+import {configuration,supabase,rest,AccessError} from '../server/pages/supabase.ts';
 import {allRows} from '../server/pages/data.ts';
 import {seal,unseal,cookie} from '../server/pages/session.ts';
 import type {PagesEnv,Transport} from '../server/pages/supabase.ts';
@@ -10,6 +10,14 @@ import type {PagesEnv,Transport} from '../server/pages/supabase.ts';
 const env:PagesEnv={SUPABASE_URL:'https://test-project.supabase.co',SUPABASE_PUBLISHABLE_KEY:'sb_publishable_test_only',SESSION_ENCRYPTION_KEY:'ab'.repeat(32),ADMIN_LOGIN_ALIASES:'{"test-admin":"admin@example.invalid"}'};
 const base='https://toledo.example.invalid';
 const assets=async()=>new Response('<html>Solo interfaz, sin datos</html>',{headers:{'Content-Type':'text/html'}});
+test('REST acepta 201 sin cuerpo para Prefer return=minimal y conserva JSON cuando existe',async()=>{
+  for(const status of [200,201,204]){
+    const result=await rest(env,'admin_sessions','test-token',{method:'POST'},async()=>new Response(null,{status}));
+    assert.equal(result,null);
+  }
+  const value=await rest(env,'activities','test-token',{},async()=>Response.json([{id:'test'}],{status:201}));
+  assert.deepEqual(value,[{id:'test'}]);
+});
 test('transporte compatible con Workerd y redirecciones de Supabase cerradas sin reenviar credenciales',async()=>{
   let calls=0;
   for(const status of [301,302,303,307,308]){
@@ -38,7 +46,7 @@ function fixture(admin=true){
     if(u.pathname==='/rest/v1/admin_sessions'){
       if(init?.method==='POST')sessions.add(JSON.parse(String(init.body)).id);
       if(init?.method==='DELETE')sessions.delete(u.searchParams.get('id')!.slice(3));
-      return new Response(null,{status:204});
+      return new Response(null,{status:init?.method==='POST'?201:204});
     }
     if(u.pathname==='/rest/v1/rpc/touch_admin_session')return Response.json(sessions.has(JSON.parse(String(init?.body)).session_id));
     if(u.pathname==='/auth/v1/logout')return new Response(null,{status:204});

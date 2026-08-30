@@ -30,5 +30,8 @@ export async function supabase(env:PagesEnv,path:string,token?:string,init:Reque
 export async function rest<T>(env:PagesEnv,path:string,token:string,init:RequestInit={},transport:Transport=fetch):Promise<T>{
   const r=await supabase(env,'/rest/v1/'+path,token,init,transport);
   if(!r.ok)throw new AccessError(r.status===401?401:r.status===403?403:502,'No se pudo completar la operación autorizada en Supabase.');
-  return (r.status===204?null:await r.json()) as T;
+  // PostgREST INSERT with Prefer:return=minimal succeeds with 201 and an empty
+  // body, not only 204. Do not mistake a successful session insert for a failure.
+  const body=await r.text();
+  return (body.trim()?JSON.parse(body):null) as T;
 }
