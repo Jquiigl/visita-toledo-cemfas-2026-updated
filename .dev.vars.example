@@ -1,4 +1,10 @@
-# ADMIN_USERS is JSON: username -> bcrypt hash (cost 12 recommended), NOT a password.
+# Pages/Supabase local preview. Fill only with actual project values; never commit.
+SUPABASE_URL=
+SUPABASE_PUBLISHABLE_KEY=
+SESSION_ENCRYPTION_KEY=
+ADMIN_LOGIN_ALIASES='{}'
+
+# Legacy preview only: ADMIN_USERS is username -> bcrypt hash, NOT a password.
 ADMIN_USERS='{}'
 DATA_SOURCE=mock
 GOOGLE_SERVICE_ACCOUNT_EMAIL=

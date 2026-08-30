@@ -6,6 +6,9 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "build:pages": "vite build --config vite.pages.config.ts && node scripts/prepare-pages.mjs",
+    "check:pages": "pnpm test && pnpm exec tsc --noEmit --incremental false && pnpm lint && pnpm build:pages",
+    "dev:pages": "pnpm build:pages && wrangler pages dev dist-pages --ip 127.0.0.1 --port 5175",
     "dev": "vite",
     "build": "vite build && node scripts/verify-build.mjs",
     "start": "vite preview",

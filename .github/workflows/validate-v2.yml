@@ -40,3 +40,28 @@ jobs:
         run: pnpm lint
       - name: Construir V2
         run: pnpm build
+      - name: Construir frontend Pages
+        run: pnpm build:pages
+      - name: Compilar funciones de Pages
+        run: pnpm exec wrangler pages functions build --outdir .pages-functions
+  database:
+    if: github.repository == 'Jquiigl/visita-toledo-cemfas-2026-updated'
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: disposable-ci-only
+          POSTGRES_DB: toledo_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      PGPASSWORD: disposable-ci-only
+    steps:
+      - uses: actions/checkout@v4
+      - name: Probar migración y RLS en PostgreSQL efímero
+        run: |
+          psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f supabase/tests/bootstrap-ci.sql
+          psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f supabase/migrations/202608310001_toledo.sql
+          psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f supabase/tests/rls.sql

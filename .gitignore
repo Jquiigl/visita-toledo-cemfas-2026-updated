@@ -36,6 +36,10 @@ yarn-error.log*
 .vercel
 next-env.d.ts
 /dist/
+/dist-pages/
+/.pages-functions/
+/supabase/.temp/
+/supabase/.branches/
 /.wrangler/
 /outputs/
 /work/

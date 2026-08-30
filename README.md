@@ -12,9 +12,22 @@ Versión V2 completa, trasladada a un repositorio independiente:
 
 ## Ejecutar y comprobar
 
+### Nueva publicación: Cloudflare Pages + Supabase UE
+
+La migración conserva la interfaz y añade Supabase Auth, PostgreSQL y RLS.
+Instrucciones, variables, modelo de datos, coste y comprobaciones en
+[PRODUCCION-UE.md](docs/PRODUCCION-UE.md).
+
+`pnpm check:pages` valida y construye `dist-pages`; `pnpm dev:pages` abre el entorno
+Pages local. Configurar las variables Supabase en `.dev.vars` (local) o en Pages
+(producción). El administrador no acepta las credenciales antiguas en este modo:
+requiere una cuenta real de Supabase y autorización en `admin_users`.
+
+### Respaldo local: Vinext + D1
+
 Node 24 y pnpm 11. Instalar con `pnpm install --frozen-lockfile`.
 Configurar `.dev.vars` a partir del ejemplo, sin subir secretos.
-Inicializar la base local con `pnpm exec wrangler d1 migrations apply DB --local`.
+Inicializar la base local con `pnpm exec wrangler d1 migrations apply DB --local --config wrangler.legacy.jsonc`.
 Iniciar con `pnpm dev --host 127.0.0.1`.
 
 `pnpm test`, `pnpm exec tsc --noEmit --incremental false`, `pnpm lint` y `pnpm build` validan la aplicación.
@@ -25,7 +38,10 @@ Consultar [README-V2.md](README-V2.md) para crear el administrador y conocer lí
 La rama principal de **este nuevo repositorio** ejecuta las pruebas y la construcción.
 No despliega en GitHub Pages ni sustituye la web V1.
 
-V2 incluye servidor y base de datos: necesita un alojamiento compatible (Workers/Sites) para que funcionen el inicio de sesión y las rutas privadas. Una validación verde en GitHub confirma la construcción, no una URL pública operativa. El fallo previo de conexión con Sites no se soluciona solo al cambiar de repositorio.
+La nueva publicación utiliza Cloudflare Pages con pequeñas Pages Functions para
+proteger las rutas y las cookies, y Supabase para datos y autenticación. Una validación
+verde en GitHub confirma las pruebas, no una URL pública operativa. No utiliza GitHub
+Pages ni sustituye V1. El modo anterior se conserva exclusivamente como respaldo.
 
 ## Separación de V1
 

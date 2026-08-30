@@ -1,5 +1,8 @@
 # Toledo Updated · V2 · Prototipo funcional
 
+Este documento describe el **respaldo Vinext/D1**. Para la nueva publicación Cloudflare
+Pages + Supabase UE, consultar [PRODUCCION-UE.md](docs/PRODUCCION-UE.md).
+
 V2 continúa como **Toledo Updated** en la rama `main` del repositorio independiente `Jquiigl/visita-toledo-cemfas-2026-updated`, trasladada desde el commit V2 `f91f0fe0b26cae430d17c03cedff98d11b8f8173`. El repositorio original `Jquiigl/visita-toledo-cemfas-2026`, su rama principal, la copia `app/` y GitHub Pages V1 no se modifican. La copia anterior de V2 se conserva como respaldo.
 
 ## Alcance realizado
@@ -14,7 +17,7 @@ V2 continúa como **Toledo Updated** en la rama `main` del repositorio independi
 
 ## Ejecutar
 
-Node 24 recomendado, pnpm y dependencias del repositorio. `pnpm install --frozen-lockfile`; `pnpm exec wrangler d1 migrations apply DB --local`; configurar `.dev.vars`; `pnpm dev --host 127.0.0.1`.
+Node 24 recomendado, pnpm y dependencias del repositorio. `pnpm install --frozen-lockfile`; `pnpm exec wrangler d1 migrations apply DB --local --config wrangler.legacy.jsonc`; configurar `.dev.vars`; `pnpm dev --host 127.0.0.1`.
 
 `pnpm hash-password` pide una contraseña sin mostrarla y devuelve solo el hash. Configurar `ADMIN_USERS` como JSON usuario → hash. Ejemplo conceptual (no válido): `ADMIN_USERS='{"organizador":"HASH_GENERADO"}'`. Nunca guardar contraseñas en texto plano. `.dev.vars` está ignorado por Git. En alojamiento, usar secretos del servidor. Cambiar el hash e iniciar nuevamente el servidor invalida las sesiones anteriores. No hay clave API para este paso.
 

@@ -11,5 +11,5 @@ export default defineConfig({
   server: isCodexSeatbeltSandbox
     ? { watch: { useFsEvents: false, usePolling: true } }
     : undefined,
-  plugins: [vinext(), cloudflare({ viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] } }), sites()],
+  plugins: [vinext(), cloudflare({ configPath: 'wrangler.legacy.jsonc', viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] } }), sites()],
 });
