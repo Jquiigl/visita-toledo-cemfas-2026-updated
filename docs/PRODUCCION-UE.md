@@ -2,8 +2,10 @@
 
 ## Estado y alcance
 
-Código de migración preparado en el repositorio Updated. La creación del proyecto UE,
-las cuentas de administrador y la publicación se deben verificar en los paneles reales;
+Código de migración preparado en el repositorio Updated. El 31/08/2026 se creó la
+organización gratuita Toledo Updated y el proyecto en Frankfurt (`eu-central-1`),
+verificados en el panel. Las tablas iniciales se aplicaron en la base nueva vacía.
+Las cuentas de administrador y la publicación todavía necesitan verificación real;
 no se deducen de que una compilación o una prueba simulada pase.
 
 Se conservan la interfaz, los siete idiomas (árabe RTL), los 49 audios, los dos formularios,
@@ -68,7 +70,7 @@ con `openssl rand -hex 32`, e introducirla directamente en el campo secreto de P
    Comprobar el plan antes de aceptar; no activar complementos de pago.
 2. Guardar la contraseña de la base en el gestor de contraseñas del propietario. No es
    la contraseña del panel de la aplicación y esta aplicación no la necesita.
-3. Ejecutar `supabase/migrations/202608310001_toledo.sql` en un proyecto nuevo vacío.
+3. Ejecutar los archivos de `supabase/migrations/` por orden numérico en un proyecto nuevo vacío.
    No ejecutarlo a ciegas en una base que ya tenga tablas con esos nombres.
 4. Auth: desactivar nuevas altas públicas; crear el usuario administrador con su correo
    real y contraseña. Confirmar el correo mediante el procedimiento del propietario.

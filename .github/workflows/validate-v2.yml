@@ -63,5 +63,7 @@ jobs:
       - name: Probar migración y RLS en PostgreSQL efímero
         run: |
           psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f supabase/tests/bootstrap-ci.sql
-          psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f supabase/migrations/202608310001_toledo.sql
+          for migration in supabase/migrations/*.sql; do
+            psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f "$migration"
+          done
           psql -h localhost -U postgres -d toledo_test -v ON_ERROR_STOP=1 -f supabase/tests/rls.sql
