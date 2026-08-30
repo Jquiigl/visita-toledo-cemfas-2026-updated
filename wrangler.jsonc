@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "toledo-v2",
+  "main": "vinext/server/app-router-entry",
+  "compatibility_date": "2026-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": { "binding": "ASSETS", "directory": "./dist/client", "not_found_handling": "none" },
+  "d1_databases": [{ "binding": "DB", "database_name": "toledo-v2", "database_id": "local-toledo-v2", "migrations_dir": "drizzle" }]
+}

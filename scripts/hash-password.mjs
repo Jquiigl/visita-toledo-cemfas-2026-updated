@@ -1,0 +1,11 @@
+import {hash} from 'bcryptjs';
+import {createInterface} from 'node:readline/promises';
+import {Writable} from 'node:stream';
+if(!process.stdin.isTTY)throw new Error('Usa un terminal interactivo para introducir la contraseña.');
+const output=new Writable({write(_chunk,_encoding,callback){callback();}});
+const reader=createInterface({input:process.stdin,output,terminal:true});
+process.stdout.write('Contraseña nueva (no se mostrará): ');
+const password=await reader.question('');reader.close();process.stdout.write('\n');
+if(password.length<14||Buffer.byteLength(password)>72)throw new Error('Usa al menos 14 caracteres y como máximo 72 bytes.');
+console.log(await hash(password,12));
+console.log('Guarda este hash en ADMIN_USERS; reinicia el servidor o vuelve a publicar. Las sesiones antiguas quedarán invalidadas.');

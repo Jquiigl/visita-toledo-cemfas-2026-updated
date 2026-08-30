@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {normalize,review,summarize,statistics,safeCsv} from '../server/domain.ts';
+import {registrations,evaluations} from '../server/mock.ts';
+import {mapRegistrations} from '../server/adapters/sheets.ts';
+import {OptionalAIService,prepareReview} from '../server/adapters/ai.ts';
+
+test('desglosa cada inscripción en personas y hereda el transporte provisional',()=>{const people=normalize(registrations);assert.equal(people.length,12);assert.equal(people.find(p=>p.id==='2')?.transport,'bus');assert.equal(people.find(p=>p.id==='2')?.inheritedTransport,true);});
+test('calcula plazas, menús e incidencias sobre personas',()=>{const people=normalize(registrations);const issues=review(registrations,people);const total=summarize(registrations,people,issues);assert.deepEqual({registrations:total.registrations,attendees:total.attendees,bus:total.bus,car:total.car,diners:total.diners,adultMeals:total.adultMeals,childMeals:total.childMeals,pending:total.pending},{registrations:6,attendees:12,bus:9,car:3,diners:11,adultMeals:8,childMeals:3,pending:2});assert(issues.some(i=>i.reason==='Menor sin edad'));assert(issues.some(i=>i.reason==='Comensal sin menú'));assert(issues.some(i=>i.reason==='Vehículo con información incompleta'));});
+test('separa estadística determinista de interpretación IA',()=>{const global=statistics(evaluations).find(s=>s.question==='Global')!;assert.equal(global.n,4);assert.equal(global.sum,17);assert.equal(global.mean,4.25);assert.equal(global.median,4.5);});
+test('neutraliza fórmulas al exportar CSV',()=>{const csv=safeCsv([['=HYPERLINK("bad")','-2','texto']]);assert(csv.includes("'=HYPERLINK"));assert(csv.includes("'-2"));});
+test('el mapeo de Sheets falla en valores desconocidos sin alterar el origen',()=>{const row={ID:'X1',Nombre:'Demo',EdadTipo:'adulto',Come:'quizá',Menu:''};assert.throws(()=>mapRegistrations([row],{id:'ID',holder:{name:'Nombre',adult:'EdadTipo',meal:'Come',menu:'Menu'},companions:[]}),/sí\/no no reconocido/);assert.equal(row.Come,'quizá');});
+test('la capa de IA exige revisión humana y bloquea indicios sensibles',async()=>{const prepared=prepareReview(['Contacto a@b.es, matrícula 1234 ABC'],[]);assert.equal(prepared[0].requiresHumanReview,true);assert(!prepared[0].proposed.includes('a@b.es'));let calls=0;const service=new OptionalAIService(async()=>{calls++;return 'resultado';});await assert.rejects(()=>service.analyzeComments({comments:['alergia'],reviewed:true}));assert.equal(calls,0);const result=await service.generateSummary({comments:['La guía fue clara'],reviewed:true});assert.equal(result.label,'Interpretación mediante IA');assert.equal(calls,1);});

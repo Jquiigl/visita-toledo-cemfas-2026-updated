@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+.v2-ribbon{display:flex;justify-content:space-between;padding:10px 16px;background:#f2e7cd;color:#05243c;font-size:13px}.v2-ribbon a{font-weight:700;text-decoration:underline}
+
 :root{--navy:#05243c;--deep:#001b30;--blue:#0b3857;--gold:#c9963e;--gold-light:#efbd66;--cream:#fff9ef;--paper:#f5eee4;--ink:#102437;--muted:#5c6f7c;--line:#ddceb7}
 *{box-sizing:border-box}
 html{background:var(--paper)}

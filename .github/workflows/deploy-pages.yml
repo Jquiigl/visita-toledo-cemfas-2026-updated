@@ -1,17 +1,15 @@
-name: Publicar aplicación
+name: Validar prototipo V2 (sin desplegar V1)
 
 on:
   push:
-    branches: [main]
+    branches: [prototype/toledo-v2]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: toledo-v2-checks
   cancel-in-progress: true
 
 jobs:
@@ -23,30 +21,19 @@ jobs:
       - name: Preparar pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
+          version: 11
       - name: Preparar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           cache: pnpm
       - name: Instalar dependencias
         run: pnpm install --frozen-lockfile
-      - name: Construir aplicación
+      - name: Probar cálculos y adaptadores
+        run: pnpm test
+      - name: Comprobar tipos
+        run: pnpm exec tsc --noEmit
+      - name: Revisar código
+        run: pnpm lint
+      - name: Construir V2
         run: pnpm build
-      - name: Preparar GitHub Pages
-        uses: actions/configure-pages@v5
-      - name: Empaquetar aplicación
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Publicar en GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

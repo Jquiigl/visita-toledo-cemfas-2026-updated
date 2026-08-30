@@ -1,7 +1,7 @@
-const CACHE_VERSION = 'toledo-v5';
-const AUDIO_CACHE = 'toledo-audio-v1';
+const CACHE_VERSION = 'toledo-v2-media';
+const AUDIO_CACHE = 'toledo-v2-audio';
 const CORE = [
-  './', './manifest.webmanifest', './images/hero-wide-1600.png',
+  './manifest.webmanifest', './images/hero-wide-1600.png',
   './images/app-icon-192.png', './images/app-icon-512.png', './images/apple-touch-icon-180.png',
   './images/places/map-toledo.png', './images/places/old-town.jpg', './images/places/orgaz.jpg',
   './images/places/synagogue.jpg', './images/places/cathedral.jpg', './images/places/alcazar.jpg',
@@ -27,6 +27,8 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+  // Never cache HTML, API, admin or RSC. Only public media are eligible.
+  if (!/^\/(images|audio)\//.test(url.pathname) || request.headers.has('range')) return;
 
   if (url.pathname.includes('/audio/')) {
     event.respondWith(
