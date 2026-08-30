@@ -1,2 +1,2 @@
-import {getSetting} from '../../../../server/db';
-export async function GET(){return Response.json({evaluationActive:await getSetting('evaluationActive','false')==='true'},{headers:{'Cache-Control':'no-store'}});}
+// The survey is always visible, including before the event and if the database is unavailable.
+export async function GET(){return Response.json({evaluationActive:true},{headers:{'Cache-Control':'no-store'}});}

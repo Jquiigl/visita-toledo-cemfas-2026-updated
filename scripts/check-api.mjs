@@ -15,7 +15,12 @@ for(const route of ['/admin','/admin/asistentes','/admin/autobus','/admin/vehicu
 r=await post('/api/admin/settings',{evaluationActive:true,inheritTransport:true},cookie,'https://evil.invalid');check(r.status===403,'Bloqueo CSRF');
 r=await post('/api/admin/settings',{evaluationActive:true,inheritTransport:true},cookie);check(r.status===200,'Configuración guardada');
 r=await request('/api/public/config');const config=await r.json();check(config.evaluationActive===true&&Object.keys(config).length===1,'Zona pública no expone datos privados');
-r=await post('/api/admin/settings',{evaluationActive:false,inheritTransport:true},cookie);check(r.status===200,'Restauración de ajustes');
+r=await post('/api/admin/settings',{evaluationActive:false,inheritTransport:true},cookie);check(r.status===200,'Compatibilidad con ajustes anteriores');
+r=await request('/api/public/config');check((await r.json()).evaluationActive===true,'Un ajuste antiguo no puede ocultar la valoración');
+r=await request('/');const publicHtml=await r.text();check(publicHtml.includes('Valorar la actividad')&&publicHtml.includes('28 de octubre de 2026')&&publicHtml.includes('una vez finalizada la actividad'),'Botón y aviso en HTML inicial sin esperar a API ni sesión');
+r=await post('/api/admin/google-check',{},cookie);check(r.status===503,'Google sin credenciales se informa explícitamente');
+r=await post('/api/admin/google-check',{});check(r.status===401,'Comprobación Google protegida');
+r=await post('/api/admin/ai',{});check(r.status===401,'IA protegida');
 r=await post('/api/admin/ai',{},cookie);check(r.status===503,'IA desactivada no bloquea estadísticas');
 r=await post('/api/auth/logout',{},cookie);check(r.status===200&&r.headers.get('set-cookie')?.includes('Max-Age=0'),'Logout borra cookie');
 r=await request('/api/admin/data',{headers:{Cookie:cookie}});check(r.status===401,'Logout invalida sesión en servidor');

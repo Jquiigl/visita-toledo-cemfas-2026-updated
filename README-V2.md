@@ -9,7 +9,8 @@ V2 se desarrolla sobre la rama `prototype/toledo-v2`, desde `b0bdffa92d102148a48
 - Seis inscripciones ficticias, doce personas. Búsqueda/filtros/orden en asistentes, autobús, restauración y necesidades; vehículos conservan texto original; incidencias enlazadas al origen.
 - Exportación CSV con neutralización de fórmulas. Dossier seleccionable y plantillas de impresión/PDF propias (se guarda como PDF desde el diálogo del navegador; no es un generador PDF de servidor). Información sensible excluida por defecto.
 - Valoración independiente: N, suma, media, mediana y distribuciones mediante código, comentarios originales y exportación. No se inventa participación porcentual sin censo de encuestables validado.
-- Configuración persistente de encuesta pública y herencia provisional del transporte.
+- Valoración visible desde la primera carga, sin depender de la base de datos ni de un ajuste del administrador. Aviso en siete idiomas: responder después de la actividad; fecha límite 28 de octubre de 2026 inclusive. El aviso no programa el cierre del formulario Google.
+- Configuración persistente de herencia provisional del transporte.
 
 ## Ejecutar
 
@@ -25,7 +26,7 @@ El prototipo alojado usa HTTPS. HTTP solo se admite en loopback local de desarro
 |---|---|---|---|
 | Administrador | `ADMIN_USERS` con hashes bcrypt | nombres elegidos por el organizador | Implementado |
 | Google Sheets, lectura | `GOOGLE_PRIVATE_KEY` de cuenta de servicio | `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `REGISTRATION_SHEET_ID`, `EVALUATION_SHEET_ID`, ambos rangos y mapeo de columnas | Adaptador preparado, no conectado |
-| IA | Clave del proveedor que se elija, **ninguna por ahora** | proveedor, modelo y adaptador HTTP por decidir | Interfaz y barrera de revisión preparadas; desactivada |
+| IA · OpenAI | `OPENAI_API_KEY` como secreto del servidor | `OPENAI_MODEL`, modelo habilitado para el proyecto de API | Transporte Responses y circuito de revisión implementados; falta configurar y probar una llamada real |
 | Google Forms | Ninguno | enlaces de ambos formularios | Accesos públicos |
 | Mapas y meteorología | Ninguno | enlaces actuales | Heredado de V1 |
 | GitHub | Autenticación ya disponible del usuario | repositorio/rama | No se necesita una nueva API key |
@@ -36,7 +37,17 @@ Para Sheets: activar Google Sheets API, compartir **solo las dos hojas** con la 
 
 `server/adapters/sheets.ts` implementa JWT de cuenta de servicio, lectura de dos fuentes, límites de tiempo y mapeo explícito. No está conectado al panel: antes deben inspeccionarse las cabeceras reales y validarse el esquema, edades, acompañantes, transporte y consentimientos con ejemplos autorizados. `DATA_SOURCE=mock` es el único modo habilitado. Otro valor falla de forma explícita: no sustituye silenciosamente datos reales por simulados. No hay sincronización automática ni escritura a Google.
 
-`server/adapters/ai.ts` define `analyzeComments`, `generateRecommendations`, `generateSummary`, una implementación desactivada y otra que recibe un transporte del futuro proveedor. La preparación de anonimización es solo una ayuda: exige verificación humana y bloquea señales sensibles evidentes. No se considera garantía de anonimato y todavía no hay circuito de revisión/envío en la UI. No hay estadísticas calculadas por IA ni llamadas a proveedores.
+`server/adapters/openai.ts` implementa el transporte de la [API Responses de OpenAI](https://developers.openai.com/api/docs/guides/text). En Valoración, el administrador prepara un borrador, lo edita y confirma expresamente la eliminación de datos personales antes de enviarlo. Solo se transmite ese texto: nunca listados, nombres ni necesidades funcionales de forma automática. La ocultación previa es solo una ayuda, no una garantía de anonimato. Se bloquean indicios sensibles, entradas excesivas y resultados incompletos. Se pide `store:false`, pero esto no equivale a una garantía de retención cero del proveedor. Cada envío puede tener coste; no hay reintentos automáticos. El modelo se configura explícitamente, sin elegirlo por el usuario. Ninguna estadística depende de la IA.
+
+En Configuración, «Comprobar acceso a Google» verifica exclusivamente metadatos de las hojas, con alcance de lectura, una vez instaladas las credenciales. No importa respuestas ni activa automáticamente el origen real. El estado diferencia credenciales configuradas de acceso comprobado.
+
+### Pendiente de activación real (30 de agosto de 2026)
+
+- Localizada mediante Google Drive la hoja «Visita a Toledo 2026 — Formulario de inscripción (respuestas)», pestaña «Respuestas de formulario 1». Solo se leyeron encabezados. Hay encabezados repetidos para acompañantes y campos colectivos de necesidades: no se debe aplicar un mapeo por nombre que mezcle personas. Antes de activar la importación, verificar que corresponde al formulario V2 y validar el mapeo por posición y las reglas de datos colectivos.
+- No se localizó la hoja de respuestas de valoración. Hace falta su enlace y verificar sus encabezados.
+- El entorno local y el alojamiento no tienen credenciales Google ni OpenAI. La autorización del conector Google Drive de esta conversación no es una credencial reutilizable del servidor.
+- Configurar secretos mediante el mecanismo privado del alojamiento, nunca en el chat, GitHub o el frontend. Para OpenAI, activar el complemento OpenAI Developers si se desea gestionar la clave con su flujo seguro. Para Google, cuenta de servicio con acceso de lector solo a las hojas necesarias.
+- No se han enviado respuestas reales a OpenAI ni modificado formularios u hojas. El panel conserva datos ficticios hasta resolver lo anterior.
 
 No es todavía una implementación completa del PRD: quedan integración real y caché de última sincronización válida, asignación de capacidad/autobuses si se solicita, búsquedas y filtros avanzados de vehículos, informe cualitativo IA, revisión visual de todas las impresiones y validación con el formulario definitivo. No introducir datos personales reales hasta cerrar esos puntos y revisar permisos, retención, protección de menores y necesidades sensibles.
 

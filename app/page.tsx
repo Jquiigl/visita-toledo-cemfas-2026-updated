@@ -5,6 +5,7 @@ import Link from 'next/link';
 import audioData from '../data/audio-scripts.json';
 import { details, mapAttribution } from '../data/details';
 import { languageCodes, type LanguageCode, ui } from '../data/ui';
+import { evaluationCopy, evaluationFormUrl } from '../data/evaluation';
 
 type MainScreen = 'home'|'program'|'map'|'visit'|'useful'|'menu'|'registration';
 type Screen = MainScreen | `card-${string}`;
@@ -81,7 +82,6 @@ function External(){return <span aria-hidden="true">↗</span>}
 export default function Home(){
   const [language,setLanguage]=useState<LanguageCode>('es');
   const [screen,setScreen]=useState<Screen>('home');
-  const [evaluationActive,setEvaluationActive]=useState(false);
   const [locationState,setLocationState]=useState<Record<string,'checking'|'near'|'far'|'inaccurate'|'denied'>>({});
   const copy=ui[language],text=labels[language],menu=menuCopy[language],parkingText=parkingLinkCopy[language],isRtl=language==='ar';
   const cards=useMemo(()=>audioData.cards.map(card=>({...card,title:card.titles[language],body:card.texts[language],detail:details[card.id]})),[language]);
@@ -90,7 +90,7 @@ export default function Home(){
 
   useEffect(()=>{const initial=screenFromHash();const id=window.setTimeout(()=>setScreen(initial),0);window.history.replaceState({toledo:true,depth:0,screen:initial},'',`#${initial}`);const onPop=()=>setScreen(screenFromHash());window.addEventListener('popstate',onPop);return()=>{window.clearTimeout(id);window.removeEventListener('popstate',onPop)}},[]);
   useEffect(()=>{document.documentElement.lang=language;document.documentElement.dir=isRtl?'rtl':'ltr'},[language,isRtl]);
-  useEffect(()=>{fetch('/api/public/config').then(r=>r.json()).then(c=>setEvaluationActive((c as {evaluationActive?:boolean}).evaluationActive===true)).catch(()=>undefined);if('serviceWorker'in navigator)navigator.serviceWorker.register('/service-worker.js').catch(()=>undefined)},[]);
+  useEffect(()=>{if('serviceWorker'in navigator)navigator.serviceWorker.register('/service-worker.js').catch(()=>undefined)},[]);
   useEffect(()=>{window.scrollTo({top:0,behavior:'instant'})},[screen]);
 
   const navigate=(next:Screen)=>{const depth=Number(window.history.state?.depth??0)+1;window.history.pushState({toledo:true,depth,screen:next},'',`#${next}`);setScreen(next)};
@@ -111,7 +111,10 @@ export default function Home(){
 
     {screen==='home'&&<section className="screen home-screen">
       <div className="v2-ribbon"><span>V2 · Prototipo</span><Link href="/admin">Organización →</Link></div>
-      {evaluationActive&&<a className="primary-action link-button" href="https://forms.gle/NKp7nyVtAEZfZz2T8" target="_blank" rel="noreferrer">Valorar la actividad →</a>}
+      <section className="evaluation-callout" aria-label={evaluationCopy[language].button}>
+        <a className="primary-action link-button" href={evaluationFormUrl} target="_blank" rel="noreferrer" aria-describedby="evaluation-notice">{evaluationCopy[language].button} <External/></a>
+        <p id="evaluation-notice">{evaluationCopy[language].notice}<strong>{evaluationCopy[language].deadline}</strong></p>
+      </section>
       <div className="compact-hero"><img src={imageUrl('images/hero-wide-1600.png')} alt="Vista panorámica de Toledo al atardecer"/></div>
       <div className="home-copy"><p className="eyebrow">{copy.date}</p><h1>{copy.title}</h1><p>{copy.lead}</p></div>
       <div className="next-card"><span>24</span><div><small>OCT · 2026</small><strong>08:45 · CESEDEN</strong><p>{copy.schedule[0][1]} · {copy.provisional}</p></div></div>

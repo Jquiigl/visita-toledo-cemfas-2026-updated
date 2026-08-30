@@ -8,3 +8,6 @@ EVALUATION_SHEET_ID=
 REGISTRATION_RANGE=
 EVALUATION_RANGE=
 GOOGLE_COLUMN_MAPPING=
+OPENAI_API_KEY=
+# Explicit model available to your OpenAI API project; no network calls until configured.
+OPENAI_MODEL=

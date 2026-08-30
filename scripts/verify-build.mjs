@@ -8,7 +8,7 @@ for(const path of files('dist')){
   if(/\/(\.dev\.vars|\.env)(\.|$)/.test(path))throw new Error(`Unexpected environment file in build: ${path}`);
   if(path.startsWith('dist/client/')&&/\.(js|html)$/.test(path)){
     const text=readFileSync(path,'utf8');
-    if(/ADMIN_USERS|GOOGLE_PRIVATE_KEY|BEGIN PRIVATE KEY|Familia Demo Uno/.test(text))throw new Error(`Server-only material in client build: ${path}`);
+    if(/ADMIN_USERS|GOOGLE_PRIVATE_KEY|OPENAI_API_KEY|BEGIN PRIVATE KEY|Familia Demo Uno/.test(text))throw new Error(`Server-only material in client build: ${path}`);
   }
 }
 console.log('Paquete verificado: sin archivos de secretos ni datos privados en el cliente.');

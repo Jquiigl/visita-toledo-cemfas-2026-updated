@@ -4,7 +4,16 @@ export type GoogleConfig={email:string;privateKey:string;registrationSheetId:str
 const encode=(s:string)=>btoa(s).replaceAll('+','-').replaceAll('/','_').replaceAll('=','');
 export class GoogleSheetsAdapter {
   private token?:{value:string;expires:number};
-  constructor(private config:GoogleConfig,private transport:typeof fetch=fetch){if(!config.email||!config.privateKey||!config.registrationSheetId||!config.evaluationSheetId)throw new Error('Faltan credenciales o identificadores de las hojas.');}
+  constructor(private config:GoogleConfig,private transport:typeof fetch=fetch){if(!config.email||!config.privateKey)throw new Error('Faltan las credenciales de Google en el servidor.');}
+  async checkAccess(source:'registrations'|'evaluations'){
+    const id=source==='registrations'?this.config.registrationSheetId:this.config.evaluationSheetId;
+    if(!id)throw new Error('Falta el identificador de la hoja.');
+    const response=await this.transport(`https://sheets.googleapis.com/v4/spreadsheets/${encodeURIComponent(id)}?fields=spreadsheetId`,{headers:{Authorization:`Bearer ${await this.accessToken()}`},signal:AbortSignal.timeout(15000)});
+    if(!response.ok)throw new Error('Google no permite leer esta hoja. Revisa el identificador y el permiso de lector.');
+    const result=await response.json() as {spreadsheetId?:string};
+    if(result.spreadsheetId!==id)throw new Error('Google devolvió una hoja distinta de la solicitada.');
+    return true;
+  }
   private async accessToken(){
     if(this.token&&Date.now()<this.token.expires)return this.token.value;
     const now=Math.floor(Date.now()/1000);const header=encode(JSON.stringify({alg:'RS256',typ:'JWT'}));const claims=encode(JSON.stringify({iss:this.config.email,scope:'https://www.googleapis.com/auth/spreadsheets.readonly',aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600}));
