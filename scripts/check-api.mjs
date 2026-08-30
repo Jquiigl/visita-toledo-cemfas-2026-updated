@@ -18,11 +18,14 @@ r=await request('/api/public/config');const config=await r.json();check(config.e
 r=await post('/api/admin/settings',{evaluationActive:false,inheritTransport:true},cookie);check(r.status===200,'Compatibilidad con ajustes anteriores');
 r=await request('/api/public/config');check((await r.json()).evaluationActive===true,'Un ajuste antiguo no puede ocultar la valoración');
 r=await request('/');const publicHtml=await r.text();check(publicHtml.includes('Valorar la actividad')&&publicHtml.includes('28 de octubre de 2026')&&publicHtml.includes('una vez finalizada la actividad'),'Botón y aviso en HTML inicial sin esperar a API ni sesión');
+r=await request('/?lang=ar');const arabicHtml=await r.text();check(r.status===200&&arabicHtml.includes('lang="ar" dir="rtl"')&&arabicHtml.includes('تقييم النشاط'),'Árabe en HTML inicial, sin esperar a hidratación');
+r=await request('/?lang=invalid');check((await r.text()).includes('lang="es" dir="ltr"'),'Idioma no reconocido vuelve al español');
 r=await post('/api/admin/google-check',{},cookie);check(r.status===503,'Google sin credenciales se informa explícitamente');
 r=await post('/api/admin/google-check',{});check(r.status===401,'Comprobación Google protegida');
 r=await post('/api/admin/ai',{});check(r.status===401,'IA protegida');
 r=await post('/api/admin/ai',{},cookie);check(r.status===503,'IA desactivada no bloquea estadísticas');
 r=await post('/api/auth/logout',{},cookie);check(r.status===200&&r.headers.get('set-cookie')?.includes('Max-Age=0'),'Logout borra cookie');
 r=await request('/api/admin/data',{headers:{Cookie:cookie}});check(r.status===401,'Logout invalida sesión en servidor');
-for(let i=0;i<6;i++){r=await post('/api/auth/login',{username:'security-check-unknown',password:'incorrecta'});check(r.status===(i<5?401:429),'Límite persistente de intentos');}
+const unknownUser=`security-check-${crypto.randomUUID()}`;
+for(let i=0;i<6;i++){r=await post('/api/auth/login',{username:unknownUser,password:'incorrecta'});check(r.status===(i<5?401:429),'Límite persistente de intentos');}
 console.log(`${checks} comprobaciones HTTP correctas: rutas, login, cookie segura, CSRF, privacidad, ajustes, logout e intentos.`);

@@ -1,4 +1,4 @@
-name: Validar prototipo V2 (sin desplegar V1)
+name: V2 · Pruebas y construcción (V1 intacta)
 
 on:
   push:

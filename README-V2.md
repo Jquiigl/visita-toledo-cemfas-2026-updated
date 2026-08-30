@@ -53,6 +53,8 @@ No es todavía una implementación completa del PRD: quedan integración real y 
 
 ## Verificar
 
+Corrección de árabe en V2 (31 de agosto de 2026): el idioma se conserva en el enlace (`?lang=ar`) al recargar, compartir y navegar. El servidor ya entrega la portada en el idioma elegido. Las flechas de avance se invierten en árabe; los fragmentos todavía en español se marcan como español y mantienen su dirección de lectura. Las imágenes y posiciones del mapa no se invierten. El administrador continúa en español. No se ha modificado ningún archivo ni la publicación de V1.
+
 - `pnpm test`: normalización, plazas/menús, incidencias, estadística, CSV y barrera de IA.
 - `pnpm exec tsc --noEmit` y `pnpm lint`.
 - Con servidor y cuenta de prueba: `TEST_ADMIN_PASSWORD=... node scripts/check-api.mjs`. No guardar la contraseña en scripts ni historial compartido. Usar el entorno secreto de la herramienta de pruebas.
