@@ -1,42 +1,37 @@
-# Toledo · visita cultural e institucional
+# Toledo Updated · Visita cultural e institucional
 
-Primera aplicación móvil funcional de apoyo a la visita del CEMFAS a Toledo del 24 de octubre de 2026.
+Versión V2 completa, trasladada a un repositorio independiente:
+[visita-toledo-cemfas-2026-updated](https://github.com/Jquiigl/visita-toledo-cemfas-2026-updated).
 
-## Qué incluye
+## Qué contiene
 
-- navegación por pantallas mediante pestañas, historial y botón de regreso;
-- programa ampliado, con cada fase de la jornada y los cuatro hitos del recorrido cultural;
-- mapa local del casco histórico con puntos numerados y acceso al itinerario externo;
-- fichas culturales con fotografía, datos esenciales, desarrollo, fuentes y créditos;
-- resúmenes y audio en español, inglés, francés, italiano, alemán, árabe y coreano;
-- 49 narraciones de audio, cargadas solo cuando el usuario las reproduce;
-- enlaces externos a mapas y fuentes oficiales;
-- comprobación puntual y local de cercanía a cinco lugares públicos;
-- meteorología, acceso, aparcamiento, ropa, calzado, contacto e inscripción;
-- diseño instalable como PWA y consulta posterior sin conexión de las páginas ya visitadas;
-- datos personales exclusivamente en Google Forms.
+- Zona pública con siete idiomas, árabe RTL persistente, programa provisional, mapa, fichas, imágenes y 49 audios.
+- Inscripción y valoración mediante Google Forms. El botón dorado de valoración aparece debajo de Inscripción, con aviso de responder después de la actividad y plazo del 28 de octubre de 2026 inclusive.
+- Administrador protegido por el servidor: sesión segura, listados, recuentos, revisión, documentos y valoración.
+- Adaptadores de Google Sheets y OpenAI. Siguen pendientes las credenciales y la validación de la integración real; el panel trabaja con datos ficticios.
 
-## Actualización sencilla
+## Ejecutar y comprobar
 
-- Textos generales, programa y avisos: `data/ui.ts`.
-- Fichas traducidas: `data/audio-scripts.json`.
-- Contenido ampliado en español, fuentes y créditos: `data/details.ts`.
-- Audios: `public/audio/<idioma>/<ficha>.wav`.
-- Imágenes, iconos y mapa: `public/images/`.
-- Relación completa de licencias: `IMAGE_CREDITS.md`.
-- Enlace del formulario y enlaces operativos: inicio de `app/page.tsx`.
+Node 24 y pnpm 11. Instalar con `pnpm install --frozen-lockfile`.
+Configurar `.dev.vars` a partir del ejemplo, sin subir secretos.
+Inicializar la base local con `pnpm exec wrangler d1 migrations apply DB --local`.
+Iniciar con `pnpm dev --host 127.0.0.1`.
 
-Antes de publicar, deben revisarse los textos de los idiomas distintos del español con hablantes competentes y confirmarse horarios, accesos, aparcamientos y contacto.
+`pnpm test`, `pnpm exec tsc --noEmit --incremental false`, `pnpm lint` y `pnpm build` validan la aplicación.
+Consultar [README-V2.md](README-V2.md) para crear el administrador y conocer límites, privacidad e integraciones.
 
-## Comprobación local
+## GitHub no equivale a alojamiento web
 
-```bash
-pnpm install
-pnpm dev
-```
+La rama principal de **este nuevo repositorio** ejecuta las pruebas y la construcción.
+No despliega en GitHub Pages ni sustituye la web V1.
 
-La versión lista para alojamiento se genera con `pnpm build` dentro de `dist/`.
+V2 incluye servidor y base de datos: necesita un alojamiento compatible (Workers/Sites) para que funcionen el inicio de sesión y las rutas privadas. Una validación verde en GitHub confirma la construcción, no una URL pública operativa. El fallo previo de conexión con Sites no se soluciona solo al cambiar de repositorio.
 
-## GitHub Pages
+## Separación de V1
 
-El flujo `.github/workflows/deploy-pages.yml` compila y publica automáticamente la carpeta `app/dist` cuando se envían cambios a la rama `main`. En el repositorio debe seleccionarse **Settings → Pages → Source: GitHub Actions**.
+La copia procede de V2 en el commit `f91f0fe0b26cae430d17c03cedff98d11b8f8173`.
+Se conserva el historial de desarrollo. El repositorio original y su rama `main` (V1) permanecen intactos, incluyendo su configuración de publicación.
+La rama V2 anterior se conserva como respaldo y no se borra: el desarrollo de Updated continúa aquí.
+El repositorio no contiene contraseñas, claves privadas, sesiones ni respuestas reales de participantes.
+
+El material gráfico y sonoro se conserva; las cabeceras, la aplicación instalable y los metadatos usan el nombre Toledo Updated.

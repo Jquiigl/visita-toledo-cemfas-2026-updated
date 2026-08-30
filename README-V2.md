@@ -1,6 +1,6 @@
-# Toledo V2 · Prototipo funcional
+# Toledo Updated · V2 · Prototipo funcional
 
-V2 se desarrolla sobre la rama `prototype/toledo-v2`, desde `b0bdffa92d102148a4816ff4ee0358ec9ee7306b` del repositorio `Jquiigl/visita-toledo-cemfas-2026`. La rama principal, la copia `app/` y GitHub Pages V1 no se modifican.
+V2 continúa como **Toledo Updated** en la rama `main` del repositorio independiente `Jquiigl/visita-toledo-cemfas-2026-updated`, trasladada desde el commit V2 `f91f0fe0b26cae430d17c03cedff98d11b8f8173`. El repositorio original `Jquiigl/visita-toledo-cemfas-2026`, su rama principal, la copia `app/` y GitHub Pages V1 no se modifican. La copia anterior de V2 se conserva como respaldo.
 
 ## Alcance realizado
 

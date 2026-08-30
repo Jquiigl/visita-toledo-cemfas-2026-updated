@@ -16,6 +16,7 @@ p{line-height:1.58}
 .back-button{border:1px solid rgba(255,255,255,.3);color:white;background:transparent;font-size:35px;line-height:1;cursor:pointer}
 .app-title{display:grid;min-width:0}
 .app-title strong{font:700 18px/1 Georgia,"Times New Roman",serif;letter-spacing:.15em}
+.app-title .app-updated{display:block;margin-top:3px;color:var(--gold-light);font:700 9px/1.1 system-ui;letter-spacing:.08em}
 .app-title small{margin-top:5px;overflow:hidden;color:#e7d7bd;font-size:10px;text-overflow:ellipsis;white-space:nowrap}
 .app-header select{width:114px;height:40px;padding:0 9px;color:white;background:#082b45;border:1px solid rgba(255,255,255,.35);border-radius:8px;font-size:12px;line-height:1.2}
 .screen{width:min(100% - 28px,820px);margin:auto;padding:24px 0 36px}

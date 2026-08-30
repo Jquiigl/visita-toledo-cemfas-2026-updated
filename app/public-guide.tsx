@@ -107,7 +107,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
   return <main className="app-shell" lang={language} dir={readingDirection(language)}>
     <header className="app-header">
       {screen!=='home'?<button className="back-button" onClick={back} aria-label={text.back}>{isRtl?'›':'‹'}</button>:<img src={imageUrl('images/app-icon-192.png')} alt=""/>}
-      <div className="app-title"><strong>TOLEDO</strong><small>{screenTitle}</small></div>
+      <div className="app-title"><strong dir="ltr">TOLEDO <span className="app-updated">Updated</span></strong><small>{screenTitle}</small></div>
       <select value={language} onChange={e=>changeLanguage(e.target.value)} aria-label="Language">{languageCodes.map(code=><option key={code} value={code}>{ui[code].language}</option>)}</select>
     </header>
 

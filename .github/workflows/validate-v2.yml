@@ -1,8 +1,10 @@
-name: V2 · Pruebas y construcción (V1 intacta)
+name: Toledo Updated · Pruebas y construcción
 
 on:
   push:
-    branches: [prototype/toledo-v2]
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -14,6 +16,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.repository == 'Jquiigl/visita-toledo-cemfas-2026-updated'
     runs-on: ubuntu-latest
     steps:
       - name: Descargar proyecto
