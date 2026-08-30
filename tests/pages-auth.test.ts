@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {handle} from '../server/pages/handler.ts';
-import {configuration} from '../server/pages/supabase.ts';
+import {configuration,supabase,AccessError} from '../server/pages/supabase.ts';
 import {allRows} from '../server/pages/data.ts';
 import {seal,unseal,cookie} from '../server/pages/session.ts';
 import type {PagesEnv,Transport} from '../server/pages/supabase.ts';
@@ -10,6 +10,18 @@ import type {PagesEnv,Transport} from '../server/pages/supabase.ts';
 const env:PagesEnv={SUPABASE_URL:'https://test-project.supabase.co',SUPABASE_PUBLISHABLE_KEY:'sb_publishable_test_only',SESSION_ENCRYPTION_KEY:'ab'.repeat(32),ADMIN_LOGIN_ALIASES:'{"test-admin":"admin@example.invalid"}'};
 const base='https://toledo.example.invalid';
 const assets=async()=>new Response('<html>Solo interfaz, sin datos</html>',{headers:{'Content-Type':'text/html'}});
+test('transporte compatible con Workerd y redirecciones de Supabase cerradas sin reenviar credenciales',async()=>{
+  let calls=0;
+  for(const status of [301,302,303,307,308]){
+    const transport:Transport=async(input,init)=>{
+      calls++;assert.equal(String(input),env.SUPABASE_URL+'/auth/v1/token?grant_type=password');
+      assert.equal(init?.redirect,'manual');assert.equal(init?.cache,'no-store');
+      return new Response(null,{status,headers:{Location:'https://untrusted.example.invalid'}});
+    };
+    await assert.rejects(supabase(env,'/auth/v1/token?grant_type=password',undefined,{method:'POST',body:'{}'},transport),(error:unknown)=>error instanceof AccessError&&error.status===502&&!error.message.includes('untrusted'));
+  }
+  assert.equal(calls,5);
+});
 function fixture(admin=true){
   const sessions=new Set<string>();let calls=0;
   const transport:Transport=async(input,init)=>{

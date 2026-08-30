@@ -18,7 +18,14 @@ export async function supabase(env:PagesEnv,path:string,token?:string,init:Reque
   const headers=new Headers(init.headers);headers.set('apikey',c.key);
   if(token)headers.set('Authorization',`Bearer ${token}`);
   if(init.body)headers.set('Content-Type','application/json');
-  return transport(c.url+path,{...init,headers,redirect:'error',cache:'no-store',signal:AbortSignal.timeout(15000)});
+  // Workerd supports follow/manual, not redirect:'error'. Never follow a redirect
+  // carrying an API key, password or user JWT to a different destination.
+  const response=await transport(c.url+path,{...init,headers,redirect:'manual',cache:'no-store',signal:AbortSignal.timeout(15000)});
+  if(response.status>=300&&response.status<400){
+    await response.body?.cancel();
+    throw new AccessError(502,'El servicio seguro devolvió una redirección no permitida.');
+  }
+  return response;
 }
 export async function rest<T>(env:PagesEnv,path:string,token:string,init:RequestInit={},transport:Transport=fetch):Promise<T>{
   const r=await supabase(env,'/rest/v1/'+path,token,init,transport);
