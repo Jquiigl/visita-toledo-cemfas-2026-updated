@@ -1,0 +1,85 @@
+/* Admin-only layout: keep the public guide and V1 completely independent. */
+.admin-shell { grid-template-columns: 228px minmax(0, 1fr); align-items: start; }
+.admin-shell .admin-sidebar { min-width: 0; min-height: 100dvh; }
+.admin-brand strong { font: 32px Georgia, serif; letter-spacing: .15em; padding: 0 12px; }
+.admin-brand p { font-size: 12px; color: #c0cbd0; padding: 0 12px; }
+.admin-navigation { display: flex; flex: 1; flex-direction: column; }
+.admin-menu-toggle, .admin-mobile-current, .admin-mobile-records { display: none; }
+.admin-content { overflow-wrap: anywhere; }
+.admin-table-wrap table { min-width: 820px; }
+.admin-table-wrap th { white-space: nowrap; }
+.admin-table-wrap td { min-width: 120px; }
+.admin-table-wrap td:first-child { min-width: 200px; }
+.admin-content button, .admin-content input, .admin-content select, .admin-content textarea { max-width: 100%; }
+.admin-content button { white-space: normal; }
+.admin-content input[type=checkbox] { flex: 0 0 19px; }
+.admin-check { min-height: 48px; }
+.admin-issue > div, .admin-doc-options label > span, .admin-header > div { min-width: 0; }
+.admin-issue > span { flex-shrink: 0; }
+.admin-content .admin-numbers dt, .admin-content .admin-numbers dd { min-width: 0; }
+.admin-content .admin-numbers dd { max-width: 60%; }
+.admin-content .admin-bar meter { min-width: 0; }
+.admin-content .ai-draft-label { display: grid; gap: 8px; margin: 20px 0; }
+.admin-content textarea { width: 100%; min-width: 0; padding: 12px; border: 1px solid #c3c9cc; border-radius: 8px; font: inherit; resize: vertical; }
+.admin-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media screen and (max-width: 900px) {
+  .admin-shell { grid-template-columns: minmax(0, 1fr); }
+  .admin-shell .admin-sidebar { position: sticky; top: 0; z-index: 40; max-height: 100dvh; overflow-y: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px 12px; min-height: auto; padding: 16px max(16px, env(safe-area-inset-left)); }
+  .admin-shell { scroll-padding-top: 130px; }
+  .admin-content :is(a, button, input, select, textarea) { scroll-margin-top: 130px; }
+  .admin-brand strong { padding: 0; font-size: 24px; }
+  .admin-brand p { padding: 0; margin: 5px 0 0; font-size: 11px; }
+  .admin-menu-toggle { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 88px; min-height: 48px; padding: 10px 12px; border: 1px solid #c5a15f; border-radius: 8px; background: #ffffff0b; color: #fff5df; font: 600 14px system-ui; cursor: pointer; }
+  .admin-menu-toggle > span { font-size: 22px; line-height: 1; }
+  .admin-mobile-current { display: block; grid-column: 1 / -1; color: #efce8f; font-size: 12px; padding-top: 6px; }
+  .admin-navigation { display: none; grid-column: 1 / -1; }
+  .admin-navigation.is-open { display: flex; }
+  .admin-shell nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; overflow: visible; margin-top: 12px; }
+  .admin-shell nav a { min-height: 48px; white-space: normal; padding: 12px; line-height: 1.4; }
+  .admin-shell nav a > span { flex-shrink: 0; }
+  .admin-shell .admin-aside-footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0 0; margin-top: 16px; border-top: 1px solid #ffffff30; }
+  .admin-aside-footer a, .admin-aside-footer button { display: flex; align-items: center; min-height: 48px; padding: 10px 12px; }
+  .admin-content { padding: 24px max(16px, env(safe-area-inset-right)) 40px max(16px, env(safe-area-inset-left)); }
+  .admin-content .admin-header h1 { font-size: clamp(27px, 5vw, 34px); }
+  .admin-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-two, .admin-registration-list { grid-template-columns: minmax(0, 1fr); }
+  .admin-content input:not([type=checkbox]), .admin-content select, .admin-content textarea, .admin-login input { font-size: 16px; min-height: 48px; width: 100%; }
+  .admin-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-filters label, .admin-search { min-width: 0; }
+  .admin-filters label:first-child { grid-column: 1 / -1; }
+  .admin-actions button, .admin-content button { min-height: 48px; }
+  .admin-table-wrap { display: none; }
+  .admin-mobile-records { display: grid; gap: 14px; margin: 20px 0; padding: 0; list-style: none; }
+  .admin-mobile-records article { background: #fff; border: 1px solid #dee2dc; border-radius: 12px; padding: 18px; }
+  .admin-mobile-records h2 { margin: 0 0 14px; font: 600 17px/1.4 system-ui; }
+  .admin-mobile-records dl { margin: 0; }
+  .admin-mobile-records dl > div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 12px; border-top: 1px solid #eceee7; padding: 10px 0; font-size: 14px; }
+  .admin-mobile-records dt { color: #637780; }
+  .admin-mobile-records dd { margin: 0; font-weight: 550; }
+  .admin-empty { background: #fff; border: 1px solid #dee2dc; border-radius: 10px; }
+  .admin-doc-options label { gap: 10px; min-height: 64px; }
+  .admin-doc-options button { flex-shrink: 0; }
+}
+
+@media screen and (max-width: 480px) {
+  .admin-shell nav { grid-template-columns: minmax(0, 1fr); }
+  .admin-content { padding-top: 20px; }
+  .admin-content .admin-eyebrow { letter-spacing: .08em; line-height: 1.6; }
+  .admin-notice { padding: 12px; font-size: 12px; }
+  .admin-update { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .admin-update span { max-width: none; }
+  .admin-update button { justify-self: start; }
+  .admin-metrics article { padding: 16px 12px; gap: 12px; }
+  .admin-metrics article > strong { font-size: 36px; }
+  .admin-metrics article > small { font-size: 12px; }
+  .admin-card { padding: 18px; }
+  .admin-actions { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .admin-content .admin-numbers > div { display: grid; gap: 6px; }
+  .admin-content .admin-numbers dd { max-width: none; text-align: start; }
+  .admin-check { align-items: flex-start; line-height: 1.5; }
+  .admin-check input { margin-top: 3px; }
+  .admin-login { margin: 12px; }
+  .admin-login > section { padding: 24px 20px; }
+  .admin-login h1 { font-size: 32px; }
+}
