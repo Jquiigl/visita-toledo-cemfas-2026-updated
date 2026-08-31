@@ -1,0 +1,25 @@
+.analysis-preview { margin-top: 24px; padding-top: 20px; border-top: 1px solid #c9d1c9; }
+.analysis-preview summary { cursor: pointer; padding: 14px 0; min-height: 48px; font-weight: 600; }
+.analysis-preview pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 340px; overflow-y: auto; background: #fff; padding: 16px; font-size: 12px; border-radius: 8px; }
+.analysis-result { background: #fff; padding: 22px; margin-top: 24px; border: 1px solid #d2d7cb; border-radius: 12px; }
+.analysis-result h3, .analysis-preview h3 { font-size: 18px; margin: 20px 0 12px; }
+.analysis-result ul { padding-left: 22px; }
+.analysis-result li { margin: 10px 0; font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.analysis-result p { white-space: pre-wrap; }
+.analysis-people { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.analysis-people li { display: grid; gap: 8px; background: #f5f3ec; padding: 16px; border-radius: 8px; font-size: 14px; }
+.analysis-people span { color: #566d77; font-size: 12px; }
+.analysis-people a { padding: 12px 0; min-height: 44px; font-weight: 650; }
+.survey-comparison { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) auto; gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid #eceee7; font-size: 14px; }
+.survey-comparison meter { width: 100%; height: 22px; min-width: 0; accent-color: #bb8b39; }
+.survey-comparison strong { white-space: nowrap; }
+.survey-comparison small { font-weight: 400; margin-left: 6px; }
+.admin-content meter::-webkit-meter-bar { background: #eceee7; border: 0; border-radius: 20px; box-shadow: none; }
+.admin-content meter::-webkit-meter-optimum-value { background: #bb8b39; border-radius: 20px; }
+.admin-content meter::-moz-meter-bar { background: #bb8b39; border-radius: 20px; }
+@media screen and (max-width: 600px) {
+  .analysis-people { grid-template-columns: minmax(0, 1fr); }
+  .survey-comparison { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+  .survey-comparison > span { grid-column: 1 / -1; }
+  .analysis-result { padding: 16px; }
+}

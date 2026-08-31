@@ -1,11 +1,11 @@
 import {runtime} from './env';
 import {GoogleSheetsAdapter} from './adapters/sheets';
+import {analysisStatus} from './analysis-ai';
 
 export function integrationStatus(){
   return {
     sheets:runtime.GOOGLE_SERVICE_ACCOUNT_EMAIL&&runtime.GOOGLE_PRIVATE_KEY?'Credenciales configuradas · comprobar acceso y mapeo':'Sin conectar · faltan credenciales de Google',
-    ai:runtime.OPENAI_API_KEY&&runtime.OPENAI_MODEL?'Configurada · conexión pendiente de primer análisis':'Sin conectar · faltan clave o modelo de OpenAI',
-    aiReady:Boolean(runtime.OPENAI_API_KEY&&runtime.OPENAI_MODEL),
+    ...analysisStatus(runtime),
   };
 }
 

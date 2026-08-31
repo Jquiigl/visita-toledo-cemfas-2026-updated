@@ -2,6 +2,7 @@ import {AccessError,rest} from './supabase.ts';
 import type {PagesEnv,Transport} from './supabase.ts';
 import {authorize,clearCookie,signIn,signOut} from './session.ts';
 import {snapshot} from './data.ts';
+import {AnalysisError,analysisKind,analysisPreview,runAnalysis} from '../analysis-ai.ts';
 
 const json=(value:unknown,status=200)=>Response.json(value,{status});
 function secure(r:Response,sessionCookie?:string){
@@ -12,12 +13,12 @@ function secure(r:Response,sessionCookie?:string){
   if(sessionCookie)h.set('Set-Cookie',sessionCookie);
   return new Response(r.body,{status:r.status,headers:h});
 }
-async function body(request:Request):Promise<Record<string,unknown>>{
+async function body(request:Request,maxBytes=8192):Promise<Record<string,unknown>>{
   if(!request.headers.get('Content-Type')?.startsWith('application/json'))throw new AccessError(415,'Se requiere JSON.');
-  if(Number(request.headers.get('Content-Length')||0)>8192)throw new AccessError(413,'Solicitud demasiado grande.');
+  if(Number(request.headers.get('Content-Length')||0)>maxBytes)throw new AccessError(413,'Solicitud demasiado grande.');
   // Stream bound also covers clients without Content-Length.
   const reader=request.body?.getReader();const chunks:Uint8Array[]=[];let size=0;
-  if(reader){while(true){const item=await reader.read();if(item.done)break;size+=item.value.byteLength;if(size>8192){await reader.cancel();throw new AccessError(413,'Solicitud demasiado grande.');}chunks.push(item.value);}}
+  if(reader){while(true){const item=await reader.read();if(item.done)break;size+=item.value.byteLength;if(size>maxBytes){await reader.cancel();throw new AccessError(413,'Solicitud demasiado grande.');}chunks.push(item.value);}}
   const bytes=new Uint8Array(size);let at=0;for(const chunk of chunks){bytes.set(chunk,at);at+=chunk.length;}
   try{const v=JSON.parse(new TextDecoder().decode(bytes));if(!v||Array.isArray(v)||typeof v!=='object')throw Error();return v;}catch{throw new AccessError(400,'Solicitud no válida.');}
 }
@@ -49,11 +50,18 @@ export async function handle(request:Request,env:PagesEnv,assets:()=>Promise<Res
       await rest(env,'activities?id=eq.toledo-2026',auth.session.access,{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify({inherit_transport:b.inheritTransport})},transport);
       return secure(json(await snapshot(env,auth.session.access,transport)),auth.header);
     }
-    if(['/api/admin/ai','/api/admin/google-check'].includes(path))throw new AccessError(503,'Integración externa desactivada en esta migración. No se han enviado datos.');
+    if(['/api/admin/analysis-preview','/api/admin/analysis-run'].includes(path)&&request.method==='POST'){
+      const b=await body(request,path.endsWith('analysis-run')?32768:8192);
+      const kind=analysisKind(b.kind);
+      const data=await snapshot(env,auth.session.access,transport);
+      const result=path.endsWith('analysis-preview')?await analysisPreview(data,kind):await runAnalysis(data,b,env,auth.session.userId,transport);
+      return secure(json(result),auth.header);
+    }
+    if(['/api/admin/ai','/api/admin/google-check'].includes(path))throw new AccessError(503,'Utiliza el nuevo panel de análisis. La sincronización de Google sigue pendiente. No se han enviado datos.');
     return secure(json({error:'Ruta no encontrada.'},404),auth.header);
   }catch(e){
-    const status=e instanceof AccessError?e.status:503;
-    const message=e instanceof AccessError?e.message:'No se pudo conectar con el servicio seguro. No se mostrarán datos ficticios como reales.';
+    const status=e instanceof AccessError||e instanceof AnalysisError?e.status:503;
+    const message=e instanceof AccessError||e instanceof AnalysisError?e.message:'No se pudo conectar con el servicio seguro. No se mostrarán datos ficticios como reales.';
     if(admin&&status===401)return secure(new Response(null,{status:303,headers:{Location:'/admin/login'}}),clearCookie());
     return secure(json({error:message},status),status===401?clearCookie():undefined);
   }

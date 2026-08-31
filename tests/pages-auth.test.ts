@@ -94,6 +94,23 @@ test('configuración rechaza service_role, secretos, URLs no HTTPS y clave débi
   assert.throws(()=>configuration({...env,SESSION_ENCRYPTION_KEY:'short'}));
   assert.throws(()=>configuration({...env,SUPABASE_PUBLISHABLE_KEY:'a.'+btoa(JSON.stringify({role:'service_role'}))+'.b'}));
 });
+test('análisis requiere sesión, mismo origen y revisión; la preparación no activa el proveedor',async()=>{
+  const f=fixture();
+  for(const action of ['analysis-preview','analysis-run']){
+    assert.equal((await f.request(`/api/admin/${action}`,{kind:'survey'})).status,401);
+    assert.equal((await f.request(`/api/admin/${action}`,{kind:'survey'},'','https://evil.invalid')).status,403);
+  }
+  assert.equal(f.calls(),0);
+  const login=await f.request('/api/auth/login',{username:'test-admin',password:'test-password'});
+  const c=login.headers.get('Set-Cookie')!.split(';')[0];
+  const preview=await f.request('/api/admin/analysis-preview',{kind:'survey'},c);
+  assert.equal(preview.status,200);assert.match(preview.headers.get('Cache-Control')!,/no-store/);
+  const p=await preview.json() as {fingerprint:string;payload:{analyzed:number}};
+  assert.equal(p.fingerprint.length,64);assert.equal(p.payload.analyzed,0);
+  assert.equal((await f.request('/api/admin/analysis-run',{kind:'survey',fingerprint:p.fingerprint,reviewed:false},c)).status,400);
+  assert.equal((await f.request('/api/admin/analysis-run',{kind:'survey',fingerprint:p.fingerprint,reviewed:true},c)).status,503);
+  assert.equal((await f.request('/api/admin/analysis-preview',{kind:'unknown'},c)).status,400);
+});
 test('cookie cifrada rechaza manipulación y caducidad absoluta',async()=>{
   const s={access:'a',refresh:'r',expires:Date.now()/1000+3600,id:crypto.randomUUID(),userId:crypto.randomUUID(),created:Date.now()/1000};
   const v=await seal(env,s);assert.deepEqual(await unseal(env,cookie(v)),s);

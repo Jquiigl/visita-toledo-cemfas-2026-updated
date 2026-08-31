@@ -1,4 +1,5 @@
 import {makeSnapshot} from '../snapshot.ts';
+import {analysisStatus} from '../analysis-ai.ts';
 import type {Person,Registration,Evaluation} from '../domain.ts';
 import {AccessError,rest} from './supabase.ts';
 import type {PagesEnv,Transport} from './supabase.ts';
@@ -40,5 +41,6 @@ export async function snapshot(env:PagesEnv,access:string,transport:Transport=fe
   });
   const questionNames=new Map(questions.map(q=>[q.id,q.label]));
   const results:Evaluation[]=evaluations.map(e=>({id:e.id,comment:e.comment,scores:Object.fromEntries(answers.filter(a=>a.evaluation_id===e.id&&questionNames.has(a.question_id)).map(a=>[questionNames.get(a.question_id)!,a.score]))}));
-  return makeSnapshot(mapped,results,settings[0].inherit_transport,'supabase',new Date().toISOString());
+  const data=makeSnapshot(mapped,results,settings[0].inherit_transport,'supabase',new Date().toISOString());
+  return {...data,integrations:{...data.integrations,...analysisStatus(env)}};
 }
