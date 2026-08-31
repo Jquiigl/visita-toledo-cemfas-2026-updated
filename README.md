@@ -5,10 +5,16 @@ Versión V2 completa, trasladada a un repositorio independiente:
 
 ## Qué contiene
 
+- Portada en `/` con fotografía de Toledo y dos accesos: Usuario abre `/guia` sin contraseña y Administrador abre `/admin/login`, con validación en el servidor. Los siete idiomas, incluido árabe RTL, se conservan al entrar en la guía. El QR existente sigue siendo válido.
 - Zona pública con siete idiomas, árabe RTL persistente, programa provisional, mapa, fichas, imágenes y 49 audios.
 - Inscripción y valoración mediante Google Forms. El botón dorado de valoración aparece debajo de Inscripción, con aviso de responder después de la actividad y plazo del 28 de octubre de 2026 inclusive.
 - Administrador protegido por el servidor: sesión segura, listados, recuentos, revisión, documentos y valoración.
-- Adaptadores de Google Sheets y OpenAI. Siguen pendientes las credenciales y la validación de la integración real; el panel trabaja con datos ficticios.
+- Google Sheets en modo de solo lectura para inscripciones y encuestas, con credenciales exclusivamente en el servidor. OpenAI sigue siendo opcional y permanece desactivado sin configuración explícita.
+
+Los enlaces públicos antiguos `/#program`, `/#registration` y las fichas `/#card-…`
+se trasladan a `/guia` conservando el idioma y la pantalla. La portada es una
+elección de recorrido, no una barrera de autenticación para la información pública.
+No modifica las sesiones, permisos ni integraciones del administrador.
 
 ## Ejecutar y comprobar
 

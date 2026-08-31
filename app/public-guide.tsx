@@ -6,6 +6,7 @@ import audioData from '../data/audio-scripts.json';
 import { details, mapAttribution } from '../data/details';
 import { languageCodes, type LanguageCode, ui } from '../data/ui';
 import { evaluationCopy, evaluationFormUrl } from '../data/evaluation';
+import {coverCopy,coverUrl} from '../data/cover';
 import {normalizeLanguage,readingDirection,languageUrl,forwardArrow,forwardChevron} from '../data/language';
 
 type MainScreen = 'home'|'program'|'map'|'visit'|'useful'|'menu'|'registration';
@@ -112,7 +113,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
     </header>
 
     {screen==='home'&&<section className="screen home-screen">
-      <div className="v2-ribbon" lang="es" dir="ltr"><span>V2 · Prototipo</span><Link href="/admin">Organización →</Link></div>
+      <div className="v2-ribbon"><Link href={coverUrl(language)}>{coverCopy[language].back}</Link><Link href="/admin/login">{coverCopy[language].admin} {forwardArrow(language)}</Link></div>
       <div className="compact-hero"><img src={imageUrl('images/hero-wide-1600.png')} alt="Vista panorámica de Toledo al atardecer"/></div>
       <div className="home-copy"><p className="eyebrow">{copy.date}</p><h1>{copy.title}</h1><p>{copy.lead}</p></div>
       <div className="next-card"><span>24</span><div><small lang="es" dir="ltr">OCT · 2026</small><strong dir="ltr">08:45 · CESEDEN</strong><p>{copy.schedule[0][1]} · {copy.provisional}</p></div></div>

@@ -25,7 +25,7 @@ export function AdminSidebar({sections, area, pending, username, logout}: {
           aria-current={area === key ? 'page' : undefined} onClick={() => setOpen(false)}>
           <span aria-hidden="true">{icon}</span>{label}{key === 'revision' && pending !== undefined && <b>{pending}</b>}
         </Link>)}</nav>
-      <div className="admin-aside-footer"><Link href="/">← Ver zona pública</Link>
+      <div className="admin-aside-footer"><Link href="/guia?lang=es#home">← Ver zona pública</Link>
         {username && <small>{username}</small>}<button type="button" onClick={logout}>Cerrar sesión</button>
       </div>
     </div>
