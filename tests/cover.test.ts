@@ -29,3 +29,11 @@ test('la valoración sigue inmediatamente después de la inscripción',()=>{
   const source=readFileSync(new URL('../app/public-guide.tsx',import.meta.url),'utf8');
   assert.match(source,/navigate\('registration'\)\}>\{text.registration\}[\s\S]*?<\/button>\s*<section className="evaluation-callout"/);
 });
+test('la portada usa el cartel aportado sin repetir Updated ni superponer otro título visible',()=>{
+  const source=readFileSync(new URL('../app/cover.tsx',import.meta.url),'utf8');
+  assert.match(source,/src="\/images\/cover-toledo.png"/);
+  assert.match(source,/className="cover-accessible-title" dir="ltr">TOLEDO<\/h1>/);
+  assert.doesNotMatch(source,/updated/i);
+  const image=readFileSync(new URL('../public/images/cover-toledo.png',import.meta.url));
+  assert.equal(image.subarray(1,4).toString(),'PNG');
+});

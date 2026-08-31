@@ -5,7 +5,7 @@ Versión V2 completa, trasladada a un repositorio independiente:
 
 ## Qué contiene
 
-- Portada en `/` con fotografía de Toledo y dos accesos: Usuario abre `/guia` sin contraseña y Administrador abre `/admin/login`, con validación en el servidor. Los siete idiomas, incluido árabe RTL, se conservan al entrar en la guía. El QR existente sigue siendo válido.
+- Portada en `/` con el cartel aportado por la organización y dos accesos: Usuario abre `/guia` sin contraseña y Administrador abre `/admin/login`, con validación en el servidor. El título visual es el del cartel, sin «Updated» en la portada. En móvil se encuadra la parte superior (escudos, título y ciudad) y los botones quedan debajo; en escritorio, el cartel completo se acompaña del panel de acceso. Los siete idiomas, incluido árabe RTL, se conservan al entrar en la guía. El QR existente sigue siendo válido.
 - Zona pública con siete idiomas, árabe RTL persistente, programa provisional, mapa, fichas, imágenes y 49 audios.
 - Inscripción y valoración mediante Google Forms. El botón dorado de valoración aparece debajo de Inscripción, con aviso de responder después de la actividad y plazo del 28 de octubre de 2026 inclusive.
 - Administrador protegido por el servidor: sesión segura, listados, recuentos, revisión, documentos y valoración.
