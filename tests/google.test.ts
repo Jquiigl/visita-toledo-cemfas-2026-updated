@@ -48,7 +48,7 @@ test('lectura vacía valida hojas/cabeceras, usa scope lector y un token compart
 });
 test('lectura por posiciones conserva encabezados repetidos y filas después de huecos',async()=>{
   const f=googleFixture({count:1001,rows:[registration(),{...registration(),rowNumber:1001}]});
-  const rows=await new GoogleReader({...credentials,GOOGLE_PRIVATE_KEY:credentials.GOOGLE_PRIVATE_KEY.replaceAll('\n','\\n')},f.transport).read('registrations');
+  const rows=await new GoogleReader({...credentials,GOOGLE_PRIVATE_KEY:credentials.GOOGLE_PRIVATE_KEY.replaceAll('\n','\\n')+'\\n'},f.transport).read('registrations');
   assert.deepEqual(rows.map(r=>r.rowNumber),[2,1001]);assert.equal(rows[0].cells[1],'Persona Ficticia');
 });
 test('cabeceras movidas o modificadas y volúmenes excesivos fallan sin totales parciales',async()=>{

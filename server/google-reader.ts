@@ -34,7 +34,7 @@ export class GoogleReader {
     if (!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.iam\.gserviceaccount\.com$/.test(email)) throw new GoogleReadError(503, 'GOOGLE_SERVICE_ACCOUNT_EMAIL debe contener el correo de la cuenta de servicio, no el correo personal.');
     let signature: ArrayBuffer; let input: string;
     try {
-      const pem = privateKey.replaceAll('\\n', '\n');
+      const pem = privateKey.replaceAll('\\n', '\n').trim();
       if (!pem.startsWith('-----BEGIN PRIVATE KEY-----') || !pem.endsWith('-----END PRIVATE KEY-----')) throw Error();
       const bytes = Uint8Array.from(atob(pem.replace(/-----[^-]+-----|\s/g, '')), c => c.charCodeAt(0));
       const key = await crypto.subtle.importKey('pkcs8', bytes, {name: 'RSASSA-PKCS1-v1_5', hash: 'SHA-256'}, false, ['sign']);
