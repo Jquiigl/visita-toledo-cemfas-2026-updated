@@ -21,7 +21,8 @@ function evaluation(changes:Record<number,string>={}):SheetRow {
 }
 function googleFixture(options:{rows?:SheetRow[];count?:number;headers?:readonly string[];status?:number}={}) {
   const calls:{url:string;init?:RequestInit}[]=[];
-  const transport:typeof fetch=async(input,init)=>{
+  const transport:typeof fetch=async function(this:unknown,input,init){
+    assert.equal(this,undefined,'Native fetch must be called without a class receiver');
     const url=String(input);calls.push({url,init});assert.equal(init?.redirect,'manual');assert.equal(init?.cache,'no-store');
     if(options.status)return new Response('Provider details must not leak',{status:options.status,headers:{Location:'https://evil.invalid'}});
     if(url==='https://oauth2.googleapis.com/token'){
@@ -103,7 +104,7 @@ test('extras respetan exclusión de referencias repetidas y no inventan medias v
 test('snapshot activado lee las dos hojas sin copiar respuestas ni consultar tablas personales de Supabase',async()=>{
   const f=googleFixture();let writes=0;
   const data=await snapshot({...credentials,GOOGLE_SHEETS_ENABLED:'true',SUPABASE_URL:'https://test.supabase.co',SUPABASE_PUBLISHABLE_KEY:'sb_publishable_test',SESSION_ENCRYPTION_KEY:'ab'.repeat(32)},'test',async(input,init)=>{
-    if(String(input).includes('supabase.co')){assert(String(input).includes('/activities?'));if(init?.method&&init.method!=='GET')writes++;return Response.json([{inherit_transport:true}]);}return f.transport(input,init);
+    if(String(input).includes('supabase.co')){assert(String(input).includes('/activities?'));if(init?.method&&init.method!=='GET')writes++;return Response.json([{inherit_transport:true}]);}const transport=f.transport;return transport(input,init);
   });
   assert.equal(data.source,'google');assert.equal(data.summary.attendees,0);assert.equal(data.survey.responses,0);assert.equal(writes,0);assert(!JSON.stringify(data).includes('test-only-access'));
 });

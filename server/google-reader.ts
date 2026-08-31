@@ -12,7 +12,9 @@ export class GoogleReader {
   constructor(private env: GoogleCredentials, private transport: typeof fetch = fetch) {}
   private async request(url: string, init: RequestInit = {}) {
     let response: Response;
-    try {response = await this.transport(url, {...init, redirect: 'manual', cache: 'no-store', signal: AbortSignal.timeout(15000)});}
+    // Native Workerd fetch must not be invoked with this reader as its receiver.
+    const transport = this.transport;
+    try {response = await transport(url, {...init, redirect: 'manual', cache: 'no-store', signal: AbortSignal.timeout(15000)});}
     catch {throw new GoogleReadError(502, 'Google no responde. Vuelve a intentarlo; no se han cambiado las respuestas.');}
     if (!response.ok) {
       await response.body?.cancel();
