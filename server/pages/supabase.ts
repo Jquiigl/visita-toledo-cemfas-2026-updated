@@ -1,4 +1,4 @@
-export type PagesEnv={SUPABASE_URL?:string;SUPABASE_PUBLISHABLE_KEY?:string;SESSION_ENCRYPTION_KEY?:string;ADMIN_LOGIN_ALIASES?:string;OPENAI_API_KEY?:string;OPENAI_MODEL?:string;OPENAI_ENABLED?:string};
+export type PagesEnv={SUPABASE_URL?:string;SUPABASE_PUBLISHABLE_KEY?:string;SESSION_ENCRYPTION_KEY?:string;ADMIN_LOGIN_ALIASES?:string;OPENAI_API_KEY?:string;OPENAI_MODEL?:string;OPENAI_ENABLED?:string;GOOGLE_SERVICE_ACCOUNT_EMAIL?:string;GOOGLE_PRIVATE_KEY?:string;GOOGLE_SHEETS_ENABLED?:string};
 export type Transport=typeof fetch;
 export class AccessError extends Error{constructor(public status:number,message:string){super(message);}}
 export function configuration(env:PagesEnv){

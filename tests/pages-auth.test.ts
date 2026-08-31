@@ -67,7 +67,10 @@ test('todas las rutas administrativas están protegidas en servidor',async()=>{
   for(const p of ['', '/asistentes','/autobus','/vehiculos','/restauracion','/necesidades','/revision','/documentos','/valoracion','/configuracion']){
     const r=await f.request('/admin'+p);assert.equal(r.status,303);assert.equal(r.headers.get('Location'),'/admin/login');
   }
-  assert.equal((await f.request('/api/admin/data')).status,401);assert.equal(f.calls(),0);
+  assert.equal((await f.request('/api/admin/data')).status,401);
+  assert.equal((await f.request('/api/admin/google-check',{})).status,401);
+  assert.equal((await f.request('/api/admin/google-check',{},'','https://evil.invalid')).status,403);
+  assert.equal(f.calls(),0);
 });
 test('Supabase valida password y rol; ni usuario inventado ni autenticado sin rol acceden',async()=>{
   const f=fixture();assert.equal((await f.request('/api/auth/login',{username:'unknown',password:'test-password'})).status,401);

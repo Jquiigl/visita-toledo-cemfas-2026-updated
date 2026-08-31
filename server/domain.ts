@@ -1,7 +1,7 @@
 export type Person = {id:string;name:string;role:'Titular'|'Acompañante';adult:boolean;age?:number;transport?:'bus'|'car';meal:boolean;menu:string;dietary?:string;mobility?:string};
-export type Registration = {id:string;holder:Person;companions:Person[];vehicle?:{model:string;color:string;plate:string;original:string};declaredMeals?:number};
+export type Registration = {id:string;holder:Person;companions:Person[];vehicle?:{model:string;color:string;plate:string;original:string};declaredMeals?:number;importIssues?:string[];groupNeeds?:{mobility?:string;dietary?:string}};
 export type Attendee = Person & {registrationId:string;holderName:string;inheritedTransport:boolean};
-export type Evaluation = {id:string;scores:Record<string,number|null>;comment:string};
+export type Evaluation = {id:string;scores:Record<string,number|null>;comment:string;relationshipScore?:number|null;categories?:Record<string,string>};
 export type Incident = {registrationId:string;person:string;reason:string};
 export function normalize(registrations:Registration[],inheritTransport=true):Attendee[]{return registrations.flatMap(r=>[r.holder,...r.companions].map(p=>({...p,registrationId:r.id,holderName:r.holder.name,transport:p.transport || (inheritTransport?r.holder.transport:undefined),inheritedTransport:!p.transport&&inheritTransport})));}
 export function review(registrations:Registration[],people:Attendee[]):Incident[]{

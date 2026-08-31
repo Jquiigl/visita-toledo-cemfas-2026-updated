@@ -79,8 +79,9 @@ En Cloudflare Pages, proyecto exclusivo `toledo-updated`, entorno Production:
 No pegar claves en el chat ni guardarlas en GitHub, frontend, archivos públicos
 o variables con prefijo PUBLIC_. No hacen falta claves de Google, otra clave
 Supabase, ni credenciales de administrador de OpenAI para generar el informe.
-La sincronización de Google es un trabajo separado: requiere identificar las dos
-hojas de respuestas, sus columnas y permisos de lectura. No se ha activado aquí.
+La conexión de Google es independiente de la IA. Las dos hojas y sus columnas
+ya están identificadas; la lectura directa y sus límites se describen en
+[GOOGLE-SHEETS.md](GOOGLE-SHEETS.md). Activar Google no activa OpenAI.
 
 Antes de activar, revisar facturación, límites y controles del proyecto del
 proveedor. Tras guardar las variables, volver a desplegar y hacer una primera
@@ -95,7 +96,7 @@ Esquema basado en la [documentación oficial de Structured Outputs](https://deve
 
 ## Pruebas
 
-`pnpm check:pages`: 45 pruebas (dominio, privacidad, proveedor simulado,
+`pnpm check:pages`: 56 pruebas (dominio, Google, privacidad, proveedor simulado,
 autenticación, CSRF, huella y permisos), TypeScript, lint y build de Pages.
 
 Chrome local con datos ficticios y proveedor simulado, nunca con claves reales:

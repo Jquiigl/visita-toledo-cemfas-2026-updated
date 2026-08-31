@@ -26,12 +26,13 @@ function packet(data: Snapshot, kind: AnalysisKind) {
       similarityScanPartial: data.audit.partial,
       warning: 'Los nombres se compararon dentro de la aplicación. No se envían nombres, edades, identificadores, matrículas, menús individuales ni necesidades personales. Ningún duplicado está confirmado.'};
   }
-  const categories: Record<string, string> = {global: 'Global', recorrido: 'Recorrido', organizacion: 'Organización', comida: 'Comida', transporte: 'Transporte'};
+  const categories: Record<string, string> = {global: 'Global', recorrido: 'Recorrido', organizacion: 'Organización', comida: 'Comida', transporte: 'Transporte', 'cultural visita':'Visita cultural', 'historia patrimonio y':'Historia y patrimonio', 'academia de infanteria':'Academia de Infantería', 'informacion previa':'Información previa'};
   return {kind, source: data.source, received: data.survey.received, analyzed: data.survey.responses,
     excluded: data.survey.excluded, invalidScores: data.survey.invalid, totalComments: data.survey.comments.length,
+    additionalResults: data.extraSurvey.available ? data.extraSurvey : null,
     questions: data.survey.questions.map(q => ({code: q.code, dimension: categories[normalizedName(q.question)] || 'Pregunta de encuesta',
       n: q.n, mean: q.mean, median: q.median, missing: q.missing, invalid: q.invalid, favorablePercent: q.favorablePercent, distribution: q.distribution})),
-    warning: 'La participación es desconocida: no hay censo validado. Cada pregunta puede tener distinto N. Los comentarios revisados pueden ser una selección no representativa. No hay datos personales en las cifras.'};
+    warning: 'La participación es desconocida: no hay censo validado. Cada pregunta puede tener distinto N. Las preguntas Q usan 1–5; la relación entre alumnos y padrinos usa 0–10, sin mezclar ni normalizar medias. Las categorías no tienen media y la recomendación admite selección múltiple: no es NPS. Los comentarios revisados pueden ser una selección no representativa. No hay datos personales en las cifras.'};
 }
 export async function analysisPreview(data: Snapshot, kind: AnalysisKind) {
   const payload = packet(data, kind);

@@ -3,6 +3,8 @@ import type {PagesEnv,Transport} from './supabase.ts';
 import {authorize,clearCookie,signIn,signOut} from './session.ts';
 import {snapshot} from './data.ts';
 import {AnalysisError,analysisKind,analysisPreview,runAnalysis} from '../analysis-ai.ts';
+import {GoogleReader,GoogleReadError} from '../google-reader.ts';
+import {registrationsFromGoogle,evaluationsFromGoogle} from '../google-mapping.ts';
 
 const json=(value:unknown,status=200)=>Response.json(value,{status});
 function secure(r:Response,sessionCookie?:string){
@@ -57,11 +59,19 @@ export async function handle(request:Request,env:PagesEnv,assets:()=>Promise<Res
       const result=path.endsWith('analysis-preview')?await analysisPreview(data,kind):await runAnalysis(data,b,env,auth.session.userId,transport);
       return secure(json(result),auth.header);
     }
-    if(['/api/admin/ai','/api/admin/google-check'].includes(path))throw new AccessError(503,'Utiliza el nuevo panel de análisis. La sincronización de Google sigue pendiente. No se han enviado datos.');
+    if(path==='/api/admin/google-check'&&request.method==='POST'){
+      const reader=new GoogleReader(env,transport);
+      const [registrations,evaluations]=await Promise.all([reader.read('registrations'),reader.read('evaluations')]);
+      // Validate mapping as well as permission. No writes and no PII in this result.
+      registrationsFromGoogle(registrations);evaluationsFromGoogle(evaluations);
+      return secure(json({results:[{source:'registrations',message:`Lectura correcta · ${registrations.length} respuestas`},{source:'evaluations',message:`Lectura correcta · ${evaluations.length} respuestas`}]}),auth.header);
+    }
+    if(path==='/api/admin/ai')throw new AccessError(503,'Utiliza el nuevo panel de análisis. No se han enviado datos.');
     return secure(json({error:'Ruta no encontrada.'},404),auth.header);
   }catch(e){
-    const status=e instanceof AccessError||e instanceof AnalysisError?e.status:503;
-    const message=e instanceof AccessError||e instanceof AnalysisError?e.message:'No se pudo conectar con el servicio seguro. No se mostrarán datos ficticios como reales.';
+    const known=e instanceof AccessError||e instanceof AnalysisError||e instanceof GoogleReadError;
+    const status=known?e.status:503;
+    const message=known?e.message:'No se pudo conectar con el servicio seguro. No se mostrarán datos ficticios como reales.';
     if(admin&&status===401)return secure(new Response(null,{status:303,headers:{Location:'/admin/login'}}),clearCookie());
     return secure(json({error:message},status),status===401?clearCookie():undefined);
   }

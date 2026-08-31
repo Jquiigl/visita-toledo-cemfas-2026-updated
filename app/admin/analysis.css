@@ -23,3 +23,5 @@
   .survey-comparison > span { grid-column: 1 / -1; }
   .analysis-result { padding: 16px; }
 }
+.survey-choice { display:grid; grid-template-columns:minmax(0,1fr); gap:.35rem; margin:1rem 0; overflow-wrap:anywhere; }
+.survey-choice meter { width:100%; }

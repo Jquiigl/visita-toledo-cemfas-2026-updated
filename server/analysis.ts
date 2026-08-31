@@ -37,6 +37,7 @@ export function similarName(a: string, b: string) {
 export function registrationAudit(registrations: Registration[], inheritTransport = true) {
   const people = normalize(registrations, inheritTransport);
   const errors = review(registrations, people).filter(i => !i.reason.startsWith('Posible duplicado'));
+  for (const r of registrations) for (const reason of r.importIssues || []) errors.push({registrationId:r.id, person:r.holder.name, reason});
   for (const p of people) {
     if (p.age !== undefined && (!Number.isFinite(p.age) || !Number.isInteger(p.age)))
       errors.push({registrationId: p.registrationId, person: p.name, reason: 'Edad no válida: debe ser un número entero'});
