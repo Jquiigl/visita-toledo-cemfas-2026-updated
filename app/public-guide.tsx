@@ -2,7 +2,9 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import SpokenSummary from './spoken-summary';
 import audioData from '../data/audio-scripts.json';
+import { programmeIds, walkingIds, visitPlan } from '../data/visit-plan';
 import { details, mapAttribution } from '../data/details';
 import { languageCodes, type LanguageCode, ui } from '../data/ui';
 import { evaluationCopy, evaluationFormUrl } from '../data/evaluation';
@@ -13,7 +15,7 @@ type MainScreen = 'home'|'program'|'map'|'visit'|'useful'|'menu'|'registration';
 type Screen = MainScreen | `card-${string}`;
 const FORM_URL = 'https://forms.gle/J88j2NxP6GnCfRT16';
 const AEMET_URL = 'https://www.aemet.es/es/eltiempo/prediccion/municipios/toledo-id45168';
-const FULL_ROUTE_URL = 'https://www.google.com/maps/dir/?api=1&origin=Iglesia+de+Santo+Tom%C3%A9%2C+Toledo&destination=Museo+del+Ej%C3%A9rcito%2C+Toledo&waypoints=Sinagoga+de+Santa+Mar%C3%ADa+la+Blanca%2C+Toledo%7CCatedral+Primada+de+Toledo&travelmode=walking';
+const FULL_ROUTE_URL = 'https://www.google.com/maps/dir/?api=1&origin=Catedral+Primada+de+Toledo&destination=Museo+del+Ej%C3%A9rcito%2C+Toledo&waypoints=Sinagoga+de+Santa+Mar%C3%ADa+la+Blanca%2C+Toledo&travelmode=walking';
 
 const cardIds = audioData.cards.map((card) => card.id);
 const screenFromHash = (): Screen => {
@@ -46,7 +48,6 @@ const menuCopy: Record<LanguageCode, {title:string;reference:string;intro:string
 
 const parkingLinks = [
   {id:'museum',url:'https://www.google.com/maps/search/?api=1&query=Museo+del+Ej%C3%A9rcito%2C+Toledo'},
-  {id:'academy',url:'https://www.google.com/maps/search/?api=1&query=Academia+de+Infanter%C3%ADa%2C+Toledo'},
   {id:'residence',url:'https://www.google.com/maps/search/?api=1&query=Residencia+Log%C3%ADstica+Militar+Los+Alijares%2C+Toledo'}
 ] as const;
 
@@ -66,16 +67,16 @@ const places: Record<string,Place> = {
   orgaz:{map:'https://www.google.com/maps/search/?api=1&query=Iglesia+de+Santo+Tom%C3%A9%2C+Toledo',official:'https://toledomonumental.com/iglesia-de-santo-tome/',lat:39.85662,lon:-4.02823},
   'santa-maria-la-blanca':{map:'https://www.google.com/maps/search/?api=1&query=Sinagoga+de+Santa+Mar%C3%ADa+la+Blanca%2C+Toledo',official:'https://toledomonumental.com/sinagoga-de-santa-maria-la-blanca/',lat:39.85664,lon:-4.03205},
   catedral:{map:'https://www.google.com/maps/search/?api=1&query=Catedral+Primada+de+Toledo',official:'https://www.catedralprimada.es/',lat:39.85793,lon:-4.02336},
+  'museo-ejercito':{map:'https://www.google.com/maps/search/?api=1&query=Museo+del+Ej%C3%A9rcito%2C+Toledo',official:'https://ejercito.defensa.gob.es/museo/',lat:39.85861,lon:-4.02017},
   alcazar:{map:'https://www.google.com/maps/search/?api=1&query=Museo+del+Ej%C3%A9rcito%2C+Toledo',official:'https://ejercito.defensa.gob.es/museo/',lat:39.85861,lon:-4.02017},
   'academia-infanteria':{map:'https://www.google.com/maps/search/?api=1&query=Academia+de+Infanter%C3%ADa+de+Toledo',official:'https://ejercito.defensa.gob.es/unidades/Toledo/acinf/'},
   'gastronomia-recuerdos':{map:'https://www.google.com/maps/search/?api=1&query=Artesan%C3%ADa+y+gastronom%C3%ADa+Toledo',official:'https://turismo.toledo.es/'}
 };
 
 const mapPins = [
-  {id:'orgaz',number:1,left:'31%',top:'54%'},
+  {id:'catedral',number:1,left:'60%',top:'52%'},
   {id:'santa-maria-la-blanca',number:2,left:'18%',top:'64%'},
-  {id:'catedral',number:3,left:'60%',top:'52%'},
-  {id:'alcazar',number:4,left:'86%',top:'40%'}
+  {id:'museo-ejercito',number:3,left:'86%',top:'40%'}
 ];
 
 function distanceMetres(aLat:number,aLon:number,bLat:number,bLon:number){const r=6371e3,toRad=(n:number)=>n*Math.PI/180,p1=toRad(aLat),p2=toRad(bLat),dp=toRad(bLat-aLat),dl=toRad(bLon-aLon),h=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return r*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));}
@@ -87,6 +88,9 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
   const [locationState,setLocationState]=useState<Record<string,'checking'|'near'|'far'|'inaccurate'|'denied'>>({});
   const copy=ui[language],text=labels[language],menu=menuCopy[language],parkingText=parkingLinkCopy[language],isRtl=language==='ar';
   const cards=useMemo(()=>audioData.cards.map(card=>({...card,title:card.titles[language],body:card.texts[language],detail:details[card.id]})),[language]);
+  const plan=visitPlan[language];
+  const programmeCards=programmeIds.map(id=>cards.find(c=>c.id===id)!);
+  const otherCards=cards.filter(c=>!programmeIds.some(id=>id===c.id));
   const currentId=screen.startsWith('card-')?screen.slice(5):null;
   const current=cards.find(card=>card.id===currentId);
 
@@ -138,9 +142,9 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
       <ol className="program-list">
         {copy.schedule.map(([time,title,detail],index)=><li key={`${time}-${title}`}><time dir="ltr">{time}</time><div><strong>{title}</strong>{detail&&<span>{detail}</span>}
           {index===0&&language==='es'&&<p>Recepción de participantes, comprobación organizativa y distribución en los transportes previstos.</p>}
-          {index===2&&<div className="program-feature"><b>{text.historicRoute}</b><p>{language==='es'?'Recorrido guiado contratado por las calles del casco histórico. La secuencia y los tiempos interiores se ajustarán con la empresa.':text.routePending}</p><div className="stop-chips">{cards.filter(c=>['orgaz','santa-maria-la-blanca','catedral','alcazar'].includes(c.id)).map((c,i)=><button key={c.id} onClick={()=>navigate(`card-${c.id}`)}>{i+1} · {c.title}</button>)}</div></div>}
-          {index===3&&language==='es'&&<p>Final del recorrido cultural, reunión del grupo y desplazamiento organizado hacia la Academia.</p>}
-          {index===4&&<div className="program-feature"><b>{text.details}</b><p>{language==='es'?'Edificio Noble, Sala de Laureados, Sala de la Medalla Militar Individual y comedor. Acceso, identificación y fotografía según instrucciones de la Academia.':detail}</p></div>}
+          {index===2&&<div className="program-feature"><b>{text.historicRoute}</b><p>{language==='es'?'Recorrido guiado contratado por las calles del casco histórico. La secuencia y los tiempos interiores se ajustarán con la empresa.':text.routePending}</p><div className="stop-chips">{walkingIds.map(id=>cards.find(c=>c.id===id)!).map((c,i)=><button key={c.id} onClick={()=>navigate(`card-${c.id}`)}>{i+1} · {c.title}</button>)}</div></div>}
+          {index===3&&language==='es'&&<p>Final del recorrido a pie y reunión del grupo para la visita al Museo del Ejército.</p>}
+          {index===4&&<div className="program-feature"><div className="stop-chips"><button onClick={()=>navigate('card-museo-ejercito')}>{cards.find(c=>c.id==='museo-ejercito')?.title}</button></div></div>}
           {index===5&&language==='es'&&<p>Comida de confraternización en el comedor de la Residencia Logística Militar Los Alijares.</p>}
         </div></li>)}
       </ol>
@@ -154,20 +158,19 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
       <ol className="map-legend">{mapPins.map(pin=>{const card=cards.find(c=>c.id===pin.id)!;return <li key={pin.id}><button onClick={()=>navigate(`card-${pin.id}`)}><b>{pin.number}</b><span>{card.title}</span><i aria-hidden="true">{forwardChevron(language)}</i></button></li>})}</ol>
       <a className="primary-action link-button" href={FULL_ROUTE_URL} target="_blank" rel="noreferrer">{text.mapFull}<External/></a>
       <p className="map-credit" lang="es" dir="ltr">Mapa: <a href={mapAttribution.commons} target="_blank" rel="noreferrer">{mapAttribution.credit}</a> · {mapAttribution.license}</p>
-      <article className="transfer-card"><img src={imageUrl(details['academia-infanteria'].image)} alt={details['academia-infanteria'].alt}/><div><small>{text.transfers}</small><h2>{cards.find(c=>c.id==='academia-infanteria')?.title}</h2><p>{language==='es'?'El traslado desde el casco histórico será organizado. El punto exacto de acceso se publicará cuando quede confirmado.':copy.parkingBody}</p><a href={places['academia-infanteria'].map} target="_blank" rel="noreferrer">{text.academyMap}<External/></a></div></article>
     </section>}
 
     {screen==='visit'&&<section className="screen guide-screen">
-      <div className="screen-heading"><span className="status">7 {copy.visit}</span><h1>{copy.visitTitle}</h1><p>{copy.visitIntro}</p></div>
-      <div className="guide-list">{cards.map(card=><button className="guide-card" key={card.id} onClick={()=>navigate(`card-${card.id}`)}><img src={imageUrl(card.detail.image)} alt=""/><div><small lang="es" dir="ltr">{card.detail.facts[0][1]}</small><h2>{card.title}</h2><p>{language==='es'?card.detail.short:`${card.body.slice(0,145)}…`}</p><b>{text.readMore} <span aria-hidden="true">{forwardArrow(language)}</span></b></div></button>)}</div>
+      <div className="screen-heading"><span className="status">{cards.length} {text.guide}</span><h1>{copy.visitTitle}</h1><p>{copy.visitIntro}</p></div>
+      {[{title:plan.program,cards:programmeCards},{title:plan.other,cards:otherCards}].map(group=><section key={group.title} className="place-category"><h2>{group.title}</h2><div className="guide-list">{group.cards.map(card=><button className="guide-card" key={card.id} onClick={()=>navigate(`card-${card.id}`)}><img src={imageUrl(card.detail.image)} alt=""/><div><small lang="es" dir="ltr">{card.detail.facts[0][1]}</small><h2>{card.title}</h2><p>{language==='es'?card.detail.short:`${card.body.slice(0,145)}…`}</p><b>{text.readMore} <span aria-hidden="true">{forwardArrow(language)}</span></b></div></button>)}</div></section>)}
     </section>}
 
     {current&&<article className="detail-screen">
       <div className="detail-photo"><img src={imageUrl(current.detail.image)} alt={current.detail.alt}/><div className="photo-caption" lang="es" dir="ltr">{current.detail.credit} · {current.detail.license}</div></div>
-      <div className="screen detail-body"><p className="eyebrow">{text.guide}</p><h1>{current.title}</h1><p className="detail-lead">{current.body}</p>
+      <div className="screen detail-body"><p className="eyebrow">{programmeIds.some(id=>id===current.id)?plan.program:plan.other}</p><h1>{current.title}</h1><p className="detail-lead">{current.body}</p>
         <section className="facts"><h2>{text.highlights}</h2><dl lang="es" dir="ltr">{current.detail.facts.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></section>
         {language==='es'?<div className="article-sections">{current.detail.sections.map(section=><section key={section.title}><h2>{section.title}</h2><p>{section.body}</p></section>)}</div>:<div className="translation-note">ⓘ {text.expandedSpanish}</div>}
-        <section className="audio-panel"><div><span>▶</span><div><small>{text.audio}</small><strong>{current.title}</strong></div></div><audio dir="ltr" controls preload="none" src={imageUrl(`audio/${language}/${current.id}.wav`)} aria-label={`${copy.listen}: ${current.title}`}/></section>
+        <section className="audio-panel"><div><span>▶</span><div><small>{text.audio}</small><strong>{current.title}</strong></div></div>{['museo-ejercito','academia-infanteria'].includes(current.id)?<SpokenSummary key={`${current.id}-${language}`} language={language} text={current.body}/>:<audio key={`${current.id}-${language}`} dir="ltr" controls preload="none" src={imageUrl(`audio/${language}/${current.id}.wav`)} aria-label={`${copy.listen}: ${current.title}`}/>}<details className="audio-transcript"><summary>{plan.transcript}</summary><p>{current.body}</p></details></section>
         <div className="detail-actions"><a href={places[current.id].map} target="_blank" rel="noreferrer">{copy.map}<External/></a><a href={places[current.id].official} target="_blank" rel="noreferrer">{copy.official}<External/></a>{places[current.id].lat!==undefined&&<button onClick={()=>checkLocation(current.id,places[current.id])} disabled={locationState[current.id]==='checking'}>{text.nearby}</button>}</div>
         {locationMessage(locationState[current.id])&&<p className={`location-result ${locationState[current.id]}`} role="status">{locationMessage(locationState[current.id])}</p>}
         {places[current.id].lat!==undefined&&<p className="location-privacy">{copy.locationPrivacy}</p>}

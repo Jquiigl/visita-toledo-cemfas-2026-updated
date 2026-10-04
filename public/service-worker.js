@@ -1,5 +1,5 @@
 const CACHE_VERSION = 'toledo-v2-media';
-const AUDIO_CACHE = 'toledo-v2-audio';
+const AUDIO_CACHE = 'toledo-v2-audio-20261004';
 const CORE = [
   './manifest.webmanifest', './images/hero-wide-1600.png',
   './images/app-icon-192.png', './images/app-icon-512.png', './images/apple-touch-icon-180.png',

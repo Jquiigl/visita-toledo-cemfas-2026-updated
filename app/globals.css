@@ -86,3 +86,7 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #e5a
 .ai-draft-label textarea{width:100%;padding:12px;border:1px solid #64748b;border-radius:8px;font:inherit;resize:vertical}
 .ai-result{white-space:pre-wrap;overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.place-category{margin-bottom:2rem}.place-category>h2{font-size:1.2rem;margin:0 0 1rem;color:var(--navy,#172b45)}.audio-transcript{margin-top:1rem}.audio-transcript summary{cursor:pointer;font-weight:600}.audio-transcript p{line-height:1.7}
+
+.spoken-summary button{border:1px solid #bfa05b;border-radius:8px;padding:.6rem 1rem;margin-inline-end:.5rem;background:#fff;color:#172b45;cursor:pointer}.spoken-summary button:disabled{opacity:.5}.spoken-summary p{font-size:.85rem;line-height:1.5}

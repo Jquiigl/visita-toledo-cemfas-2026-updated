@@ -23,6 +23,18 @@ export const details: Record<string, Detail> = {
     credit:'rheins', license:'CC BY 3.0', commons:'https://commons.wikimedia.org/wiki/File:Old_Town_of_Toledo_-_2013.07_-_panoramio.jpg',
     sources:[{label:'Turismo oficial de Toledo',url:'https://turismo.toledo.es/toledo.html'},{label:'UNESCO · Ciudad histórica de Toledo',url:'https://whc.unesco.org/en/list/379/'},{label:'Ayuntamiento · padrón 2025',url:'https://www.toledo.es/toledo-aumenta-el-padron-municipal-hasta-los-88-356-habitantes-en-2025/'},{label:'Wikipedia · Toledo',url:'https://es.wikipedia.org/wiki/Toledo'}]
   },
+  'museo-ejercito': {
+    image:'images/places/alcazar.jpg', alt:'Alcázar de Toledo, sede del Museo del Ejército',
+    short:'Historia militar, colecciones y arqueología en el Alcázar de Toledo.',
+    facts:[['Sede','Alcázar de Toledo'],['Antecedente','Real Museo Militar, creado en 1803'],['Programa','Visita al Museo del Ejército']],
+    sections:[
+      {title:'De Madrid a Toledo',body:'El Museo tiene su origen en el Real Museo Militar de Madrid y reúne el patrimonio de distintos museos militares. Su sede actual permite relacionar las colecciones con el propio Alcázar y sus transformaciones históricas.'},
+      {title:'Historia y colecciones',body:'La exposición permanente ofrece un recorrido histórico y salas temáticas. Armas, uniformes, banderas y otros objetos ayudan a comprender la evolución del Ejército y su relación con la sociedad. Los restos arqueológicos y el patio de Carlos V amplían la lectura del lugar.'},
+      {title:'Preparar la visita',body:'El Museo forma parte del programa de esta actividad. La organización confirmará el horario y las condiciones del grupo. Consulta la información oficial antes de acudir: el recorrido disponible y las normas pueden variar. La ficha del Alcázar se conserva en otros lugares de interés como contexto del edificio.'}
+    ],
+    credit:'Rafa Esteve', license:'CC BY-SA 4.0', commons:'https://commons.wikimedia.org/wiki/File:Alcazar_Toledo_Mirador_Valle.jpg',
+    sources:[{label:'Museo del Ejército · web oficial',url:'https://ejercito.defensa.gob.es/museo/'},{label:'Historia del Museo · fuente oficial',url:'https://ejercito.defensa.gob.es/museo/museo/informacion_general/historia/'},{label:'Exposición permanente · recorrido histórico',url:'https://ejercito.defensa.gob.es/museo/exposiciones/exposicion_permanente/recorrido_historico/'},{label:'Exposición permanente · recorrido temático',url:'https://ejercito.defensa.gob.es/museo/exposiciones/exposicion_permanente/recorrido_tematico/'}]
+  },
   orgaz: {
     image:'images/places/orgaz.jpg', alt:'El entierro del señor de Orgaz, obra de El Greco',
     short:'La obra maestra de El Greco permanece en el lugar para el que fue concebida.',
@@ -74,11 +86,11 @@ export const details: Record<string, Detail> = {
   'academia-infanteria': {
     image:'images/places/academy.jpg', alt:'Vista panorámica de la Academia de Infantería de Toledo',
     short:'Centro de enseñanza militar unido a Toledo desde 1850 y depositario de la tradición del Arma de Infantería.',
-    facts:[['Primer Colegio de Infantería','1850'],['Sede actual','Desde 1948'],['Visita prevista','Edificio Noble']],
+    facts:[['Primer Colegio de Infantería','1850'],['Sede actual','Desde 1948'],['Espacio representativo','Edificio Noble']],
     sections:[
       {title:'Una institución vinculada a Toledo',body:'El primer Colegio de Infantería se creó en Toledo en 1850. Tras diferentes etapas y emplazamientos, regresó a la ciudad en 1875 y se instaló en el Alcázar. La destrucción de aquella sede durante la Guerra Civil llevó a construir el conjunto actual al otro lado del Tajo, frente al perfil histórico de la ciudad.'},
       {title:'Formación y valores',body:'La Academia completa la formación de los futuros oficiales y suboficiales del Arma de Infantería. Junto a los conocimientos profesionales, conserva y transmite valores, símbolos, recompensas, memoria de las unidades y tradiciones desarrolladas a lo largo de su historia.'},
-      {title:'Visita institucional prevista',body:'El programa contempla el Edificio Noble, la Sala de Laureados, la Sala de la Medalla Militar Individual y el comedor. Este contenido es orientativo: el itinerario interior, la identificación requerida, las restricciones de fotografía y las normas de circulación serán exclusivamente las que comunique la Academia para la actividad.'}
+      {title:'Patrimonio de la Infantería',body:'El Edificio Noble y las salas dedicadas a la Laureada y a la Medalla Militar Individual conservan la memoria y las tradiciones del Arma. La Academia no forma parte del programa de esta actividad. Su inclusión aquí es informativa y no implica acceso público: cualquier visita requiere información y autorización de la institución.'}
     ],
     credit:'Victor Gleim', license:'CC BY-SA 4.0', commons:'https://commons.wikimedia.org/wiki/File:Toledo_Infantry_Academy_-_Panoramic.jpg',
     sources:[{label:'Academia de Infantería · web oficial',url:'https://ejercito.defensa.gob.es/unidades/Toledo/acinf/'},{label:'Historial oficial',url:'https://ejercito.defensa.gob.es/unidades/Toledo/acinf/Historial/index.html'},{label:'Wikipedia · Academia de Infantería',url:'https://es.wikipedia.org/wiki/Academia_de_Infanter%C3%ADa_de_Toledo'}]

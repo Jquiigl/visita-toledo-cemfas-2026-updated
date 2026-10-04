@@ -6,7 +6,7 @@ Versión V2 completa, trasladada a un repositorio independiente:
 ## Qué contiene
 
 - Portada en `/` con el cartel aportado por la organización y dos accesos: Usuario abre `/guia` sin contraseña y Administrador abre `/admin/login`, con validación en el servidor. El título visual es el del cartel, sin «Updated» en la portada. En móvil se encuadra la parte superior (escudos, título y ciudad) y los botones quedan debajo; en escritorio, el cartel completo se acompaña del panel de acceso. Los siete idiomas, incluido árabe RTL, se conservan al entrar en la guía. El QR existente sigue siendo válido.
-- Zona pública con siete idiomas, árabe RTL persistente, programa provisional, mapa, fichas, imágenes y 49 audios.
+- Zona pública con siete idiomas, árabe RTL persistente, programa provisional, mapa, fichas, imágenes y audios.
 - Inscripción y valoración mediante Google Forms. El botón dorado de valoración aparece debajo de Inscripción, con aviso de responder después de la actividad y plazo del 28 de octubre de 2026 inclusive.
 - Administrador protegido por el servidor: sesión segura, listados, recuentos, revisión, documentos y valoración.
 - Google Sheets en modo de solo lectura para inscripciones y encuestas, con credenciales exclusivamente en el servidor. OpenAI sigue siendo opcional y permanece desactivado sin configuración explícita.
@@ -57,3 +57,31 @@ La rama V2 anterior se conserva como respaldo y no se borra: el desarrollo de Up
 El repositorio no contiene contraseñas, claves privadas, sesiones ni respuestas reales de participantes.
 
 El material gráfico y sonoro se conserva; las cabeceras, la aplicación instalable y los metadatos usan el nombre Toledo Updated.
+
+## Actualización del programa · 4 de octubre de 2026
+
+La guía distingue «Lugares a visitar en el programa» (Catedral, Santa María la
+Blanca y Museo del Ejército) de «Otros lugares de interés». Orgaz, la Academia,
+la ficha contextual del Alcázar y el resto del material permanecen accesibles
+con sus enlaces anteriores. Programa, mapa, ruta externa y acceso/estacionamiento
+ya no presentan Orgaz o la Academia como paradas. Los horarios siguen siendo
+provisionales; no se ha confirmado una reserva ni un acceso de vehículos.
+
+La nueva ficha ` /guia?lang=es#card-museo-ejercito` tiene fuentes oficiales
+del Museo, imagen del Alcázar con su crédito original, resumen y transcripción
+en los siete idiomas. Sigue el patrón existente: desarrollo ampliado en español
+y resumen en el idioma seleccionado. La lectura del Museo y de la Academia
+actualizada utiliza las voces disponibles en el navegador/dispositivo, con
+aviso cuando el idioma no esté disponible; el resto conserva sus audios.
+La síntesis local de archivos no produjo audio válido en este entorno, por lo
+que no se publican archivos vacíos ni el antiguo relato de una visita prevista
+a la Academia. Las transcripciones permiten acceder siempre al contenido.
+
+Los formularios Google y sus esquemas de importación no se han modificado:
+la pregunta histórica sobre la Academia en la valoración requiere una revisión
+coordinada del formulario y del esquema antes de sustituirla por el Museo.
+No se han alterado el administrador, autenticación ni datos de participantes.
+
+Verificación: 61 pruebas existentes, TypeScript, ESLint, compilación Pages y
+Functions; revisión en navegador de las categorías, programa, mapa y ficha
+multilingüe, incluida la dirección RTL en árabe. V1 permanece separada e intacta.
