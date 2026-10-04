@@ -1,11 +1,11 @@
-const CACHE_VERSION = 'toledo-v2-media';
+const CACHE_VERSION = 'toledo-v2-media-concilios-20261004';
 const AUDIO_CACHE = 'toledo-v2-audio-20261004';
 const CORE = [
   './manifest.webmanifest', './images/hero-wide-1600.png',
   './images/app-icon-192.png', './images/app-icon-512.png', './images/apple-touch-icon-180.png',
   './images/places/map-toledo.png', './images/places/old-town.jpg', './images/places/orgaz.jpg',
   './images/places/synagogue.jpg', './images/places/cathedral.jpg', './images/places/alcazar.jpg',
-  './images/places/academy.jpg', './images/places/gastronomy.jpg'
+  './images/places/concilios.jpg', './images/places/academy.jpg', './images/places/gastronomy.jpg'
 ];
 
 self.addEventListener('install', (event) => {

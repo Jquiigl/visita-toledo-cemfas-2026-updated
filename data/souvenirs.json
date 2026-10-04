@@ -1,0 +1,184 @@
+{
+  "es": [
+    {
+      "title": "Dulces tradicionales",
+      "body": "Toledo conserva una tradición de dulces de convento y obrador: pastas de almendra, roscos y especialidades de cada casa. Son recuerdos ligados a la repostería local; pregunta por su elaboración e ingredientes.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "Mazapanes de Toledo",
+      "body": "El mazapán combina almendra molida y azúcar y se presenta en figuritas y variedades rellenas. El Mazapán de Toledo cuenta con Indicación Geográfica Protegida. Sus formas convierten este dulce en un pequeño recuerdo de la ciudad.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "Orfebrería y damasquinado",
+      "body": "La orfebrería trabaja metales preciosos para crear joyas y objetos decorativos. Entre los recuerdos toledanos destaca el damasquinado: dibujos de oro o plata incrustados sobre otro metal. Importan tanto el diseño como el acabado artesanal.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "Armas, espadas y sables",
+      "body": "La tradición espadera vincula Toledo con el trabajo del acero y la historia militar. Espadas, sables y reproducciones de colección muestran ornamentación y marcas de taller. Distingue las piezas artesanas de los recuerdos industriales.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ],
+  "en": [
+    {
+      "title": "Traditional sweets",
+      "body": "Toledo has a tradition of convent and bakery sweets: almond biscuits, ring-shaped pastries and each establishment’s specialities. These souvenirs reflect local baking; ask how they are made and what ingredients they contain.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "Toledo marzipan",
+      "body": "Marzipan combines ground almonds and sugar, shaped into small figures or filled varieties. Toledo Marzipan has Protected Geographical Indication status. Its shapes make this sweet a small reminder of the city.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "Goldsmithing and damascening",
+      "body": "Goldsmithing uses precious metals to create jewellery and decorative objects. Toledo souvenirs include damascening: gold or silver designs inlaid into another metal. Both the design and the craftsmanship of the finish matter.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "Arms, swords and sabres",
+      "body": "Toledo’s sword-making tradition links steelworking with military history. Swords, sabres and collectible reproductions display decoration and workshop marks. Distinguish handcrafted pieces from industrial souvenirs.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ],
+  "fr": [
+    {
+      "title": "Douceurs traditionnelles",
+      "body": "Tolède conserve une tradition de douceurs de couvent et d’atelier : biscuits aux amandes, pâtisseries en anneau et spécialités de chaque maison. Ces souvenirs évoquent la pâtisserie locale ; renseignez-vous sur leur fabrication et leurs ingrédients.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "Massepain de Tolède",
+      "body": "Le massepain associe amandes moulues et sucre, en figurines ou en variétés fourrées. Le Massepain de Tolède bénéficie d’une Indication Géographique Protégée. Ses formes en font un petit souvenir gourmand de la ville.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "Orfèvrerie et damasquinage",
+      "body": "L’orfèvrerie travaille les métaux précieux pour créer bijoux et objets décoratifs. Le damasquinage figure parmi les souvenirs tolédans : des motifs d’or ou d’argent incrustés dans un autre métal. Le dessin et la finition artisanale comptent.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "Armes, épées et sabres",
+      "body": "La tradition des épées relie Tolède au travail de l’acier et à l’histoire militaire. Épées, sabres et reproductions de collection portent des décors et des marques d’atelier. Distinguez les pièces artisanales des souvenirs industriels.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ],
+  "it": [
+    {
+      "title": "Dolci tradizionali",
+      "body": "Toledo conserva una tradizione di dolci conventuali e di laboratorio: biscotti alle mandorle, dolci ad anello e specialità di ogni casa. Questi ricordi raccontano la pasticceria locale; chiedi come vengono preparati e quali ingredienti contengono.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "Marzapane di Toledo",
+      "body": "Il marzapane unisce mandorle macinate e zucchero, in figurine o varietà ripiene. Il Marzapane di Toledo ha un’Indicazione Geografica Protetta. Le sue forme ne fanno un piccolo ricordo dolce della città.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "Oreficeria e damaschinatura",
+      "body": "L’oreficeria lavora metalli preziosi per creare gioielli e oggetti decorativi. Tra i ricordi toledani spicca la damaschinatura: disegni in oro o argento intarsiati su un altro metallo. Contano il disegno e la finitura artigianale.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "Armi, spade e sciabole",
+      "body": "La tradizione delle spade lega Toledo alla lavorazione dell’acciaio e alla storia militare. Spade, sciabole e riproduzioni da collezione mostrano decorazioni e marchi di bottega. Distingui i pezzi artigianali dai souvenir industriali.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ],
+  "de": [
+    {
+      "title": "Traditionelle Süßigkeiten",
+      "body": "Toledo pflegt eine Tradition von Süßgebäck aus Klöstern und Backstuben: Mandelgebäck, ringförmige Gebäcke und Spezialitäten einzelner Häuser. Diese Andenken stehen für lokale Backkunst; fragen Sie nach Herstellung und Zutaten.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "Marzipan aus Toledo",
+      "body": "Marzipan verbindet gemahlene Mandeln und Zucker, als kleine Figuren oder gefüllte Varianten. Marzipan aus Toledo besitzt eine geschützte geografische Angabe. Seine Formen machen die Süßigkeit zu einem kleinen Andenken an die Stadt.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "Goldschmiedekunst und Damaszierung",
+      "body": "Goldschmiedekunst verarbeitet Edelmetalle zu Schmuck und dekorativen Objekten. Typisch für Toledo ist die Damaszierung: Gold- oder Silbermuster werden in ein anderes Metall eingelegt. Gestaltung und handwerkliche Verarbeitung verdienen Beachtung.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "Waffen, Schwerter und Säbel",
+      "body": "Toledos Schwerttradition verbindet Stahlverarbeitung mit Militärgeschichte. Schwerter, Säbel und Sammlerrepliken zeigen Verzierungen und Werkstattzeichen. Unterscheiden Sie handgefertigte Stücke von industriell hergestellten Andenken.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ],
+  "ar": [
+    {
+      "title": "الحلويات التقليدية",
+      "body": "تحافظ طليطلة على تقاليد حلويات الأديرة والمخابز، ومنها بسكويت اللوز والحلويات الحلقية وتخصصات كل محل. تعكس هذه التذكارات فن الحلويات المحلي؛ اسأل عن طريقة إعدادها ومكوناتها.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "مرصبان طليطلة",
+      "body": "يجمع المرصبان بين اللوز المطحون والسكر، ويُشكّل في مجسمات صغيرة أو أصناف محشوة. يتمتع مرصبان طليطلة بمؤشر جغرافي محمي. وتجعل أشكاله منه تذكارًا حلوًا للمدينة.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "صياغة المعادن الثمينة والتطعيم",
+      "body": "تستخدم صياغة المعادن الثمينة الذهب والفضة لصنع الحلي والزينة. ويبرز بين تذكارات طليطلة التطعيم المعدني: رسوم من الذهب أو الفضة تُدمج في معدن آخر. تأمل التصميم وجودة العمل اليدوي.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "الأسلحة والسيوف",
+      "body": "تربط صناعة السيوف طليطلة بصناعة الفولاذ والتاريخ العسكري. تُظهر السيوف والنسخ المخصصة للاقتناء زخارف وعلامات الورش. ميّز بين القطع الحرفية والتذكارات الصناعية.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ],
+  "ko": [
+    {
+      "title": "전통 과자",
+      "body": "톨레도에는 수도원과 제과점의 과자 전통이 있습니다. 아몬드 과자, 고리 모양 과자와 가게별 특산품이 지역 제과 문화를 보여 줍니다. 만드는 방법과 재료를 확인해 보세요.",
+      "sourceLabel": "Turismo de Toledo · Dulce Toledo",
+      "sourceUrl": "https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"
+    },
+    {
+      "title": "톨레도 마지팬",
+      "body": "마지팬은 간 아몬드와 설탕으로 만들며 작은 모형이나 속을 채운 형태로 선보입니다. 톨레도 마지팬은 지리적 표시 보호를 받습니다. 다양한 모양은 도시를 기억하는 달콤한 기념품이 됩니다.",
+      "sourceLabel": "MAPA · IGP Mazapán de Toledo",
+      "sourceUrl": "https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"
+    },
+    {
+      "title": "금은 세공과 다마스키나도",
+      "body": "금은 세공은 귀금속으로 장신구와 장식품을 만드는 공예입니다. 톨레도의 다마스키나도는 금이나 은 문양을 다른 금속에 박아 넣습니다. 디자인과 수작업 마감을 함께 살펴보세요.",
+      "sourceLabel": "Turismo de Castilla-La Mancha · damasquinado",
+      "sourceUrl": "https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"
+    },
+    {
+      "title": "무기, 검과 군도",
+      "body": "톨레도의 검 제작 전통은 강철 가공과 군사 역사를 연결합니다. 검, 군도와 수집용 복제품에는 장식과 공방 표시가 담겨 있습니다. 수공예품과 산업 생산 기념품을 구별해 보세요.",
+      "sourceLabel": "Turismo de Toledo · artesanía y espadas",
+      "sourceUrl": "https://turismo.toledo.es/ver/artesania.html"
+    }
+  ]
+}

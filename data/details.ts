@@ -95,9 +95,21 @@ export const details: Record<string, Detail> = {
     credit:'Victor Gleim', license:'CC BY-SA 4.0', commons:'https://commons.wikimedia.org/wiki/File:Toledo_Infantry_Academy_-_Panoramic.jpg',
     sources:[{label:'Academia de Infantería · web oficial',url:'https://ejercito.defensa.gob.es/unidades/Toledo/acinf/'},{label:'Historial oficial',url:'https://ejercito.defensa.gob.es/unidades/Toledo/acinf/Historial/index.html'},{label:'Wikipedia · Academia de Infantería',url:'https://es.wikipedia.org/wiki/Academia_de_Infanter%C3%ADa_de_Toledo'}]
   },
+  'museo-concilios': {
+    image:'images/places/concilios.jpg', alt:'Iglesia de San Román, sede del Museo de los Concilios y la Cultura Visigoda',
+    short:'La memoria de la Toledo visigoda en la iglesia mudéjar de San Román.',
+    facts:[['Sede','Iglesia de San Román'],['Edificio','Mudéjar toledano del siglo XIII'],['Categoría','Otros lugares de interés']],
+    sections:[
+      {title:'Toledo y la cultura visigoda',body:'El Museo reúne testimonios materiales del reino visigodo de Toledo. Su nombre recuerda la importancia de los concilios en la historia de la ciudad. Las piezas arqueológicas ofrecen una mirada a la vida, las creencias y la cultura material de aquel periodo.'},
+      {title:'Qué observar',body:'Entre sus fondos se encuentran ajuares de la necrópolis de El Carpio de Tajo y reproducciones de las coronas votivas de Guarrazar. Conviene distinguir las piezas originales de las reproducciones. La iglesia de San Román es también parte de la visita, como ejemplo del mudéjar toledano.'},
+      {title:'Una visita complementaria',body:'Este Museo figura en otros lugares de interés y no es una parada del programa de esta actividad. Los horarios, las tarifas y las condiciones para grupos deben consultarse en las fuentes oficiales antes de organizar una visita por cuenta propia.'}
+    ],
+    credit:'Zarateman', license:'CC0', commons:'https://commons.wikimedia.org/wiki/File:Toledo_-_San_Roman_-_Museo_de_los_Concilios_y_de_la_Cultura_Visigoda_2.jpg',
+    sources:[{label:'Cultura de Castilla-La Mancha · Museo de los Concilios',url:'https://cultura.castillalamancha.es/museos/nuestros-museos/museo-de-los-concilios'},{label:'Turismo de Toledo · Museo de los Concilios y San Román',url:'https://turismo.toledo.es/recursos/id631-museo-de-los-concilios-y-la-cultura-visigoda-iglesia-de-san-roman.html'},{label:'Turismo de Castilla-La Mancha · Museo de los Concilios',url:'https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/museos/toledo/museo-de-los-concilios-y-la-cultura-visigoda-%28iglesia-de-san-roman%29'}]
+  },
   'gastronomia-recuerdos': {
     image:'images/places/gastronomy.jpg', alt:'Piezas tradicionales de mazapán de Toledo',
-    short:'Mazapán, cocina castellana y artesanía del damasquinado como recuerdos con identidad local.',
+    short:'Dulces, mazapanes, orfebrería y armas tradicionales: productos y recuerdos con identidad toledana.',
     facts:[['Dulce emblemático','Mazapán de Toledo'],['Plato local','Carcamusas'],['Artesanía','Damasquinado']],
     sections:[
       {title:'Sabores de Toledo',body:'El mazapán, elaborado principalmente con almendra y azúcar, es el producto más reconocido. Las carcamusas —guiso de carne de cerdo con tomate y verduras—, la perdiz a la toledana y los platos de caza reflejan una cocina castellana de sabores intensos. Quesos, aceites y vinos amplían la mirada hacia el conjunto de Castilla-La Mancha.'},
@@ -105,7 +117,7 @@ export const details: Record<string, Detail> = {
       {title:'Compra y consumo responsables',body:'Si existe una alergia o restricción alimentaria, confirma siempre los ingredientes con el establecimiento: el mazapán contiene frutos secos y otros dulces pueden incorporar huevo o gluten. Las compras deben realizarse sin retrasar el horario del grupo y respetando las indicaciones del guía y la organización.'}
     ],
     credit:'Tamorlan', license:'CC BY-SA 3.0', commons:'https://commons.wikimedia.org/wiki/File:Mazap%C3%A1n-_Toledo.jpg',
-    sources:[{label:'Turismo oficial de Toledo',url:'https://turismo.toledo.es/'},{label:'Wikipedia · gastronomía de Toledo',url:'https://es.wikipedia.org/wiki/Gastronom%C3%ADa_de_la_provincia_de_Toledo'},{label:'Wikipedia · damasquinado',url:'https://es.wikipedia.org/wiki/Damasquinado'}]
+    sources:[{label:"Turismo de Toledo · Dulce Toledo",url:"https://turismo.toledo.es/downloads/descargas/275/dulce-toledo-conventos-y-obradores.pdf"},{label:"MAPA · IGP Mazapán de Toledo",url:"https://www.mapa.gob.es/en/alimentacion/temas/calidad-diferenciada/dop-igp/detalle/pana_paste/igp_mazapan_toledo"},{label:"Turismo de Castilla-La Mancha · damasquinado",url:"https://www.turismocastillalamancha.es/es/cultura-y-patrimonio/artesania/oficios-artesanos/damasquinador"},{label:"Turismo de Toledo · artesanía y espadas",url:"https://turismo.toledo.es/ver/artesania.html"},{label:'Turismo de Toledo · gastronomía y dulces',url:'https://turismo.toledo.es/comer.html'},{label:'Turismo oficial de Toledo',url:'https://turismo.toledo.es/'},{label:'Wikipedia · gastronomía de Toledo',url:'https://es.wikipedia.org/wiki/Gastronom%C3%ADa_de_la_provincia_de_Toledo'},{label:'Wikipedia · damasquinado',url:'https://es.wikipedia.org/wiki/Damasquinado'}]
   }
 };
 

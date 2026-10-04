@@ -14,3 +14,5 @@ Las imágenes se sirven localmente para permitir la consulta de la aplicación c
 | `map-toledo.png` | Map of Toledo, Spain | OpenStreetMap.org y Qirille | CC0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Map_of_Toledo,_Spain.png) |
 
 Las licencias deben conservarse si las imágenes se sustituyen, redistribuyen o modifican.
+
+| `concilios.jpg` | Iglesia de San Román, Museo de los Concilios | Zarateman | CC0 | [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Toledo_-_San_Roman_-_Museo_de_los_Concilios_y_de_la_Cultura_Visigoda_2.jpg) |

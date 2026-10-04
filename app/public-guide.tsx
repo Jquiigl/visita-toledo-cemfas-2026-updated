@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import SpokenSummary from './spoken-summary';
 import audioData from '../data/audio-scripts.json';
+import souvenirSections from '../data/souvenirs.json';
 import { programmeIds, walkingIds, visitPlan } from '../data/visit-plan';
 import { details, mapAttribution } from '../data/details';
 import { languageCodes, type LanguageCode, ui } from '../data/ui';
@@ -70,6 +71,7 @@ const places: Record<string,Place> = {
   'museo-ejercito':{map:'https://www.google.com/maps/search/?api=1&query=Museo+del+Ej%C3%A9rcito%2C+Toledo',official:'https://ejercito.defensa.gob.es/museo/',lat:39.85861,lon:-4.02017},
   alcazar:{map:'https://www.google.com/maps/search/?api=1&query=Museo+del+Ej%C3%A9rcito%2C+Toledo',official:'https://ejercito.defensa.gob.es/museo/',lat:39.85861,lon:-4.02017},
   'academia-infanteria':{map:'https://www.google.com/maps/search/?api=1&query=Academia+de+Infanter%C3%ADa+de+Toledo',official:'https://ejercito.defensa.gob.es/unidades/Toledo/acinf/'},
+  'museo-concilios':{map:'https://www.google.com/maps/search/?api=1&query=Museo+de+los+Concilios+y+la+Cultura+Visigoda%2C+Toledo',official:'https://cultura.castillalamancha.es/museos/nuestros-museos/museo-de-los-concilios'},
   'gastronomia-recuerdos':{map:'https://www.google.com/maps/search/?api=1&query=Artesan%C3%ADa+y+gastronom%C3%ADa+Toledo',official:'https://turismo.toledo.es/'}
 };
 
@@ -87,7 +89,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
   const [screen,setScreen]=useState<Screen>('home');
   const [locationState,setLocationState]=useState<Record<string,'checking'|'near'|'far'|'inaccurate'|'denied'>>({});
   const copy=ui[language],text=labels[language],menu=menuCopy[language],parkingText=parkingLinkCopy[language],isRtl=language==='ar';
-  const cards=useMemo(()=>audioData.cards.map(card=>({...card,title:card.titles[language],body:card.texts[language],detail:details[card.id]})),[language]);
+  const cards=useMemo(()=>audioData.cards.map(card=>({...card,title:card.titles[language],body:card.texts[language],transcript:card.transcripts?.[language]??card.texts[language],detail:details[card.id]})),[language]);
   const plan=visitPlan[language];
   const programmeCards=programmeIds.map(id=>cards.find(c=>c.id===id)!);
   const otherCards=cards.filter(c=>!programmeIds.some(id=>id===c.id));
@@ -161,7 +163,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
     </section>}
 
     {screen==='visit'&&<section className="screen guide-screen">
-      <div className="screen-heading"><span className="status">{cards.length} {text.guide}</span><h1>{copy.visitTitle}</h1><p>{copy.visitIntro}</p></div>
+      <div className="screen-heading"><span className="status">{cards.length} {{es:'Fichas',en:'Cards',fr:'Fiches',it:'Schede',de:'Karten',ar:'بطاقات',ko:'안내'}[language]}</span><h1>{copy.visitTitle}</h1><p>{copy.visitIntro}</p></div>
       {[{title:plan.program,cards:programmeCards},{title:plan.other,cards:otherCards}].map(group=><section key={group.title} className="place-category"><h2>{group.title}</h2><div className="guide-list">{group.cards.map(card=><button className="guide-card" key={card.id} onClick={()=>navigate(`card-${card.id}`)}><img src={imageUrl(card.detail.image)} alt=""/><div><small lang="es" dir="ltr">{card.detail.facts[0][1]}</small><h2>{card.title}</h2><p>{language==='es'?card.detail.short:`${card.body.slice(0,145)}…`}</p><b>{text.readMore} <span aria-hidden="true">{forwardArrow(language)}</span></b></div></button>)}</div></section>)}
     </section>}
 
@@ -169,8 +171,9 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
       <div className="detail-photo"><img src={imageUrl(current.detail.image)} alt={current.detail.alt}/><div className="photo-caption" lang="es" dir="ltr">{current.detail.credit} · {current.detail.license}</div></div>
       <div className="screen detail-body"><p className="eyebrow">{programmeIds.some(id=>id===current.id)?plan.program:plan.other}</p><h1>{current.title}</h1><p className="detail-lead">{current.body}</p>
         <section className="facts"><h2>{text.highlights}</h2><dl lang="es" dir="ltr">{current.detail.facts.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl></section>
+        {current.id==='gastronomia-recuerdos'&&<div className="article-sections souvenir-reviews">{souvenirSections[language].map(section=><section key={section.title}><h2>{section.title}</h2><p>{section.body}</p><a href={section.sourceUrl} target="_blank" rel="noreferrer">{section.sourceLabel}<External/></a></section>)}</div>}
         {language==='es'?<div className="article-sections">{current.detail.sections.map(section=><section key={section.title}><h2>{section.title}</h2><p>{section.body}</p></section>)}</div>:<div className="translation-note">ⓘ {text.expandedSpanish}</div>}
-        <section className="audio-panel"><div><span>▶</span><div><small>{text.audio}</small><strong>{current.title}</strong></div></div>{['museo-ejercito','academia-infanteria'].includes(current.id)?<SpokenSummary key={`${current.id}-${language}`} language={language} text={current.body}/>:<audio key={`${current.id}-${language}`} dir="ltr" controls preload="none" src={imageUrl(`audio/${language}/${current.id}.wav`)} aria-label={`${copy.listen}: ${current.title}`}/>}<details className="audio-transcript"><summary>{plan.transcript}</summary><p>{current.body}</p></details></section>
+        <section className="audio-panel"><div><span>▶</span><div><small>{text.audio}</small><strong>{current.title}</strong></div></div>{['museo-ejercito','academia-infanteria','museo-concilios','gastronomia-recuerdos'].includes(current.id)?<SpokenSummary key={`${current.id}-${language}`} language={language} text={current.transcript}/>:<audio key={`${current.id}-${language}`} dir="ltr" controls preload="none" src={imageUrl(`audio/${language}/${current.id}.wav`)} aria-label={`${copy.listen}: ${current.title}`}/>}<details className="audio-transcript"><summary>{plan.transcript}</summary><p>{current.transcript}</p></details></section>
         <div className="detail-actions"><a href={places[current.id].map} target="_blank" rel="noreferrer">{copy.map}<External/></a><a href={places[current.id].official} target="_blank" rel="noreferrer">{copy.official}<External/></a>{places[current.id].lat!==undefined&&<button onClick={()=>checkLocation(current.id,places[current.id])} disabled={locationState[current.id]==='checking'}>{text.nearby}</button>}</div>
         {locationMessage(locationState[current.id])&&<p className={`location-result ${locationState[current.id]}`} role="status">{locationMessage(locationState[current.id])}</p>}
         {places[current.id].lat!==undefined&&<p className="location-privacy">{copy.locationPrivacy}</p>}

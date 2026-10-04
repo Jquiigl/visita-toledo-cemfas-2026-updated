@@ -85,3 +85,17 @@ No se han alterado el administrador, autenticación ni datos de participantes.
 Verificación: 61 pruebas existentes, TypeScript, ESLint, compilación Pages y
 Functions; revisión en navegador de las categorías, programa, mapa y ficha
 multilingüe, incluida la dirección RTL en árabe. V1 permanece separada e intacta.
+
+## Ampliación de lugares y productos típicos
+
+El Museo de los Concilios y la Cultura Visigoda se añade a «Otros lugares de
+interés» con ficha propia ` /guia?lang=es#card-museo-concilios`, imagen de San
+Román (Zarateman, CC0), fuentes oficiales y resumen/transcripción en los siete
+idiomas. Se conserva el programa de Catedral, Santa María la Blanca y Museo
+del Ejército, sin añadir nuevas paradas al itinerario.
+
+Gastronomía y recuerdos incluye cuatro reseñas en los siete idiomas: dulces,
+mazapanes, orfebrería/damasquinado y armas/espadas/sables. Cada reseña tiene
+su referencia visible; se mantienen la cocina local y los contenidos previos.
+La lectura de esta ficha utiliza las voces del dispositivo para reflejar la
+transcripción ampliada, con aviso si no hay una voz disponible.
