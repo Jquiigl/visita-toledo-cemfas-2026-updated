@@ -16,7 +16,7 @@ type MainScreen = 'home'|'program'|'map'|'visit'|'useful'|'menu'|'registration';
 type Screen = MainScreen | `card-${string}`;
 const FORM_URL = 'https://forms.gle/J88j2NxP6GnCfRT16';
 const AEMET_URL = 'https://www.aemet.es/es/eltiempo/prediccion/municipios/toledo-id45168';
-const FULL_ROUTE_URL = 'https://www.google.com/maps/dir/?api=1&origin=Catedral+Primada+de+Toledo&destination=Museo+del+Ej%C3%A9rcito%2C+Toledo&waypoints=Sinagoga+de+Santa+Mar%C3%ADa+la+Blanca%2C+Toledo&travelmode=walking';
+const FULL_ROUTE_URL = 'https://www.google.com/maps/dir/?api=1&origin=Museo+del+Ej%C3%A9rcito%2C+Toledo&destination=Museo+del+Ej%C3%A9rcito%2C+Toledo&waypoints=Catedral+Primada+de+Toledo%7CMuseo+de+los+Concilios+y+la+Cultura+Visigoda%2C+Toledo&travelmode=walking';
 
 const cardIds = audioData.cards.map((card) => card.id);
 const screenFromHash = (): Screen => {
@@ -189,8 +189,8 @@ const places: Record<string,Place> = {
 
 const mapPins = [
   {id:'catedral',number:1,left:'60%',top:'52%'},
-  {id:'santa-maria-la-blanca',number:2,left:'18%',top:'64%'},
-  {id:'museo-ejercito',number:3,left:'86%',top:'40%'}
+  {id:'museo-concilios',number:2,left:'36%',top:'29%'},
+  {id:'museo-ejercito',number:3,left:'83%',top:'30%'}
 ];
 
 function distanceMetres(aLat:number,aLon:number,bLat:number,bLon:number){const r=6371e3,toRad=(n:number)=>n*Math.PI/180,p1=toRad(aLat),p2=toRad(bLat),dp=toRad(bLat-aLat),dl=toRad(bLon-aLon),h=Math.sin(dp/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin(dl/2)**2;return r*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));}
@@ -234,7 +234,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
       <div className="v2-ribbon"><Link href={coverUrl(language)}>{coverCopy[language].back}</Link><Link href="/admin/login">{coverCopy[language].admin} {forwardArrow(language)}</Link></div>
       <div className="compact-hero"><img src={imageUrl('images/hero-wide-1600.png')} alt="Vista panorámica de Toledo al atardecer"/></div>
       <div className="home-copy"><p className="eyebrow">{copy.date}</p><h1>{copy.title}</h1><p>{copy.lead}</p></div>
-      <div className="next-card"><span>24</span><div><small lang="es" dir="ltr">OCT · 2026</small><strong dir="ltr">08:45 · CESEDEN</strong><p>{copy.schedule[0][1]} · {copy.provisional}</p></div></div>
+      <div className="next-card"><span>24</span><div><small lang="es" dir="ltr">OCT · 2026</small><strong dir="ltr">09:00 · CESEDEN</strong><p>{copy.schedule[0][1]}</p></div></div>
       <div className="alert"><strong>{copy.noticeTitle}</strong><span>{copy.noticeBody}</span></div>
       <div className="menu-grid">
         <button onClick={()=>navigate('program')}><span>◷</span><strong>{copy.program}</strong><small>{text.schedule}</small></button>
@@ -251,23 +251,21 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
     </section>}
 
     {screen==='program'&&<section className="screen">
-      <div className="screen-heading"><span className="status">{copy.provisional}</span><h1>{copy.programTitle}</h1><p>{copy.noticeBody}</p></div>
-      <div className="day-summary"><div><strong>08:45</strong><small>CESEDEN</small></div><div><strong>10:00</strong><small>TOLEDO</small></div><div><strong>17:00</strong><small>MADRID</small></div></div>
+      <div className="screen-heading"><span className="status">{copy.program}</span><h1>{copy.programTitle}</h1><p>{copy.noticeBody}</p></div>
+      <div className="day-summary"><div><strong>09:00</strong><small>CESEDEN</small></div><div><strong>10:00</strong><small>TOLEDO</small></div><div><strong>16:30</strong><small>TOLEDO → CESEDEN</small></div></div>
       <ol className="program-list">
         {copy.schedule.map(([time,title,detail],index)=><li key={`${time}-${title}`}><time dir="ltr">{time}</time><div><strong>{title}</strong>{detail&&<span>{detail}</span>}
-          {index===0&&language==='es'&&<p>Recepción de participantes, comprobación organizativa y distribución en los transportes previstos.</p>}
-          {index===2&&<div className="program-feature"><b>{text.historicRoute}</b><p>{language==='es'?'Recorrido guiado contratado por las calles del casco histórico. La secuencia y los tiempos interiores se ajustarán con la empresa.':text.routePending}</p><div className="stop-chips">{walkingIds.map(id=>cards.find(c=>c.id===id)!).map((c,i)=><button key={c.id} onClick={()=>navigate(`card-${c.id}`)}>{i+1} · {c.title}</button>)}</div></div>}
-          {index===3&&language==='es'&&<p>Final del recorrido a pie y reunión del grupo para la visita al Museo del Ejército.</p>}
-          {index===4&&<div className="program-feature"><div className="stop-chips"><button onClick={()=>navigate('card-museo-ejercito')}>{cards.find(c=>c.id==='museo-ejercito')?.title}</button></div></div>}
-          {index===5&&language==='es'&&<p>Comida de confraternización en el comedor de la Residencia Logística Militar Los Alijares.</p>}
+          {index===4&&<div className="program-feature"><b>{text.historicRoute}</b><div className="stop-chips">{walkingIds.map(id=>cards.find(c=>c.id===id)!).map(c=><button key={c.id} onClick={()=>navigate(`card-${c.id}`)}>{c.title}</button>)}</div></div>}
+          {index===5&&<div className="program-feature"><div className="stop-chips"><button onClick={()=>navigate('card-museo-ejercito')}>{cards.find(c=>c.id==='museo-ejercito')?.title}</button></div></div>}
+          {index===7&&<button className="inline-link" onClick={()=>navigate('menu')}>{menu.title} <span aria-hidden="true">{forwardArrow(language)}</span></button>}
         </div></li>)}
       </ol>
-      <div className="route-note">ⓘ {text.routePending}</div>
+      <div className="route-note">ⓘ {copy.noticeBody}</div>
       <button className="primary-action" onClick={()=>navigate('map')}>{text.seeMap} <span aria-hidden="true">{forwardArrow(language)}</span></button>
     </section>}
 
     {screen==='map'&&<section className="screen map-screen">
-      <div className="screen-heading"><span className="status">{copy.provisional}</span><h1>{text.publicMap}</h1><p>{text.routePending}</p></div>
+      <div className="screen-heading"><span className="status">{copy.provisional}</span><h1>{text.publicMap}</h1><p>{copy.noticeBody}</p></div>
       <div className="map-frame"><img src={imageUrl('images/places/map-toledo.png')} alt="Mapa del casco histórico de Toledo"/>{mapPins.map(pin=>{const card=cards.find(c=>c.id===pin.id)!;return <button key={pin.id} className="map-pin" style={{left:pin.left,top:pin.top}} onClick={()=>navigate(`card-${pin.id}`)} aria-label={`${pin.number}. ${card.title}`}><span>{pin.number}</span></button>})}</div>
       <ol className="map-legend">{mapPins.map(pin=>{const card=cards.find(c=>c.id===pin.id)!;return <li key={pin.id}><button onClick={()=>navigate(`card-${pin.id}`)}><b>{pin.number}</b><span>{card.title}</span><i aria-hidden="true">{forwardChevron(language)}</i></button></li>})}</ol>
       <a className="primary-action link-button" href={FULL_ROUTE_URL} target="_blank" rel="noreferrer">{text.mapFull}<External/></a>

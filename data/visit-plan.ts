@@ -1,67 +1,67 @@
-export const programmeIds = ['catedral', 'santa-maria-la-blanca', 'museo-ejercito'] as const;
-export const walkingIds = ['catedral', 'santa-maria-la-blanca'] as const;
+export const programmeIds = ['catedral', 'museo-concilios', 'museo-ejercito'] as const;
+export const walkingIds = ['catedral', 'museo-concilios'] as const;
 export const visitPlan = {
   "es": {
     "program": "Lugares a visitar en el programa",
     "other": "Otros lugares de interés",
-    "walk": "Catedral de Toledo y Sinagoga de Santa María la Blanca",
+    "walk": "Catedral de Toledo y Museo de los Concilios",
     "museum": "Visita al Museo del Ejército",
-    "museumNote": "Horario y recorrido interior pendientes de confirmación por la organización y el Museo.",
-    "parking": "El acceso y las zonas de estacionamiento para el casco histórico, el Museo del Ejército y la RLM Los Alijares están pendientes de confirmación. Los enlaces indican ubicaciones, no autorización ni reserva de aparcamiento.",
+    "museumNote": "Programa comunicado por la organización. Sigue las indicaciones de los guías y de la organización para los grupos y accesos.",
+    "parking": "Punto de encuentro. Aparcamiento solicitado para autobús y vehículos particulares, pendiente de autorización.",
     "transcript": "Transcripción del audio"
   },
   "en": {
     "program": "Places to visit in the programme",
     "other": "Other places of interest",
-    "walk": "Toledo Cathedral and Santa María la Blanca Synagogue",
+    "walk": "Toledo Cathedral and the Council Museum",
     "museum": "Army Museum visit",
-    "museumNote": "Time and indoor route awaiting confirmation by the organisers and Museum.",
-    "parking": "Access and parking for the historic centre, Army Museum and RLM Los Alijares await confirmation. Links show locations, not parking authorisation or reservations.",
+    "museumNote": "Programme communicated by the organisers. Follow guides’ and organisers’ instructions for groups and access.",
+    "parking": "Meeting point. Parking requested for the coach and private vehicles; authorisation pending.",
     "transcript": "Audio transcript"
   },
   "fr": {
     "program": "Lieux à visiter au programme",
     "other": "Autres lieux d’intérêt",
-    "walk": "Cathédrale de Tolède et synagogue Santa María la Blanca",
+    "walk": "Cathédrale de Tolède et Musée des Conciles",
     "museum": "Visite du Musée de l’Armée",
-    "museumNote": "Horaire et parcours intérieur à confirmer par l’organisation et le Musée.",
-    "parking": "L’accès et le stationnement pour le centre historique, le Musée de l’Armée et la RLM Los Alijares restent à confirmer. Les liens indiquent des lieux, sans autorisation ni réservation de stationnement.",
+    "museumNote": "Programme communiqué par l’organisation. Suivez les consignes des guides et de l’organisation pour les groupes et les accès.",
+    "parking": "Point de rencontre. Stationnement demandé pour l’autocar et les véhicules particuliers ; autorisation en attente.",
     "transcript": "Transcription audio"
   },
   "it": {
     "program": "Luoghi da visitare nel programma",
     "other": "Altri luoghi di interesse",
-    "walk": "Cattedrale di Toledo e sinagoga Santa María la Blanca",
+    "walk": "Cattedrale di Toledo e Museo dei Concili",
     "museum": "Visita al Museo dell’Esercito",
-    "museumNote": "Orario e percorso interno da confermare con l’organizzazione e il Museo.",
-    "parking": "Accesso e parcheggi per il centro storico, il Museo dell’Esercito e la RLM Los Alijares sono da confermare. I link indicano ubicazioni, non autorizzazioni o prenotazioni.",
+    "museumNote": "Programma comunicato dall’organizzazione. Seguite le indicazioni delle guide e dell’organizzazione per gruppi e accessi.",
+    "parking": "Punto di incontro. Parcheggio richiesto per autobus e veicoli privati; autorizzazione in attesa.",
     "transcript": "Trascrizione audio"
   },
   "de": {
     "program": "Besuchsorte im Programm",
     "other": "Weitere interessante Orte",
-    "walk": "Kathedrale von Toledo und Synagoge Santa María la Blanca",
+    "walk": "Kathedrale von Toledo und Konzilienmuseum",
     "museum": "Besuch des Armeemuseums",
-    "museumNote": "Zeit und Innenrundgang sind mit der Organisation und dem Museum zu bestätigen.",
-    "parking": "Zufahrt und Parkmöglichkeiten für Altstadt, Armeemuseum und RLM Los Alijares sind noch zu bestätigen. Die Links zeigen Standorte, keine Parkgenehmigungen oder Reservierungen.",
+    "museumNote": "Von der Organisation mitgeteiltes Programm. Beachten Sie die Anweisungen der Führung und Organisation zu Gruppen und Zugang.",
+    "parking": "Treffpunkt. Parkplätze für Bus und Privatfahrzeuge beantragt; Genehmigung steht aus.",
     "transcript": "Audiotranskript"
   },
   "ar": {
     "program": "الأماكن المقرر زيارتها في البرنامج",
     "other": "أماكن أخرى جديرة بالاهتمام",
-    "walk": "كاتدرائية طليطلة وكنيس سانتا ماريا لا بلانكا",
+    "walk": "كاتدرائية طليطلة ومتحف المجامع",
     "museum": "زيارة متحف الجيش",
-    "museumNote": "الموعد والمسار الداخلي في انتظار تأكيد الجهة المنظمة والمتحف.",
-    "parking": "الدخول ومواقف السيارات للمركز التاريخي ومتحف الجيش وRLM Los Alijares في انتظار التأكيد. الروابط تحدد المواقع ولا تعني تصريحًا أو حجزًا لموقف.",
+    "museumNote": "البرنامج المبلغ من الجهة المنظمة. اتبع تعليمات المرشدين والمنظمين بشأن المجموعات والدخول.",
+    "parking": "نقطة التجمع. طُلب موقف للحافلة والسيارات الخاصة؛ التصريح في انتظار التأكيد.",
     "transcript": "النص الصوتي"
   },
   "ko": {
     "program": "일정에 포함된 방문 장소",
     "other": "다른 관심 장소",
-    "walk": "톨레도 대성당과 산타 마리아 라 블랑카 회당",
+    "walk": "톨레도 대성당과 공의회 박물관",
     "museum": "육군박물관 방문",
-    "museumNote": "시간과 실내 경로는 주최 측과 박물관의 확인이 필요합니다.",
-    "parking": "역사 지구, 육군박물관 및 RLM Los Alijares 출입과 주차는 확인이 필요합니다. 링크는 위치 안내이며 주차 허가나 예약을 의미하지 않습니다.",
+    "museumNote": "주최 측이 안내한 일정입니다. 그룹 및 출입에 관한 가이드와 주최 측 안내를 따라 주세요.",
+    "parking": "집결 장소. 버스 및 개인 차량 주차를 요청했으며 승인을 기다리고 있습니다.",
     "transcript": "음성 대본"
   }
 } as const;
