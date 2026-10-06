@@ -117,7 +117,7 @@ test('análisis requiere sesión, mismo origen y revisión; la preparación no a
 test('cookie cifrada rechaza manipulación y caducidad absoluta',async()=>{
   const s={access:'a',refresh:'r',expires:Date.now()/1000+3600,id:crypto.randomUUID(),userId:crypto.randomUUID(),created:Date.now()/1000};
   const v=await seal(env,s);assert.deepEqual(await unseal(env,cookie(v)),s);
-  assert.equal(await unseal(env,cookie('X'+v.slice(1))),null);
+  assert.equal(await unseal(env,cookie((v[0]==='X'?'Y':'X')+v.slice(1))),null);
   assert.equal(await unseal(env,cookie(await seal(env,{...s,created:s.created-9*3600}))),null);
 });
 test('lectura paginada evita totales truncados',async()=>{
