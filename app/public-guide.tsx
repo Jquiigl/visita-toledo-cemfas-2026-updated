@@ -37,14 +37,126 @@ const labels: Record<LanguageCode, Record<string,string>> = {
   ko:{map:'지도',guide:'가이드',schedule:'시간과 방문',route:'톨레도 경로',cards:'안내, 사진 및 음성',practical:'날씨, 복장 및 출입',day:'일정 요약',seeMap:'지도에서 경로 보기',routePending:'안내 순서이며 가이드 회사가 경로를 조정할 수 있습니다.',historicRoute:'역사 지구 도보 경로',expandedSpanish:'상세 기사는 우선 스페인어로 제공됩니다. 요약과 음성은 선택한 언어로 유지됩니다.',highlights:'핵심 정보',readMore:'안내 열기',registration:'등록',openForm:'등록 양식 열기',sources:'출처 및 사진 저작권',back:'뒤로',nearby:'여기가 맞나요?',checking:'확인 중…',mapFull:'지도에서 전체 경로 열기',academyMap:'사관학교 지도 열기',publicMap:'안내 지도',transfers:'이후 이동',threeCultures:'세 문화의 유산',details:'예정 세부 일정',summary:'요약',audio:'음성 요약'}
 };
 
-const menuCopy: Record<LanguageCode, {title:string;reference:string;intro:string;adult:string;child:string;adultItems:string[];childItem:string;note:string;dietary:string}> = {
-  es:{title:'Menú provisional',reference:'Referencia: actividad del año anterior',intro:'Esta propuesta reproduce el menú servido el año pasado y todavía no constituye el menú confirmado para 2026.',adult:'Menú de adultos',child:'Menú infantil',adultItems:['Entrantes','Arroz con bogavante','Ensalada','Postre'],childItem:'Macarrones',note:'El menú definitivo, sus ingredientes y las bebidas están pendientes de confirmación.',dietary:'Las alergias, intolerancias y necesidades alimentarias deben indicarse en el formulario de inscripción.'},
-  en:{title:'Provisional menu',reference:"Reference: last year's activity",intro:"This proposal reproduces last year's menu and is not yet the confirmed menu for 2026.",adult:'Adult menu',child:"Children's menu",adultItems:['Starters','Lobster rice','Salad','Dessert'],childItem:'Macaroni',note:'The final menu, its ingredients and drinks are awaiting confirmation.',dietary:'Allergies, intolerances and dietary requirements must be entered in the registration form.'},
-  fr:{title:'Menu provisoire',reference:"Référence : activité de l’année dernière",intro:"Cette proposition reprend le menu servi l’année dernière et ne constitue pas encore le menu confirmé pour 2026.",adult:'Menu adulte',child:'Menu enfant',adultItems:['Entrées','Riz au homard','Salade','Dessert'],childItem:'Macaronis',note:'Le menu définitif, ses ingrédients et les boissons restent à confirmer.',dietary:"Les allergies, intolérances et besoins alimentaires doivent être indiqués dans le formulaire d’inscription."},
-  it:{title:'Menu provvisorio',reference:"Riferimento: attività dell’anno scorso",intro:"Questa proposta riprende il menu servito l’anno scorso e non è ancora il menu confermato per il 2026.",adult:'Menu adulti',child:'Menu bambini',adultItems:['Antipasti','Riso con astice','Insalata','Dolce'],childItem:'Maccheroni',note:'Il menu definitivo, gli ingredienti e le bevande sono in attesa di conferma.',dietary:'Allergie, intolleranze ed esigenze alimentari devono essere indicate nel modulo di iscrizione.'},
-  de:{title:'Vorläufiges Menü',reference:'Referenz: Veranstaltung des Vorjahres',intro:'Dieser Vorschlag entspricht dem Menü des Vorjahres und ist noch nicht das bestätigte Menü für 2026.',adult:'Menü für Erwachsene',child:'Kindermenü',adultItems:['Vorspeisen','Reis mit Hummer','Salat','Dessert'],childItem:'Makkaroni',note:'Das endgültige Menü, die Zutaten und Getränke müssen noch bestätigt werden.',dietary:'Allergien, Unverträglichkeiten und besondere Ernährungsbedürfnisse sind im Anmeldeformular anzugeben.'},
-  ar:{title:'قائمة طعام مؤقتة',reference:'مرجع: نشاط العام الماضي',intro:'يعرض هذا المقترح قائمة الطعام التي قُدمت العام الماضي، وليس القائمة المؤكدة لعام 2026 بعد.',adult:'قائمة البالغين',child:'قائمة الأطفال',adultItems:['مقبلات','أرز بالكركند','سلطة','حلوى'],childItem:'معكرونة',note:'القائمة النهائية ومكوناتها والمشروبات في انتظار التأكيد.',dietary:'يجب ذكر الحساسية وعدم تحمل بعض الأطعمة والاحتياجات الغذائية في نموذج التسجيل.'},
-  ko:{title:'임시 메뉴',reference:'참고: 지난해 행사',intro:'이 내용은 지난해 제공된 메뉴를 참고한 것이며 2026년 확정 메뉴가 아닙니다.',adult:'성인 메뉴',child:'어린이 메뉴',adultItems:['전채요리','랍스터 라이스','샐러드','디저트'],childItem:'마카로니',note:'최종 메뉴와 재료 및 음료는 아직 확정되지 않았습니다.',dietary:'알레르기, 음식 불내증 및 특별 식단 요청은 등록 양식에 기재해야 합니다.'}
+const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;child:string;first:string;second:string;dessert:string;adultIncludes:string;childFirst:string;childSecond:string;childIncludes:string;note:string;dietary:string;perPerson:string;reference:string}> = {
+  "es": {
+    "title": "Menús de Los Alijares",
+    "intro": "Elija en el formulario el primer y segundo plato de cada persona que solicite el menú general.",
+    "adult": "Menú general · Menú 6",
+    "child": "Menú infantil",
+    "first": "Primero: garbanzos con almejas o Ravioli Ricotta e Spinaci",
+    "second": "Segundo: salmón a la menta o costillas BBQ",
+    "dessert": "Postre casero",
+    "adultIncludes": "Incluye agua mineral, vino blanco, vino tinto y café. No incluye cerveza ni refrescos.",
+    "childFirst": "Primero: huevo frito con patatas y dos croquetas de pollo*",
+    "childSecond": "Segundo: espaguetis boloñesa",
+    "childIncludes": "Incluye agua mineral o refresco.",
+    "note": "*Se ha solicitado sustituir las croquetas de jamón de la carta por croquetas de pollo. Adaptación pendiente de confirmar con Los Alijares.",
+    "dietary": "Indique las alergias, intolerancias y necesidades especiales en el formulario, identificando a cada persona afectada.",
+    "perPerson": "€/persona",
+    "reference": "Carta de Los Alijares · febrero 2026"
+  },
+  "en": {
+    "title": "Los Alijares menus",
+    "intro": "Choose the first and second course for each person ordering the general menu in the form.",
+    "adult": "General menu · Menu 6",
+    "child": "Children’s menu",
+    "first": "First course: chickpeas with clams or ricotta and spinach ravioli",
+    "second": "Second course: mint salmon or BBQ ribs",
+    "dessert": "Homemade dessert",
+    "adultIncludes": "Includes mineral water, white wine, red wine and coffee. Beer and soft drinks are not included.",
+    "childFirst": "First course: fried egg with potatoes and two chicken croquettes*",
+    "childSecond": "Second course: spaghetti Bolognese",
+    "childIncludes": "Includes mineral water or a soft drink.",
+    "note": "*Replacing the ham croquettes listed in the restaurant menu with chicken croquettes has been requested. Awaiting confirmation from Los Alijares.",
+    "dietary": "State allergies, intolerances and special requirements in the form, identifying each person concerned.",
+    "perPerson": "€/person",
+    "reference": "Los Alijares menu · February 2026"
+  },
+  "fr": {
+    "title": "Menus de Los Alijares",
+    "intro": "Choisissez dans le formulaire le premier et le deuxième plat pour chaque personne prenant le menu général.",
+    "adult": "Menu général · Menu 6",
+    "child": "Menu enfant",
+    "first": "Premier plat : pois chiches aux palourdes ou raviolis ricotta et épinards",
+    "second": "Deuxième plat : saumon à la menthe ou travers de porc BBQ",
+    "dessert": "Dessert maison",
+    "adultIncludes": "Eau minérale, vin blanc, vin rouge et café inclus. Bière et sodas non inclus.",
+    "childFirst": "Premier plat : œuf au plat, pommes de terre et deux croquettes de poulet*",
+    "childSecond": "Deuxième plat : spaghettis bolognaise",
+    "childIncludes": "Eau minérale ou soda inclus.",
+    "note": "*Le remplacement des croquettes de jambon de la carte par des croquettes de poulet a été demandé. En attente de confirmation de Los Alijares.",
+    "dietary": "Indiquez les allergies, intolérances et besoins particuliers dans le formulaire, avec le nom de chaque personne concernée.",
+    "perPerson": "€/personne",
+    "reference": "Carte de Los Alijares · février 2026"
+  },
+  "it": {
+    "title": "Menu di Los Alijares",
+    "intro": "Scegliete nel modulo il primo e il secondo per ogni persona che richiede il menu generale.",
+    "adult": "Menu generale · Menu 6",
+    "child": "Menu bambini",
+    "first": "Primo: ceci con vongole o ravioli ricotta e spinaci",
+    "second": "Secondo: salmone alla menta o costine BBQ",
+    "dessert": "Dolce della casa",
+    "adultIncludes": "Include acqua minerale, vino bianco, vino rosso e caffè. Birra e bibite escluse.",
+    "childFirst": "Primo: uovo fritto con patate e due crocchette di pollo*",
+    "childSecond": "Secondo: spaghetti alla bolognese",
+    "childIncludes": "Include acqua minerale o una bibita.",
+    "note": "*È stata richiesta la sostituzione delle crocchette di prosciutto della carta con crocchette di pollo. In attesa della conferma di Los Alijares.",
+    "dietary": "Indicate nel modulo allergie, intolleranze ed esigenze speciali, identificando ogni persona interessata.",
+    "perPerson": "€/persona",
+    "reference": "Carta di Los Alijares · febbraio 2026"
+  },
+  "de": {
+    "title": "Menüs von Los Alijares",
+    "intro": "Wählen Sie im Formular für jede Person mit dem allgemeinen Menü den ersten und zweiten Gang.",
+    "adult": "Allgemeines Menü · Menü 6",
+    "child": "Kindermenü",
+    "first": "Erster Gang: Kichererbsen mit Venusmuscheln oder Ravioli mit Ricotta und Spinat",
+    "second": "Zweiter Gang: Lachs mit Minze oder BBQ-Rippchen",
+    "dessert": "Hausgemachtes Dessert",
+    "adultIncludes": "Mineralwasser, Weißwein, Rotwein und Kaffee inklusive. Bier und Softdrinks nicht inklusive.",
+    "childFirst": "Erster Gang: Spiegelei mit Kartoffeln und zwei Hähnchenkroketten*",
+    "childSecond": "Zweiter Gang: Spaghetti Bolognese",
+    "childIncludes": "Mineralwasser oder Softdrink inklusive.",
+    "note": "*Der Ersatz der Schinkenkroketten auf der Speisekarte durch Hähnchenkroketten wurde angefragt. Bestätigung von Los Alijares steht noch aus.",
+    "dietary": "Geben Sie Allergien, Unverträglichkeiten und besondere Anforderungen im Formular mit der jeweiligen Person an.",
+    "perPerson": "€/Person",
+    "reference": "Speisekarte Los Alijares · Februar 2026"
+  },
+  "ar": {
+    "title": "قوائم لوس أليخاريس",
+    "intro": "اختر في النموذج الطبق الأول والثاني لكل شخص يطلب القائمة العامة.",
+    "adult": "القائمة العامة · القائمة 6",
+    "child": "قائمة الأطفال",
+    "first": "الطبق الأول: حمص مع المحار أو رافيولي بالريكوتا والسبانخ",
+    "second": "الطبق الثاني: سلمون بالنعناع أو أضلاع لحم الخنزير بصلصة الشواء",
+    "dessert": "حلوى منزلية",
+    "adultIncludes": "تشمل المياه المعدنية والنبيذ الأبيض والأحمر والقهوة. لا تشمل البيرة أو المشروبات الغازية.",
+    "childFirst": "الطبق الأول: بيض مقلي مع البطاطس وقطعتين من كروكيت الدجاج*",
+    "childSecond": "الطبق الثاني: سباغيتي بولونيز",
+    "childIncludes": "تشمل المياه المعدنية أو مشروبًا غازيًا.",
+    "note": "*طُلب استبدال كروكيت لحم الخنزير المذكور في القائمة بكروكيت الدجاج. التعديل في انتظار تأكيد لوس أليخاريس.",
+    "dietary": "اذكر الحساسية وعدم تحمل الأطعمة والاحتياجات الخاصة في النموذج مع تحديد كل شخص معني.",
+    "perPerson": "€/للشخص",
+    "reference": "قائمة لوس أليخاريس · فبراير 2026"
+  },
+  "ko": {
+    "title": "로스 알리하레스 메뉴",
+    "intro": "일반 메뉴를 신청하는 각 사람의 첫 번째와 두 번째 요리를 등록 양식에서 선택하세요.",
+    "adult": "일반 메뉴 · 메뉴 6",
+    "child": "어린이 메뉴",
+    "first": "첫 번째 요리: 조개를 넣은 병아리콩 또는 리코타와 시금치 라비올리",
+    "second": "두 번째 요리: 민트 연어 또는 BBQ 돼지갈비",
+    "dessert": "수제 디저트",
+    "adultIncludes": "생수, 화이트 와인, 레드 와인 및 커피 포함. 맥주와 청량음료는 제외됩니다.",
+    "childFirst": "첫 번째 요리: 달걀 프라이, 감자와 치킨 크로켓 두 개*",
+    "childSecond": "두 번째 요리: 스파게티 볼로네제",
+    "childIncludes": "생수 또는 청량음료 포함.",
+    "note": "*식당 메뉴의 햄 크로켓을 치킨 크로켓으로 변경해 달라고 요청했습니다. 로스 알리하레스의 확인을 기다리고 있습니다.",
+    "dietary": "알레르기, 음식 불내증 및 특별 식단 요청과 해당 인원의 이름을 양식에 기재하세요.",
+    "perPerson": "€/인",
+    "reference": "로스 알리하레스 메뉴 · 2026년 2월"
+  }
 };
 
 const parkingLinks = [
@@ -130,7 +242,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
         <button onClick={()=>navigate('visit')}><span>▤</span><strong>{text.guide}</strong><small>{text.cards}</small></button>
         <button onClick={()=>navigate('useful')}><span>ⓘ</span><strong>{copy.useful}</strong><small>{text.practical}</small></button>
       </div>
-      <button className="provisional-menu-tab" onClick={()=>navigate('menu')}><span>♨</span><div><small>{copy.provisional}</small><strong>{menu.title}</strong><p>{menu.reference}</p></div><i aria-hidden="true">{forwardChevron(language)}</i></button>
+      <button className="provisional-menu-tab" onClick={()=>navigate('menu')}><span>♨</span><div><small>25 {menu.perPerson} · 14 {menu.perPerson}</small><strong>{menu.title}</strong><p>{menu.reference}</p></div><i aria-hidden="true">{forwardChevron(language)}</i></button>
       <button className="primary-action" onClick={()=>navigate('registration')}>{text.registration} <span aria-hidden="true">{forwardArrow(language)}</span></button>
       <section className="evaluation-callout" aria-label={evaluationCopy[language].button}>
         <a className="primary-action link-button" href={evaluationFormUrl} target="_blank" rel="noreferrer" aria-describedby="evaluation-notice">{evaluationCopy[language].button} <External/></a>
@@ -188,13 +300,13 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
     </section>}
 
     {screen==='menu'&&<section className="screen menu-screen">
-      <div className="screen-heading"><span className="status">{copy.provisional}</span><h1>{menu.title}</h1><p>{menu.intro}</p></div>
+      <div className="screen-heading"><span className="status">Los Alijares</span><h1>{menu.title}</h1><p>{menu.intro}</p></div>
       <div className="menu-reference">{menu.reference}</div>
       <div className="meal-cards">
-        <article><div className="meal-card-heading"><span>01</span><h2>{menu.adult}</h2></div><ol>{menu.adultItems.map(item=><li key={item}>{item}</li>)}</ol></article>
-        <article className="child-meal"><div className="meal-card-heading"><span>02</span><h2>{menu.child}</h2></div><div className="child-dish">{menu.childItem}</div></article>
+        <article><div className="meal-card-heading"><span>01</span><h2>{menu.adult}</h2></div><p className="meal-price">25 <small>{menu.perPerson}</small></p><ol>{[menu.first,menu.second,menu.dessert].map(item=><li key={item}>{item}</li>)}</ol><p className="meal-includes">{menu.adultIncludes}</p></article>
+        <article className="child-meal"><div className="meal-card-heading"><span>02</span><h2>{menu.child}</h2></div><p className="meal-price">14 <small>{menu.perPerson}</small></p><ol>{[menu.childFirst,menu.childSecond,menu.dessert].map(item=><li key={item}>{item}</li>)}</ol><p className="meal-includes">{menu.childIncludes}</p></article>
       </div>
-      <div className="menu-warning"><strong>{copy.provisional}</strong><p>{menu.note}</p></div>
+      <div className="menu-warning"><p>{menu.note}</p></div>
       <p className="dietary-note">ⓘ {menu.dietary}</p>
       <button className="primary-action" onClick={()=>navigate('registration')}>{text.registration} <span aria-hidden="true">{forwardArrow(language)}</span></button>
     </section>}
