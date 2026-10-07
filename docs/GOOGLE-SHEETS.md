@@ -23,9 +23,16 @@ Todas las llamadas requieren sesión y los POST comprueban mismo origen.
 - Inspección inicial: solo cabeceras, sin respuestas. Opciones verificadas en los
   formularios, sin enviar respuestas ni modificar preguntas.
 
-Configuración en `server/google-schema.ts`. Cabeceras exactas y lectura por
-posición para distinguir seis acompañantes con preguntas repetidas. Cambiar
-columnas detiene la lectura. Referencias G-fila y E-fila son localizadores, NO
+Actualización del 7 de octubre de 2026: 69 cabeceras con elecciones del Menú 6.
+Configuración en `server/google-schema.ts` y `server/google-columns.ts`. Lectura
+por nombre de cabecera normalizado; admite las cabeceras históricas y sus alias
+actuales. El ancho se obtiene de la cuadrícula (máximo 512 columnas), sin corte BC.
+Las preguntas repetidas de acompañantes carecen de identificador en Sheets:
+se distinguen por ocurrencia dentro de cada cabecera, nunca por columna absoluta.
+Insertar o mover columnas únicas no cambia las asignaciones. Reordenar entre sí
+preguntas con cabeceras idénticas no puede detectarse semánticamente; esas preguntas
+deben conservar su orden o recibir títulos únicos en el formulario. Falta de una
+cabecera requerida o duplicación ambigua bloquea la lectura con error explícito. Referencias G-fila y E-fila son localizadores, NO
 identificadores inmutables ni identidades; cambian al reordenar/insertar filas.
 No se deduplican nombres ni fechas: las coincidencias requieren revisión humana.
 
@@ -42,8 +49,9 @@ cambios simultáneos se recogerán en la siguiente actualización.
 - Nombres vacíos y edades mal formadas generan incidencias; no se inventan valores.
 - Autobús sí/no del titular. Acompañantes aplican herencia provisional configurable.
 - Menú por persona: «No solicita menú» no es comensal. Un menú elegido sí lo es;
-  una contradicción con el sí/no general queda señalada. Si se declaró comida y
-  falta la selección de una persona, se detiene lectura sin estimar comensales.
+  una contradicción con el sí/no general queda señalada. Si se declaró comida y falta la selección individual, la persona queda pendiente
+  de menú, sin bloquear el panel. El total de comensales incluye esa declaración;
+  el panel indica cuántos menús individuales faltan por confirmar.
 - Un menú en una plaza de acompañante vacía genera incidencia, no una persona.
 - Vehículo: se conserva texto original; modelo/color/matrícula se revisan manualmente.
 - Datos críticos ambiguos detienen vista completa indicando fila/campo sin contenido.
@@ -73,7 +81,8 @@ desconocidas. Los comentarios solo salen después de revisión y confirmación.
 
 ## Verificación
 
-`pnpm check:pages` ejecuta pruebas, tipos, lint y construcción.
+`pnpm check:pages` ejecuta pruebas, tipos, lint y construcción. Incluye `tests/menu6.test.ts` para
+platos, cambios de cabecera, excepciones y compatibilidad histórica.
 `tests/google.test.ts` usa RSA efímera y respuestas simuladas: no red ni claves
 reales. Cubre alcance lector, redirecciones, errores, límites, huecos, posiciones,
 menús, consentimiento, escalas, privacidad y ausencia de escrituras en Supabase.
@@ -86,3 +95,19 @@ Referencias técnicas:
 - https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets.values/get
 - https://developers.google.com/identity/protocols/oauth2/service-account
 - https://developers.openai.com/api/docs/guides/agent-builder-safety#combine-techniques
+
+## Menú 6 y excepciones (7 de octubre de 2026)
+
+Primeros y segundos se leen por cabecera con sufijo Titular/Acompañante N.
+Se conservan elecciones y detalle original sin reescritura. Menús infantiles
+no requieren platos del menú general. Se señalan platos ausentes, desconocidos,
+selecciones sin comida y elecciones incompatibles con el menú.
+
+La necesidad especial actual es por inscripción, no por persona. Los contadores
+Vegetariano, Vegano, Halal, Alergia/intolerancia y Otro son de inscripciones;
+no equivalen a número de menús ni afectados. Detalle obligatorio para alergia
+e intolerancia u Otro. No se atribuyen notas a personas automáticamente.
+Texto original y tipo aparecen en el listado restringido de excepciones, CSV
+y PDF optativo del dossier. Los listados generales incluyen platos, excluyen
+detalles de necesidades especiales. Las necesidades individuales históricas
+siguen exportándose en el documento restringido. No se escriben respuestas.

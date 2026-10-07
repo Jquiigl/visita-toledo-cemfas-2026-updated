@@ -78,7 +78,7 @@ test('no crea acompañantes por No solicita menú; omite emails/empleo/padrino y
   assert.equal(mapped.companions.length,0);assert.equal(mapped.holder.meal,false);assert.equal(mapped.vehicle?.original,'Texto vehículo ficticio');assert.equal(mapped.vehicle?.plate,'');assert(!JSON.stringify(mapped).includes('PRIVATE'));assert(!JSON.stringify(mapped).includes('@'));
 });
 test('tipos críticos ambiguos detienen lectura; errores revisables y menús huérfanos quedan señalados',()=>{
-  const cases:Record<number,string>[]=[{4:'maybe'},{5:'unknown'},{40:''},{40:'unmapped'},{7:'SI',8:'Persona',10:'UNKNOWN',41:'No solicita menú'}];
+  const cases:Record<number,string>[]=[{4:'maybe'},{5:'unknown'},{40:'unmapped'},{7:'SI',8:'Persona',10:'UNKNOWN',41:'No solicita menú'}];
   for(const changes of cases) assert.throws(()=>registrationsFromGoogle([registration(changes)]),GoogleReadError);
   const r=registrationsFromGoogle([registration({7:'SI',8:'',9:'HIJO/A',10:'MENOR DE EDAD',11:'doce',12:'SI',41:'Infantil - Normal',42:'Adulto - Normal'})]);
   const data=makeSnapshot(r,[],true,'google','now');assert(data.audit.errors.some(e=>e.reason.includes('falta nombre')));assert(data.audit.errors.some(e=>e.reason.includes('Edad con formato')));assert(data.audit.errors.some(e=>e.reason.includes('menú asignado')));

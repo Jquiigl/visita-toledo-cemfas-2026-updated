@@ -1,3 +1,5 @@
+import {columnIndexes, courseColumn} from './google-columns.ts';
+import {googleSources} from './google-schema.ts';
 import type {Evaluation, Person, Registration} from './domain.ts';
 import {GoogleReadError, type SheetRow} from './google-reader.ts';
 import {choiceOptions, menuOptions, surveyLabels} from './google-schema.ts';
@@ -9,8 +11,10 @@ const mobilityConsent = 'Consiento expresamente la información que he facilitad
 const dietaryConsent = 'Consiento expresamente el tratamiento de la información sobre alergias o intolerancias que he facilitado, exclusivamente para adaptar el servicio de comida y, cuando resulte necesario, su comunicación al proveedor encargado de dicho servicio.';
 
 export function registrationsFromGoogle(rows: SheetRow[]): Registration[] {
-  return rows.map(({rowNumber, cells}) => {
-    const c = (i: number) => (cells[i] || '').trim();
+  return rows.map(({rowNumber, cells, headers}) => {
+    const indexes = columnIndexes('registrations', headers || googleSources.registrations.headers);
+    const raw = (i:number) => cells[indexes[i]] || '';
+    const c = (i: number) => raw(i).trim();
     if (!c(0)) fail(rowNumber, 'marca temporal');
     const id = `G-${rowNumber}`; const importIssues: string[] = [];
     const groupMeal = yesNo(c(4)); if (groupMeal === undefined) fail(rowNumber, 'asistencia a la comida');
@@ -23,8 +27,8 @@ export function registrationsFromGoogle(rows: SheetRow[]): Registration[] {
       const menu = c(40 + index); const selected = menuOptions.find(m => norm(m) === norm(menu));
       if (menu && !selected) fail(rowNumber, `menú de la persona ${index + 1}`);
       // A grid selection is per person. Never infer all companions eat from the holder.
-      if (!menu && groupMeal) fail(rowNumber, `menú de la persona ${index + 1}`);
-      const meal = Boolean(selected && selected !== 'No solicita menú');
+      if (!menu && groupMeal) importIssues.push(`Persona ${index + 1}: comida declarada sin menú individual`);
+      const meal = Boolean(selected && selected !== 'No solicita menú') || (!menu && groupMeal === true);
       if (meal && !groupMeal) importIssues.push('Se declaró no asistir a la comida, pero hay menús seleccionados');
       if (!index && groupMeal && selected === 'No solicita menú') importIssues.push('El titular declaró asistir a la comida, pero no solicita menú');
       const ageText = index ? c(offset + 3) : '';
@@ -32,7 +36,10 @@ export function registrationsFromGoogle(rows: SheetRow[]): Registration[] {
       if (ageText && !validAge) importIssues.push('Edad con formato no válido: revisar el dato original');
       return {id: `${id}:${index}`, name: index ? c(offset) : c(1), role: index ? 'Acompañante' : 'Titular',
         adult: adultText === 'adulto', age: validAge ? Number(ageText) : undefined,
-        transport: index || bus === undefined ? undefined : bus ? 'bus' : 'car', meal, menu: meal ? selected! : ''};
+        transport: index || bus === undefined ? undefined : bus ? 'bus' : 'car', meal, menu: meal ? selected || '' : '',
+        ...(headers ? {courseSchema: courseColumn(headers, 'PRIMER', index) !== undefined || courseColumn(headers, 'SEGUNDO', index) !== undefined,
+          firstCourse: cells[courseColumn(headers, 'PRIMER', index) ?? -1] || '',
+          secondCourse: cells[courseColumn(headers, 'SEGUNDO', index) ?? -1] || ''} : {})};
     };
     const holder = person(0); const companions: Person[] = [];
     for (let i = 1; i <= 6; i++) {
@@ -45,7 +52,7 @@ export function registrationsFromGoogle(rows: SheetRow[]): Registration[] {
       if (i < 6 && yesNo(c(offset + 4)) === true && ![0, 1, 2, 3].some(n => c(offset + 5 + n))) importIssues.push('Se indicó otro acompañante, pero faltan sus datos');
     }
     if (hasCompanions !== Boolean(companions.length)) importIssues.push('La declaración de acompañantes no coincide con las personas registradas');
-    const groupNeeds: {mobility?: string; dietary?: string} = {};
+    const groupNeeds: NonNullable<Registration['groupNeeds']> = {};
     // Free text is not reliably attributable to individuals. Keep it in a separate,
     // restricted registration note, never copied onto every person's health fields.
     if (yesNo(c(37)) === true || c(38)) {
@@ -53,9 +60,17 @@ export function registrationsFromGoogle(rows: SheetRow[]): Registration[] {
       if (norm(c(39)) === norm(mobilityConsent) && c(38)) groupNeeds.mobility = c(38);
       else importIssues.push('Nota de movilidad no mostrada: falta descripción o consentimiento reconocido');
     }
-    if (yesNo(c(47)) === true || c(48) || c(49)) {
+    if (headers?.some(h=>norm(h)==='necesidad alimentaria especial') && !c(47)) importIssues.push('Necesidad alimentaria especial sin respuesta: confirmar No u opción aplicable');
+    const specialType = ['No','Vegetariano','Vegano','Halal','Alergia/intolerancia','Otro'].find(v=>norm(v)===norm(c(47))) || (yesNo(c(47))===true?'Alergia/intolerancia':c(47));
+    if (specialType && specialType !== 'No' || c(48) || c(49)) {
       importIssues.push('Necesidad alimentaria declarada por inscripción: revisar personas afectadas y medidas');
-      if (norm(c(50)) === norm(dietaryConsent) && c(48)) groupNeeds.dietary = [c(48), c(49)].filter(Boolean).join('\n');
+      groupNeeds.dietaryType = specialType || 'Por confirmar';
+      groupNeeds.dietaryDetail = raw(48);
+      groupNeeds.dietaryObservations = raw(49);
+      if (['Alergia/intolerancia','Otro'].includes(specialType) && !c(48)) importIssues.push('Necesidad alimentaria especial sin detalle requerido');
+      if (specialType === 'No' && (c(48) || c(49))) importIssues.push('Necesidad alimentaria: No con detalle informado');
+      if (!['No','Vegetariano','Vegano','Halal','Alergia/intolerancia','Otro'].includes(specialType)) importIssues.push('Tipo de necesidad alimentaria desconocido');
+      if (norm(c(50)) === norm(dietaryConsent) && c(48)) groupNeeds.dietary = [raw(48), raw(49)].filter(Boolean).join('\n');
       else importIssues.push('Nota alimentaria no mostrada: falta descripción o consentimiento reconocido');
     }
     if (!c(51) || !c(52) || !c(53)) importIssues.push('Confirmaciones o información de protección de datos incompletas: revisar el formulario original');
@@ -67,8 +82,9 @@ export function registrationsFromGoogle(rows: SheetRow[]): Registration[] {
 // Invalid scores remain invalid (not silently converted to missing or to zero).
 function score(value: string): number | null {if (!value.trim()) return null; return /^\d+$/.test(value.trim()) ? Number(value) : -1;}
 export function evaluationsFromGoogle(rows: SheetRow[]): Evaluation[] {
-  return rows.map(({rowNumber, cells}) => {
-    const c = (i: number) => (cells[i] || '').trim();
+  return rows.map(({rowNumber, cells, headers}) => {
+    const indexes = columnIndexes('evaluations', headers || googleSources.evaluations.headers);
+    const c = (i: number) => (cells[indexes[i]] || '').trim();
     if (!c(0)) throw new GoogleReadError(409, `Valoración: fila ${rowNumber} sin marca temporal. Revisa la hoja original.`);
     return {id: `E-${rowNumber}`, scores: Object.fromEntries(surveyLabels.map((label, i) => [label, score(c(i + 1))])),
       relationshipScore: score(c(14)), categories: {Duración: c(9), Ritmo: c(10), Recomendación: c(15)},

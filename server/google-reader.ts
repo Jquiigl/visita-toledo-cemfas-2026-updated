@@ -1,8 +1,9 @@
+import {validateHeaders} from './google-columns.ts';
 import {googleSources} from './google-schema.ts';
 
 export type GoogleCredentials = {GOOGLE_SERVICE_ACCOUNT_EMAIL?: string; GOOGLE_PRIVATE_KEY?: string};
 export class GoogleReadError extends Error {constructor(public status: number, message: string) {super(message);}}
-export type SheetRow = {rowNumber: number; cells: string[]};
+export type SheetRow = {rowNumber: number; cells: string[]; headers?: string[]};
 const base64url = (bytes: Uint8Array) => btoa(String.fromCharCode(...bytes)).replaceAll('+', '-').replaceAll('/', '_').replaceAll('=', '');
 const json64 = (value: unknown) => base64url(new TextEncoder().encode(JSON.stringify(value)));
 
@@ -57,22 +58,26 @@ export class GoogleReader {
     if (meta.spreadsheetId !== config.id || sheet?.title !== config.tab) throw new GoogleReadError(409, 'La pestaña de respuestas ha cambiado. Revisa su configuración antes de actualizar los datos.');
     const count = sheet.gridProperties?.rowCount;
     if (!Number.isInteger(count) || count < 1 || count > 10000) throw new GoogleReadError(413, 'La hoja requiere revisar el límite de lectura (máximo 10.000 filas de cuadrícula). No se mostrarán totales parciales.');
-    const rows: SheetRow[] = []; let totalChars = 0;
+    const rows: SheetRow[] = []; let totalChars = 0; let actualHeaders: string[] = [];
+    const width = sheet.gridProperties?.columnCount;
+    if (!Number.isInteger(width) || width < 1 || width > 512) throw new GoogleReadError(413, 'Número de columnas fuera del límite seguro.');
+    let lastColumn = ''; for (let n = width; n > 0; n = Math.floor((n - 1) / 26)) lastColumn = String.fromCharCode(65 + (n - 1) % 26) + lastColumn;
     // Read every allocated row, including rows after gaps. Never stop at a blank.
     for (let start = 1; start <= count; start += 500) {
-      const end = Math.min(count, start + 499); const range = `'${config.tab}'!A${start}:${config.lastColumn}${end}`;
+      const end = Math.min(count, start + 499); const range = `'${config.tab}'!A${start}:${lastColumn}${end}`;
       const data = await this.request(`${url}/values/${encodeURIComponent(range)}?majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE`, {headers});
       const values = data.values ?? [];
       if (!Array.isArray(values) || values.length > end - start + 1) throw new GoogleReadError(502, 'Google devolvió un rango no válido.');
       if (start === 1 && !values.length) throw new GoogleReadError(409, 'La hoja no contiene las cabeceras esperadas.');
       for (let i = 0; i < values.length; i++) {
-        if (!Array.isArray(values[i]) || values[i].length > config.headers.length || values[i].some((v: unknown) => !['string', 'number', 'boolean'].includes(typeof v))) throw new GoogleReadError(502, 'Google devolvió celdas no válidas.');
+        if (!Array.isArray(values[i]) || values[i].length > width || values[i].some((v: unknown) => !['string', 'number', 'boolean'].includes(typeof v))) throw new GoogleReadError(502, 'Google devolvió celdas no válidas.');
         const cells = values[i].map(String) as string[];
         totalChars += cells.join('').length;
         if (totalChars > 2_000_000 || cells.some(c => c.length > 10000)) throw new GoogleReadError(413, 'El contenido supera el tamaño de lectura seguro. No se mostrarán totales parciales.');
         if (start === 1 && i === 0) {
-          if (cells.length !== config.headers.length || cells.some((c, j) => c.trim() !== config.headers[j].trim())) throw new GoogleReadError(409, 'Las columnas del formulario han cambiado. Hay que revisar el mapeo; no se mezclarán nombres ni respuestas.');
-        } else if (cells.some(c => c.trim())) rows.push({rowNumber: start + i, cells});
+          actualHeaders = cells;
+          validateHeaders(source, cells);
+        } else if (cells.some(c => c.trim())) rows.push({rowNumber: start + i, cells, headers: actualHeaders});
       }
     }
     return rows;
