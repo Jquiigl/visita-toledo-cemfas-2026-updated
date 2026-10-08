@@ -94,3 +94,5 @@ button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #e5a
 .audio-transcript p{white-space:pre-line}.souvenir-reviews a{font-size:.85rem;color:var(--navy,#172b45)}
 
 .meal-price{margin:18px 22px 0;color:var(--navy);font-size:32px;font-weight:800}.meal-price small{font-size:16px;font-weight:600}.meal-includes{margin:0;padding:0 22px 20px;font-size:14px;line-height:1.6;color:#334b60}
+
+.registration-deadline{margin:8px 0 18px;padding:12px 14px;background:#fff3da;border:1px solid #ddb66d;border-radius:9px;color:var(--deep);font-size:15px;font-weight:700;line-height:1.5;text-align:center}

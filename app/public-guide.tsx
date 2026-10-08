@@ -37,14 +37,24 @@ const labels: Record<LanguageCode, Record<string,string>> = {
   ko:{map:'지도',guide:'가이드',schedule:'시간과 방문',route:'톨레도 경로',cards:'안내, 사진 및 음성',practical:'날씨, 복장 및 출입',day:'일정 요약',seeMap:'지도에서 경로 보기',routePending:'안내 순서이며 가이드 회사가 경로를 조정할 수 있습니다.',historicRoute:'역사 지구 도보 경로',expandedSpanish:'상세 기사는 우선 스페인어로 제공됩니다. 요약과 음성은 선택한 언어로 유지됩니다.',highlights:'핵심 정보',readMore:'안내 열기',registration:'등록',openForm:'등록 양식 열기',sources:'출처 및 사진 저작권',back:'뒤로',nearby:'여기가 맞나요?',checking:'확인 중…',mapFull:'지도에서 전체 경로 열기',academyMap:'사관학교 지도 열기',publicMap:'안내 지도',transfers:'이후 이동',threeCultures:'세 문화의 유산',details:'예정 세부 일정',summary:'요약',audio:'음성 요약'}
 };
 
+const registrationDeadlineCopy: Record<LanguageCode, string> = {
+  es: 'Fecha límite de inscripción: 17 de octubre de 2026 (inclusive).',
+  en: 'Registration deadline: 17 October 2026 (inclusive).',
+  fr: 'Date limite d’inscription : le 17 octobre 2026 inclus.',
+  it: 'Scadenza iscrizioni: 17 ottobre 2026 compreso.',
+  de: 'Anmeldeschluss: einschließlich 17. Oktober 2026.',
+  ar: 'آخر موعد للتسجيل: 17 أكتوبر 2026، شاملًا هذا اليوم.',
+  ko: '등록 마감일: 2026년 10월 17일 (당일 포함).',
+};
+
 const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;child:string;first:string;second:string;dessert:string;adultIncludes:string;childFirst:string;childSecond:string;childIncludes:string;note:string;dietary:string;perPerson:string;reference:string}> = {
   "es": {
     "title": "Menús de Los Alijares",
     "intro": "Elija en el formulario el primer y segundo plato de cada persona que solicite el menú general.",
-    "adult": "Menú general · Menú 6",
+    "adult": "Menú general · Menú 4",
     "child": "Menú infantil",
-    "first": "Primero: garbanzos con almejas o Ravioli Ricotta e Spinaci",
-    "second": "Segundo: salmón a la menta o costillas BBQ",
+    "first": "Primero: Ensalada caprese con queso mozzarella o Lasaña boloñesa",
+    "second": "Segundo: Ternera estofada o Pollo al chilindrón",
     "dessert": "Postre casero",
     "adultIncludes": "Incluye agua mineral, vino blanco, vino tinto y café. No incluye cerveza ni refrescos.",
     "childFirst": "Primero: huevo frito con patatas y dos croquetas de pollo*",
@@ -58,10 +68,10 @@ const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;chi
   "en": {
     "title": "Los Alijares menus",
     "intro": "Choose the first and second course for each person ordering the general menu in the form.",
-    "adult": "General menu · Menu 6",
+    "adult": "General menu · Menu 4",
     "child": "Children’s menu",
-    "first": "First course: chickpeas with clams or ricotta and spinach ravioli",
-    "second": "Second course: mint salmon or BBQ ribs",
+    "first": "First course: caprese salad with mozzarella cheese or Bolognese lasagna",
+    "second": "Second course: beef stew or chicken chilindrón",
     "dessert": "Homemade dessert",
     "adultIncludes": "Includes mineral water, white wine, red wine and coffee. Beer and soft drinks are not included.",
     "childFirst": "First course: fried egg with potatoes and two chicken croquettes*",
@@ -75,10 +85,10 @@ const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;chi
   "fr": {
     "title": "Menus de Los Alijares",
     "intro": "Choisissez dans le formulaire le premier et le deuxième plat pour chaque personne prenant le menu général.",
-    "adult": "Menu général · Menu 6",
+    "adult": "Menu général · Menu 4",
     "child": "Menu enfant",
-    "first": "Premier plat : pois chiches aux palourdes ou raviolis ricotta et épinards",
-    "second": "Deuxième plat : saumon à la menthe ou travers de porc BBQ",
+    "first": "Premier plat : salade caprese au fromage mozzarella ou lasagnes bolognaises",
+    "second": "Deuxième plat : bœuf mijoté ou poulet au chilindrón",
     "dessert": "Dessert maison",
     "adultIncludes": "Eau minérale, vin blanc, vin rouge et café inclus. Bière et sodas non inclus.",
     "childFirst": "Premier plat : œuf au plat, pommes de terre et deux croquettes de poulet*",
@@ -92,10 +102,10 @@ const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;chi
   "it": {
     "title": "Menu di Los Alijares",
     "intro": "Scegliete nel modulo il primo e il secondo per ogni persona che richiede il menu generale.",
-    "adult": "Menu generale · Menu 6",
+    "adult": "Menu generale · Menu 4",
     "child": "Menu bambini",
-    "first": "Primo: ceci con vongole o ravioli ricotta e spinaci",
-    "second": "Secondo: salmone alla menta o costine BBQ",
+    "first": "Primo: insalata caprese con mozzarella o lasagne alla bolognese",
+    "second": "Secondo: manzo in umido o pollo al chilindrón",
     "dessert": "Dolce della casa",
     "adultIncludes": "Include acqua minerale, vino bianco, vino rosso e caffè. Birra e bibite escluse.",
     "childFirst": "Primo: uovo fritto con patate e due crocchette di pollo*",
@@ -109,10 +119,10 @@ const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;chi
   "de": {
     "title": "Menüs von Los Alijares",
     "intro": "Wählen Sie im Formular für jede Person mit dem allgemeinen Menü den ersten und zweiten Gang.",
-    "adult": "Allgemeines Menü · Menü 6",
+    "adult": "Allgemeines Menü · Menü 4",
     "child": "Kindermenü",
-    "first": "Erster Gang: Kichererbsen mit Venusmuscheln oder Ravioli mit Ricotta und Spinat",
-    "second": "Zweiter Gang: Lachs mit Minze oder BBQ-Rippchen",
+    "first": "Erster Gang: Caprese-Salat mit Mozzarella oder Lasagne Bolognese",
+    "second": "Zweiter Gang: Rinderschmortopf oder Hähnchen Chilindrón",
     "dessert": "Hausgemachtes Dessert",
     "adultIncludes": "Mineralwasser, Weißwein, Rotwein und Kaffee inklusive. Bier und Softdrinks nicht inklusive.",
     "childFirst": "Erster Gang: Spiegelei mit Kartoffeln und zwei Hähnchenkroketten*",
@@ -126,10 +136,10 @@ const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;chi
   "ar": {
     "title": "قوائم لوس أليخاريس",
     "intro": "اختر في النموذج الطبق الأول والثاني لكل شخص يطلب القائمة العامة.",
-    "adult": "القائمة العامة · القائمة 6",
+    "adult": "القائمة العامة · القائمة 4",
     "child": "قائمة الأطفال",
-    "first": "الطبق الأول: حمص مع المحار أو رافيولي بالريكوتا والسبانخ",
-    "second": "الطبق الثاني: سلمون بالنعناع أو أضلاع لحم الخنزير بصلصة الشواء",
+    "first": "الطبق الأول: سلطة كابريزي بجبنة الموزاريلا أو لازانيا بولونيز",
+    "second": "الطبق الثاني: يخنة لحم البقر أو دجاج تشيليندرون",
     "dessert": "حلوى منزلية",
     "adultIncludes": "تشمل المياه المعدنية والنبيذ الأبيض والأحمر والقهوة. لا تشمل البيرة أو المشروبات الغازية.",
     "childFirst": "الطبق الأول: بيض مقلي مع البطاطس وقطعتين من كروكيت الدجاج*",
@@ -143,10 +153,10 @@ const menuCopy: Record<LanguageCode, {title:string;intro:string;adult:string;chi
   "ko": {
     "title": "로스 알리하레스 메뉴",
     "intro": "일반 메뉴를 신청하는 각 사람의 첫 번째와 두 번째 요리를 등록 양식에서 선택하세요.",
-    "adult": "일반 메뉴 · 메뉴 6",
+    "adult": "일반 메뉴 · 메뉴 4",
     "child": "어린이 메뉴",
-    "first": "첫 번째 요리: 조개를 넣은 병아리콩 또는 리코타와 시금치 라비올리",
-    "second": "두 번째 요리: 민트 연어 또는 BBQ 돼지갈비",
+    "first": "첫 번째 요리: 모차렐라 치즈 카프레제 샐러드 또는 볼로네제 라자냐",
+    "second": "두 번째 요리: 소고기 스튜 또는 칠린드론 닭고기",
     "dessert": "수제 디저트",
     "adultIncludes": "생수, 화이트 와인, 레드 와인 및 커피 포함. 맥주와 청량음료는 제외됩니다.",
     "childFirst": "첫 번째 요리: 달걀 프라이, 감자와 치킨 크로켓 두 개*",
@@ -242,8 +252,9 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
         <button onClick={()=>navigate('visit')}><span>▤</span><strong>{text.guide}</strong><small>{text.cards}</small></button>
         <button onClick={()=>navigate('useful')}><span>ⓘ</span><strong>{copy.useful}</strong><small>{text.practical}</small></button>
       </div>
-      <button className="provisional-menu-tab" onClick={()=>navigate('menu')}><span>♨</span><div><small>25 {menu.perPerson} · 14 {menu.perPerson}</small><strong>{menu.title}</strong><p>{menu.reference}</p></div><i aria-hidden="true">{forwardChevron(language)}</i></button>
-      <button className="primary-action" onClick={()=>navigate('registration')}>{text.registration} <span aria-hidden="true">{forwardArrow(language)}</span></button>
+      <button className="provisional-menu-tab" onClick={()=>navigate('menu')}><span>♨</span><div><small>23 {menu.perPerson} · 14 {menu.perPerson}</small><strong>{menu.title}</strong><p>{menu.reference}</p></div><i aria-hidden="true">{forwardChevron(language)}</i></button>
+      <button className="primary-action" aria-describedby="registration-deadline" onClick={()=>navigate('registration')}>{text.registration} <span aria-hidden="true">{forwardArrow(language)}</span></button>
+      <p className="registration-deadline" id="registration-deadline">{registrationDeadlineCopy[language]}</p>
       <section className="evaluation-callout" aria-label={evaluationCopy[language].button}>
         <a className="primary-action link-button" href={evaluationFormUrl} target="_blank" rel="noreferrer" aria-describedby="evaluation-notice">{evaluationCopy[language].button} <External/></a>
         <p id="evaluation-notice">{evaluationCopy[language].notice}<strong>{evaluationCopy[language].deadline}</strong></p>
@@ -301,7 +312,7 @@ export default function PublicGuide({initialLanguage='es'}:{initialLanguage?:Lan
       <div className="screen-heading"><span className="status">Los Alijares</span><h1>{menu.title}</h1><p>{menu.intro}</p></div>
       <div className="menu-reference">{menu.reference}</div>
       <div className="meal-cards">
-        <article><div className="meal-card-heading"><span>01</span><h2>{menu.adult}</h2></div><p className="meal-price">25 <small>{menu.perPerson}</small></p><ol>{[menu.first,menu.second,menu.dessert].map(item=><li key={item}>{item}</li>)}</ol><p className="meal-includes">{menu.adultIncludes}</p></article>
+        <article><div className="meal-card-heading"><span>01</span><h2>{menu.adult}</h2></div><p className="meal-price">23 <small>{menu.perPerson}</small></p><ol>{[menu.first,menu.second,menu.dessert].map(item=><li key={item}>{item}</li>)}</ol><p className="meal-includes">{menu.adultIncludes}</p></article>
         <article className="child-meal"><div className="meal-card-heading"><span>02</span><h2>{menu.child}</h2></div><p className="meal-price">14 <small>{menu.perPerson}</small></p><ol>{[menu.childFirst,menu.childSecond,menu.dessert].map(item=><li key={item}>{item}</li>)}</ol><p className="meal-includes">{menu.childIncludes}</p></article>
       </div>
       <div className="menu-warning"><p>{menu.note}</p></div>

@@ -25,9 +25,9 @@ test('la portada no maneja credenciales ni desbloquea la administración',()=>{
   assert.match(source,/href=\{guideUrl\(language\)\}/);
   assert.doesNotMatch(source,/localStorage|sessionStorage|fetch\(|type="password"/);
 });
-test('la valoración sigue inmediatamente después de la inscripción',()=>{
+test('la valoración sigue después de la inscripción y su plazo',()=>{
   const source=readFileSync(new URL('../app/public-guide.tsx',import.meta.url),'utf8');
-  assert.match(source,/navigate\('registration'\)\}>\{text.registration\}[\s\S]*?<\/button>\s*<section className="evaluation-callout"/);
+  assert.match(source,/navigate\('registration'\)\}>\{text.registration\}[\s\S]*?<\/button>\s*<p className="registration-deadline"[^>]*>\{registrationDeadlineCopy\[language\]\}<\/p>\s*<section className="evaluation-callout"/);
 });
 test('la portada usa el cartel aportado sin repetir Updated ni superponer otro título visible',()=>{
   const source=readFileSync(new URL('../app/cover.tsx',import.meta.url),'utf8');

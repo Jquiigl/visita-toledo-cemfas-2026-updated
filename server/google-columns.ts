@@ -19,8 +19,8 @@ export function columnIndexes(source:keyof typeof googleSources, headers:readonl
 export function validateHeaders(source:keyof typeof googleSources,headers:readonly string[]) {columnIndexes(source,headers);}
 export function courseColumn(headers:readonly string[],course:'PRIMER'|'SEGUNDO',index:number) {
   const person=index?`Acompañante ${index}`:'Titular';
-  const key=headerKey(`${course} PLATO — MENÚ GENERAL (MENÚ 6) — POR PERSONA [${person}]`);
-  const matches=headers.flatMap((h,i)=>headerKey(h)===key?[i]:[]);
+  const keys=[4,6].map(menu=>headerKey(`${course} PLATO — MENÚ GENERAL (MENÚ ${menu}) — POR PERSONA [${person}]`));
+  const matches=headers.flatMap((h,i)=>keys.includes(headerKey(h))?[i]:[]);
   if(matches.length>1) throw new GoogleReadError(409,'Cabecera de plato duplicada. Revisa el formulario.');
   return matches[0];
 }
